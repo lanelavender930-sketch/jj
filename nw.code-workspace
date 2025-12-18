@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../nurs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "nw"
+	}
+}
