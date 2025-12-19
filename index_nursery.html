@@ -1,44 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=MaterialIcons" rel="icon?family=MaterialIcons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=local_shipping" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plants Nursery</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-       <i class="fa-solid fa-leaf" style="color: #487f23;padding-left: 20px;"> Plants Nursery</i>
-        <ul>        
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="plants.html">Plants</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <i class="fa-solid fa-cart-shopping"></i>
-        <button style="background-color: #487f23; color: white; padding: 10px 15px; border: none; border-radius: 10px; cursor: pointer;margin-right: 20px;font-size: 15px;">Admin</button>
+      <i class="fa-solid fa-leaf" style="color: #487f23; padding-left: 20px">
+        Plants Nursery</i
+      >
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="plants.html">Plants</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-cart-shopping"></i>
+      <button
+        style="
+          font-family: 'Lora', serif;
+          background-color: #487f23;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          margin-right: 20px;
+          font-size: 15px;
+          font-weight: normal;
+        "
+      >
+        Admin
+      </button>
     </nav>
-    
+
     <section id="home" class="hero">
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <h1 style="font-size: 60px;">From Our Nursery To Your Garden</h1>
-          <p style="font-size: 25px;">Turn your space into a living sanctuary...one healthy,happy plant at a time.</p>
-          <button class="btn-left" style=" padding: 15px 25px; border-radius: 20px;cursor: pointer; font-size: 20px; margin-top: 20px;">Shop Now</button>
-          <button class="btn-right" style="padding: 15px 25px; border-radius: 20px; cursor: pointer; font-size: 20px; margin-top: 20px;">Learn More</button>            
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="floating-leaf"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 style="font-size: 60px">From Our Nursery To Your Garden</h1>
+        <p style="font-size: 25px">
+          Turn your space into a living sanctuary...one healthy,happy plant at a
+          time.
+        </p>
+        <button
+          class="btn-left"
+          style="
+            padding: 15px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-top: 20px;
+          "
+        >
+          Shop Now
+        </button>
+        <button
+          class="btn-right"
+          style="
+            padding: 15px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-top: 20px;
+          "
+        >
+          Learn More
+        </button>
+      </div>
+    </section>
+    <section class="featurs">
+      <div class="featurs-grid rounded"><i class="bi bi-truck"></i>
+        <div class="container">
+          <h4>Free Shipping</h4>
+          <p>On orders over $50</p>            
         </div>
+    </div>
+      <div class="featurs-grid rounded"><i class="bi bi-shield-check"></i>
+        <div class="container">
+          <h4>Quality Guarantee</h4>
+          <p>30-day money-back guarantee</p>
+        </div>
+      </div>
+      <div class="featurs-grid rounded"><i class="bi bi-leaf"></i>
+        <div class="container">
+          <h4>Organic Plants</h4>
+          <p>100% organic and eco-friendly</p>
+        </div>
+      </div>
+    </section>
+    <section class="category">
+        <div class="category-header">
+           <h1>Shop by category</h1>
+           <p>Find the perfect plants for your space</p>
+        </div>
+        <div class="category-container">
+            <div class="category-grid">
+                <img src="/img/categories (3).jpg" alt="Indoor Plants" height="230"/>
+                <h3>Indoor Plants</h3>
+                <p>45 products</p>
+            </div>
+            <div class="category-grid">
+                <img src="/img/categories (2).jpg" alt="Outdoor Plants" height="230"/>
+                <h3>Outdoor Plants</h3>
+                <p>28 products</p>
+            </div>
+            <div class="category-grid">
+                <img src="/img/categories (1).jpg" alt="Succulents" height="230"/>
+                <h3>Succulents</h3>
+                <p>32 products</p>
+            </div>
+        </div>
+        <span class="category-btn">View All Categories <i class="bi bi-arrow-right"></i></span>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/get-google-fonts@1.2.2/main.min.js"></script>
-</body>
+  </body>
 </html>
