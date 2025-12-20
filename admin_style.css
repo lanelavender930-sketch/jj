@@ -11,6 +11,7 @@
   --light-font-color: #7f8c8d;
   --good-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --btn-hov: #f5f5e8;
+  --font-greeen: #27ae60;
 }
 body {
   background-color: #f4f4f4;
@@ -194,10 +195,70 @@ ul {
   border-radius: 25px;
   margin-top: 30px;
 }
+/* start product table */
+
 table {
   width: 100%;
 }
-table td {
-  border: 2px black solid;
-  padding: 10px 20px;
+.prod-tab {
+  border-radius: 10px;
+  overflow: hidden;
+  border-spacing: 0;
+  margin-top: 20px;
+  color: #2c3e50;
+  text-transform: capitalize;
+  font-size: 15px;
+  box-shadow: var(--good-shadow);
 }
+.prod-tab tr:not(:first-child):nth-child(odd) {
+  background-color: #fafafa;
+}
+.prod-tab td {
+  padding: 16px 0;
+  padding-left: 15px;
+  border: none;
+}
+.prod-tab tr {
+  background-color: white;
+}
+.prod-tab .first-row {
+  background-color: #f0f5f0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.tab-icons {
+  display: flex;
+  text-align: center;
+}
+.tab-icons i {
+  cursor: pointer;
+}
+.tab-icons .pe {
+  color: var(--mid-green);
+}
+.tab-icons .tr {
+  color: #e74c3c;
+  margin-right: 8px;
+}
+.prod-tab span {
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.is-span {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: var(--font-greeen);
+}
+.ls-span {
+  background: rgba(241, 196, 15, 0.15);
+  color: #f39c12;
+}
+.oos-span {
+  background: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+}
+.prod-tab tr:nth-child(n + 2):hover {
+  background-color: #f0f5f0;
+  transition: 0.3s;
+}
+/* end product table */
