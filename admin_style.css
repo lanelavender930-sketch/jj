@@ -24,6 +24,18 @@ ul {
   list-style: none;
 }
 /* start special compnonents */
+
+.page_head {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.page_head h3 {
+  font-size: 24px;
+  color: var(--primary-font-color);
+  font-weight: 900;
+  margin: 0;
+}
 .tsk_buttons {
   height: 50px;
   border: none;
@@ -41,6 +53,7 @@ ul {
   background-color: var(--btn-hov);
   box-shadow: var(--good-shadow);
 }
+
 /* end special compnonents */
 .admin-lay {
   min-height: 100vh;
@@ -176,18 +189,8 @@ ul {
   border: none;
   outline: none;
 }
+/* start product section */
 
-.main .products_sec .products_head {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
-}
-.main .products_sec .products_head h3 {
-  font-size: 24px;
-  color: var(--primary-font-color);
-  font-weight: 900;
-  margin: 0;
-}
 .main .sorting_b select {
   margin-right: 10px;
   padding: 8px 12px;
@@ -195,12 +198,18 @@ ul {
   border-radius: 25px;
   margin-top: 30px;
 }
+.main .main-page .page {
+  display: none;
+}
+.main .main-page .active {
+  display: block;
+}
 /* start product table */
 
-table {
+.prod-tab {
   width: 100%;
 }
-.prod-tab {
+.tab {
   border-radius: 10px;
   overflow: hidden;
   border-spacing: 0;
@@ -210,18 +219,18 @@ table {
   font-size: 15px;
   box-shadow: var(--good-shadow);
 }
-.prod-tab tr:not(:first-child):nth-child(odd) {
+.tab tr:not(:first-child):nth-child(odd) {
   background-color: #fafafa;
 }
-.prod-tab td {
+.tab td {
   padding: 16px 0;
   padding-left: 15px;
   border: none;
 }
-.prod-tab tr {
+.tab tr {
   background-color: white;
 }
-.prod-tab .first-row {
+.tab .first-row {
   background-color: #f0f5f0;
   font-weight: bold;
   font-size: 16px;
@@ -241,24 +250,29 @@ table {
   color: #e74c3c;
   margin-right: 8px;
 }
-.prod-tab span {
+.tab span {
   padding: 5px 10px;
   border-radius: 20px;
 }
-.is-span {
+.tab .is-span {
   background-color: rgba(46, 204, 113, 0.15);
   color: var(--font-greeen);
 }
-.ls-span {
+.tab .ls-span {
   background: rgba(241, 196, 15, 0.15);
   color: #f39c12;
 }
-.oos-span {
+.tab .oos-span {
   background: rgba(231, 76, 60, 0.15);
   color: #e74c3c;
 }
-.prod-tab tr:nth-child(n + 2):hover {
+.tab tr:nth-child(n + 2):hover {
   background-color: #f0f5f0;
   transition: 0.3s;
 }
+
 /* end product table */
+.employees-tab {
+  width: 100%;
+}
+/* end product section */

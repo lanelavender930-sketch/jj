@@ -31,25 +31,25 @@
                 <i class="fa-solid fa-house"></i>
                 <a href="">back to site</a>
               </li>
-              <li class="active">
+              <li class="nav-item active" data-page="products-dis">
                 <i class="fa-solid fa-seedling"></i>
-                <a href="">products</a>
+                <a href="#">products</a>
               </li>
-              <li>
+              <li class="nav-item" data-page="employees-sec">
                 <i class="fa-solid fa-person"></i>
-                <a href="">employees</a>
+                <a href="#">employees</a>
               </li>
-              <li>
+              <li class="nav-item" data-page="">
                 <i class="fa-solid fa-list-check"></i>
-                <a href="">tasks</a>
+                <a href="#">tasks</a>
               </li>
-              <li>
+              <li class="nav-item" data-page="">
                 <i class="fa-solid fa-boxes-stacked"></i>
-                <a href="">Inventory</a>
+                <a href="#">Inventory</a>
               </li>
-              <li>
+              <li class="nav-item" data-page="">
                 <i class="fa-solid fa-tree"></i>
-                <a href="">planted orps</a>
+                <a href="#">planted orps</a>
               </li>
             </ul>
           </div>
@@ -76,79 +76,144 @@
             <button class="tsk_buttons">+ Quick Task</button>
           </div>
         </div>
-        <div class="products_sec">
-          <div class="products_head">
-            <h3>products</h3>
-            <button class="tsk_buttons">+ add products</button>
+        <div class="main-page">
+          <div id="products-dis" class="page products-dis active">
+            <div class="products_sec">
+              <div class="page_head">
+                <h3>products</h3>
+                <button class="tsk_buttons">+ add products</button>
+              </div>
+            </div>
+            <div class="sorting_b">
+              <select name="" id="">
+                <option value="">categories</option>
+                <option value="">indoor</option>
+                <option value="">outdoor</option>
+              </select>
+              <select name="" id="">
+                <option value="">categories</option>
+                <option value="">indoor</option>
+                <option value="">outdoor</option>
+              </select>
+            </div>
+            <table class="prod-tab tab">
+              <colgroup>
+                <col style="width: 350px" />
+                <col style="width: 200px" />
+                <col style="width: 150px" />
+              </colgroup>
+              <tr class="first-row">
+                <td>Name</td>
+                <td>category</td>
+                <td>price</td>
+                <td>stock</td>
+                <td>status</td>
+                <td>action</td>
+              </tr>
+              <tr>
+                <td>Monstera Deliciosa</td>
+                <td>indoor</td>
+                <td>29</td>
+                <td>2</td>
+                <td><span class="is-span">in stock</span></td>
+                <td>
+                  <div class="tab-icons">
+                    <i class="fa-solid fa-trash tr"></i>
+                    <i class="fa-solid fa-pen pe"></i>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>t</td>
+                <td>indoor</td>
+                <td>2</td>
+                <td>2</td>
+                <td><span class="ls-span">low stock</span></td>
+                <td>
+                  <div class="tab-icons">
+                    <i class="fa-solid fa-trash tr"></i>
+                    <i class="fa-solid fa-pen pe"></i>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>t</td>
+                <td>indoor</td>
+                <td>4</td>
+                <td>5</td>
+                <td><span class="oos-span">out of stock</span></td>
+                <td>
+                  <div class="tab-icons">
+                    <i class="fa-solid fa-trash tr"></i>
+                    <i class="fa-solid fa-pen pe"></i>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div id="employees-sec" class="page employees-sec">
+            <div class="page_head">
+              <h3>employees</h3>
+              <button class="tsk_buttons">
+                <i class="fa-solid fa-user-plus"></i> add employees
+              </button>
+            </div>
+            <table class="employees-tab tab">
+              <colgroup>
+                <col style="width: 350px" />
+                <col style="width: 200px" />
+                <col style="width: 150px" />
+              </colgroup>
+              <tr class="first-row">
+                <td>Name</td>
+                <td>role</td>
+                <td>tasks</td>
+                <td>status</td>
+                <td>action</td>
+              </tr>
+              <tr>
+                <td>Monstera Deliciosa</td>
+                <td>indoor</td>
+
+                <td>2</td>
+                <td><span class="is-span">in stock</span></td>
+                <td>
+                  <div class="tab-icons">
+                    <i class="fa-solid fa-trash tr"></i>
+                    <i class="fa-solid fa-pen pe"></i>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>t</td>
+                <td>indoor</td>
+
+                <td>2</td>
+                <td><span class="ls-span">low stock</span></td>
+                <td>
+                  <div class="tab-icons">
+                    <i class="fa-solid fa-trash tr"></i>
+                    <i class="fa-solid fa-pen pe"></i>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>t</td>
+                <td>indoor</td>
+                <td>5</td>
+                <td><span class="oos-span">out of stock</span></td>
+                <td>
+                  <div class="tab-icons">
+                    <i class="fa-solid fa-trash tr"></i>
+                    <i class="fa-solid fa-pen pe"></i>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
-        <div class="sorting_b">
-          <select name="" id="">
-            <option value="">categories</option>
-            <option value="">indoor</option>
-            <option value="">outdoor</option>
-          </select>
-          <select name="" id="">
-            <option value="">categories</option>
-            <option value="">indoor</option>
-            <option value="">outdoor</option>
-          </select>
-        </div>
-        <table class="prod-tab">
-          <colgroup>
-            <col style="width: 350px" />
-            <col style="width: 200px" />
-            <col style="width: 150px" />
-          </colgroup>
-          <tr class="first-row">
-            <td>Name</td>
-            <td>category</td>
-            <td>price</td>
-            <td>stock</td>
-            <td>status</td>
-            <td>action</td>
-          </tr>
-          <tr>
-            <td>Monstera Deliciosa</td>
-            <td>indoor</td>
-            <td>29</td>
-            <td>2</td>
-            <td><span class="is-span">in stock</span></td>
-            <td>
-              <div class="tab-icons">
-                <i class="fa-solid fa-trash tr"></i>
-                <i class="fa-solid fa-pen pe"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>t</td>
-            <td>indoor</td>
-            <td>2</td>
-            <td>2</td>
-            <td><span class="ls-span">low stock</span></td>
-            <td>
-              <div class="tab-icons">
-                <i class="fa-solid fa-trash tr"></i>
-                <i class="fa-solid fa-pen pe"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>t</td>
-            <td>indoor</td>
-            <td>4</td>
-            <td>5</td>
-            <td><span class="oos-span">out of stock</span></td>
-            <td>
-              <div class="tab-icons">
-                <i class="fa-solid fa-trash tr"></i>
-                <i class="fa-solid fa-pen pe"></i>
-              </div>
-            </td>
-          </tr>
-        </table>
       </div>
     </div>
+    <script src="admin.js"></script>
   </body>
 </html>
