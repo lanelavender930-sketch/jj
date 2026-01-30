@@ -1,29 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
 
 :root {
-  --primary-color: #487f23;
-  --light-green: #4d9f3d;
+  --primary-color: hsl(142, 76%, 36%);
+  --light-green: hsl(142, 76%, 36%);
   --secondary-color: #000000;
   --third-color: #303036;
   --forth-color: #082809;
 }
 body {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   margin: 0;
   padding: 0;
   background-color: #ffffff;
 }
 /* Navigation Bar Styles */
 nav {
-  background-color: #ffffff;
+  background-color: #ffffffe4;
   overflow: hidden;
   display: flex;
   align-items: center;
   padding: 15px 0px;
   z-index: 1000;
   position: fixed;
-  width: 100%;
+  top: 20px;
+  left: 5%;
+  width: 90%;
+  border-radius: 30px 30px 30px 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+nav i:first-child {
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+nav i:first-child:hover {
+  background: none;
+  cursor: default;
 }
 nav ul {
   list-style-type: none;
@@ -40,7 +54,7 @@ nav ul li a {
   position: relative;
   text-decoration: none;
   color: #333333;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 350;
 }
 nav ul li a::after {
@@ -61,9 +75,15 @@ nav ul li a:hover::after {
 }
 nav i {
   color: var(--third-color);
-  font-size: 20px;
-  margin-right: 20px;
+  font-size: 15px;
+  margin-right: 25px;
   text-shadow: 1px 1px 2px #bdbdbd;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 20%;
+}
+nav i:hover {
+  background-color: rgba(0, 128, 0, 0.192);
 }
 nav button {
   font-weight: bold;
@@ -96,10 +116,15 @@ nav button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="leaf" x="0" y="0" width="91" height="91" patternUnits="userSpaceOnUse"><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.25" transform="rotate(45 40 40)"/><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.25" transform="rotate(135 40 40)"/><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.5" transform="rotate(225 40 40)"/><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.25" transform="rotate(315 40 40)"/></pattern></defs><rect width="200" height="200" fill="url(%23leaf)"/></svg>'),
+  background-image:
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="leaf" x="0" y="0" width="91" height="91" patternUnits="userSpaceOnUse"><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.25" transform="rotate(45 40 40)"/><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.25" transform="rotate(135 40 40)"/><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.5" transform="rotate(225 40 40)"/><path d="M40,40 C50,30 60,30 70,40 C60,50 50,50 40,40 Z" fill="%234CAF50" opacity="0.25" transform="rotate(315 40 40)"/></pattern></defs><rect width="200" height="200" fill="url(%23leaf)"/></svg>'),
     url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.15" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-  background-size: 300px 300px, cover;
-  background-position: 0 0, bottom;
+  background-size:
+    300px 300px,
+    cover;
+  background-position:
+    0 0,
+    bottom;
   background-repeat: repeat, no-repeat;
   opacity: 0.6;
   animation: backgroundMove 20s linear infinite;
@@ -110,7 +135,8 @@ nav button {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 50%,
       rgba(107, 159, 61, 0.3) 0%,
       transparent 50%
@@ -199,10 +225,14 @@ nav button {
 }
 @keyframes backgroundMove {
   0% {
-    background-position: 0 0, bottom;
+    background-position:
+      0 0,
+      bottom;
   }
   100% {
-    background-position: 300px 300px, bottom;
+    background-position:
+      300px 300px,
+      bottom;
   }
 }
 @keyframes float {
@@ -370,6 +400,71 @@ nav button {
   text-decoration: underline;
   cursor: pointer;
 }
+/* Our Story Section Styles */
+.video {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 100%;
+}
+.os {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(27, 191, 62, 0.151);
+  padding-right: 20px;
+  border-radius: 25px;
+  height: 40px;
+}
+.fa-leaf {
+  color: var(--primary-color);
+  margin-right: 5px;
+}
+.our-story {
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px;
+  border: 1px solid rgb(224, 223, 223);
+  box-shadow: 0px 0px 15px rgb(254, 237, 255);
+  border-radius: 100px;
+  margin: 150px 30px;
+}
+.our-story-content p {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--third-color);
+}
+.steps-container {
+  line-height: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.steps-container .steps {
+  line-height: 10px;
+}
+.steps-container i {
+  background-color: rgba(27, 191, 62, 0.151);
+  border-radius: 50%;
+  font-size: 25px;
+  color: var(--primary-color);
+}
+.our-story-content button {
+  margin-top: 30px;
+  padding: 10px 22px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.our-story-content button:hover {
+  background-color: rgba(27, 191, 62, 0.151);
+  color: var(--primary-color);
+}
 /* Products Section Styles */
 .products-header {
   line-height: 25px;
@@ -386,13 +481,13 @@ nav button {
   color: var(--third-color);
   margin-top: 10px;
 }
-.cardss{
+.cardss {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-left: 55px;
 }
-.card{
+.card {
   position: relative;
   border: #0000001a solid 1px;
   border-radius: 15px;
@@ -400,7 +495,7 @@ nav button {
   width: 250px;
   height: 385px;
 }
-.card img{
+.card img {
   position: relative;
   border-radius: 15px 15px 0px 0px;
   object-fit: cover;
@@ -425,26 +520,28 @@ nav button {
   z-index: 20;
   border-radius: 50%;
   cursor: pointer;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
 }
 .card-image:hover .bi-heart {
   opacity: 1;
 }
-.overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    background-color: rgba(0, 0, 0, 0.203); /* تعتيم (لون أسود مع شفافية 40%) */
-    display: flex;
-    justify-content: center; /* توسيط أفقي للأيقونة */
-    align-items: center; /* توسيط عمودي للأيقونة */
-    opacity: 0; /* **إخفاء التراكب افتراضياً** */
-    transition: opacity 0.3s ease; /* لجعل ظهور التراكب انسيابياً */
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 15px 15px 0px 0px;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 98%;
+  background-color: rgba(0, 0, 0, 0.203);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 15px 15px 0px 0px;
 }
 .quick-view-btn {
   background-color: rgba(255, 255, 255, 0.872);
@@ -539,11 +636,11 @@ nav button {
   color: var(--forth-color);
 }
 /*Opinions Section Styles */
-.opinions{
-   height: 600px;
-   margin-top: 150px;
-   background-color: hsl(142, 76%, 36%);
-   padding: 25px;
+.opinions {
+  height: 600px;
+  margin-top: 150px;
+  background-color: hsl(142, 76%, 36%);
+  padding: 25px;
 }
 .opinions-header {
   padding-top: 60px;
@@ -575,7 +672,9 @@ nav button {
   border: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 30px;
   padding: 20px;
-  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  transition:
+    transform 0.4s ease-out,
+    opacity 0.4s ease-out;
   transform: translateY(30px);
   opacity: 0;
 }
@@ -629,18 +728,19 @@ nav button {
   border-radius: 50px;
 }
 .newsletter-content h2 {
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: 1000;
   font-size: 40px;
   color: var(--secondary-color);
 }
 .newsletter-content p {
-  font-family:'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 18px;
   font-weight: 100;
   color: rgb(125, 125, 125);
 }
-.newsletter-content h2 ,.newsletter-content p {
+.newsletter-content h2,
+.newsletter-content p {
   margin-bottom: 20px;
 }
 .newsletter-form {
@@ -668,7 +768,7 @@ nav button {
   position: absolute;
   width: 100px;
   height: 100px;
-  background-color:rgb(174, 244, 174);
+  background-color: rgb(174, 244, 174);
   border-radius: 48px 0px 100px 0px;
   top: 0;
   right: 1080px;
@@ -692,7 +792,7 @@ footer {
   color: #222020;
   padding: 40px 0;
 }
-.footer-content{
+.footer-content {
   height: 420px;
   display: flex;
   justify-content: space-around;
@@ -704,7 +804,7 @@ footer {
   margin: 20px;
 }
 .footer-section h3 {
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: 800;
   font-size: 18px;
   margin-bottom: 20px;
@@ -730,7 +830,7 @@ footer {
 .footer-section li a:hover {
   color: var(--primary-color);
 }
-.footer-section .socials i{
+.footer-section .socials i {
   font-size: 20px;
   margin-right: 25px;
   color: rgb(0, 0, 0);
@@ -762,12 +862,14 @@ footer {
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 }
 .newsletter-form-footer button:hover {
   background-color: #3ea636;
 }
-.footer-bottom{
+.footer-bottom {
   text-align: center;
   padding: 20px 0px 0px 0px;
   margin-top: 20px;
@@ -788,4 +890,23 @@ footer {
 .footer-bottom a:hover {
   text-decoration: underline;
   color: var(--light-green);
+}
+/* about us page */
+.about-us {
+  text-align: center;
+  margin-top: 150px;
+  font-size: larger;
+  text-shadow: #b0afaf 1px 1px 2px;
+}
+.about-us h1 {
+  color: var(--primary-color);
+}
+.about-us p {
+  font-family: cursive;
+  color: var(--secondary-color);
+}
+.leaf-video {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }

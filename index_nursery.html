@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="style.css" />
@@ -6,15 +6,26 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=local_shipping" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=local_shipping"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plants Nursery</title>
   </head>
   <body>
     <nav>
-      <i class="fa-solid fa-leaf" style="color: #487f23; padding-left: 20px">
-        Plants Nursery</i
+      <i
+        class="fa-solid fa-leaf"
+        style="color: var(--primary-color); padding-left: 20px"
+      ></i
+      ><span
+        style="font-family: &quot;poppins&quot;, sans-serif; font-weight: 800"
+        >Plants Nursery</span
       >
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -22,24 +33,10 @@
         <li><a href="plants.html">Plants</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <i class="fa-solid fa-cart-shopping"></i>
-      <button
-        style="
-          font-family: 'Lora', serif;
-          background-color: #487f23;
-          color: white;
-          padding: 10px 15px;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          margin-right: 20px;
-          font-size: 15px;
-          font-weight: normal;
-        "
-      >
-        Admin
-      </button>
+      <i class="bi bi-search"></i>
+      <i class="bi bi-heart"></i>
+      <i class="bi bi-cart2"></i>
+      <i class="bi bi-person"></i>
     </nav>
 
     <section id="home" class="hero">
@@ -53,7 +50,7 @@
       <div class="floating-leaf"></div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1 style="font-size: 60px">From Our Nursery To Your Garden</h1>
+        <h1 style="font-size: 60px">Bring NatureTo Your Home</h1>
         <p style="font-size: 25px">
           Turn your space into a living sanctuary...one healthy,happy plant at a
           time.
@@ -85,19 +82,22 @@
       </div>
     </section>
     <section class="featurs">
-      <div class="featurs-grid rounded"><i class="bi bi-truck"></i>
+      <div class="featurs-grid rounded">
+        <i class="bi bi-truck"></i>
         <div class="container">
           <h4>Free Shipping</h4>
-          <p>On orders over $50</p>            
+          <p>On orders over $50</p>
         </div>
-    </div>
-      <div class="featurs-grid rounded"><i class="bi bi-shield-check"></i>
+      </div>
+      <div class="featurs-grid rounded">
+        <i class="bi bi-shield-check"></i>
         <div class="container">
           <h4>Quality Guarantee</h4>
           <p>30-day money-back guarantee</p>
         </div>
       </div>
-      <div class="featurs-grid rounded"><i class="bi bi-leaf"></i>
+      <div class="featurs-grid rounded">
+        <i class="bi bi-leaf"></i>
         <div class="container">
           <h4>Organic Plants</h4>
           <p>100% organic and eco-friendly</p>
@@ -105,127 +105,201 @@
       </div>
     </section>
     <section class="category">
-        <div class="category-header">
-           <h1>Shop by category</h1>
-           <p>Find the perfect plants for your space</p>
+      <div class="category-header">
+        <h1>Shop by category</h1>
+        <p>Find the perfect plants for your space</p>
+      </div>
+      <div class="category-container">
+        <div class="category-grid">
+          <img src="/img/categories (3).jpg" alt="Indoor Plants" height="230" />
+          <h3>Indoor Plants</h3>
+          <p>45 products</p>
         </div>
-        <div class="category-container">
-            <div class="category-grid">
-                <img src="/img/categories (3).jpg" alt="Indoor Plants" height="230"/>
-                <h3>Indoor Plants</h3>
-                <p>45 products</p>
-            </div>
-            <div class="category-grid">
-                <img src="/img/categories (2).jpg" alt="Outdoor Plants" height="230"/>
-                <h3>Outdoor Plants</h3>
-                <p>28 products</p>
-            </div>
-            <div class="category-grid">
-                <img src="/img/categories (1).jpg" alt="Succulents" height="230"/>
-                <h3>Succulents</h3>
-                <p>32 products</p>
-            </div>
+        <div class="category-grid">
+          <img
+            src="/img/categories (2).jpg"
+            alt="Outdoor Plants"
+            height="230"
+          />
+          <h3>Outdoor Plants</h3>
+          <p>28 products</p>
         </div>
-        <span class="category-btn">View All Categories <i class="bi bi-arrow-right"></i></span>
+        <div class="category-grid">
+          <img src="/img/categories (1).jpg" alt="Succulents" height="230" />
+          <h3>Succulents</h3>
+          <p>32 products</p>
+        </div>
+      </div>
+      <span class="category-btn"
+        >View All Categories <i class="bi bi-arrow-right"></i
+      ></span>
+    </section>
+    <section class="our-story">
+      <video autoplay muted loop class="video" width="450">
+        <source src="/img/Animation.mp4" type="video/mp4" />
+      </video>
+      <div class="our-story-content">
+        <div class="os">
+          <i
+            class="fa-solid fa-leaf"
+            style="color: var(--primary-color); padding-left: 20px"
+          ></i>
+          <h4 style="color: var(--primary-color)">Our Story</h4>
+        </div>
+
+        <h1>
+          WE Help You Creat Your Own<br /><span
+            style="color: rgb(247, 162, 233);"
+            >Beautiful Garden</span
+          >
+        </h1>
+        <p>
+          Founded in 2015, Lavender Lane started as a small family nursery with
+          <br />a big dream: to bring the beauty and health benefits of plants
+          into <br />every home. We believe that everyone should have access to
+          high-<br />quality, sustainably grown greenery.
+        </p>
+        <div class="steps-container">
+          <i class="bi bi-arrow-right-short"></i>
+          <p class="steps">Hand-picked premium quality plants</p>
+        </div>
+        <div class="steps-container">
+          <i class="bi bi-arrow-right-short"></i>
+          <p class="steps">Sustainable and eco-friendly packaging</p>
+        </div>
+        <div class="steps-container">
+          <i class="bi bi-arrow-right-short"></i>
+          <p class="steps">Lifetime plant care support and advice</p>
+        </div>
+        <button class="our-story-btn">Learn More About Us</button>
+      </div>
     </section>
     <section class="cards-products">
-       <div class="products-header">
-          <h1>Our Best Sellers</h1>
-          <p>Check out our most popular plants that our customers love the most. These are perfect for<br> beginners and experienced gardeners alike.</p>
-       </div>
-       <div class="cardss">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/pots (1).jpg" alt="Fiddle Leaf Fig" width="250"/>
-          <div class="overlay"><button class="quick-view-btn"><i class="bi bi-eye" style="font-size: 17px;"></i> Quick view</button></div>
-          <i class="bi bi-heart"></i>
-        </div>
-        <div class="card-content">
-          <div class="title-product">
-            <div class="rating">
-              <p>Outdoor Plant</p>  
-              <span>4.5⭐</span>            
-            </div>
-            <h3>Fiddle Leaf Fig</h3>            
-          </div>
-          <div class="price-product">
-            <p>$45.00</p>
-            <i class="bi bi-cart3" style="color: #ffffff;"></i>
-          </div>      
-       </div>
+      <div class="products-header">
+        <h1>Our Best Sellers</h1>
+        <p>
+          Check out our most popular plants that our customers love the most.
+          These are perfect for<br />
+          beginners and experienced gardeners alike.
+        </p>
       </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/pots (2).jpg" alt="Fiddle Leaf Fig" width="250"/>
-          <i class="bi bi-heart"></i>
-          <div class="overlay"><button class="quick-view-btn"><i class="bi bi-eye" style="font-size: 17px;"></i> Quick view</button></div>
-        </div>
-        <div class="card-content">
-          <div class="title-product">
-            <div class="rating">
-              <p>Indoor Plant</p>  
-              <span>4.7⭐</span>
+      <div class="cardss">
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/pots (1).jpg" alt="Fiddle Leaf Fig" width="250" />
+            <div class="overlay">
+              <button class="quick-view-btn">
+                <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
+              </button>
             </div>
-            <h3>Fiddle Leaf Fig</h3>
+            <i class="bi bi-heart"></i>
           </div>
-          <div class="price-product">
-            <p>$45.00</p>
-            <i class="bi bi-cart3" style="color: #ffffff;"></i>
-          </div>  
-       </div>
+          <div class="card-content">
+            <div class="title-product">
+              <div class="rating">
+                <p>Outdoor Plant</p>
+                <span>4.5⭐</span>
+              </div>
+              <h3>Fiddle Leaf Fig</h3>
+            </div>
+            <div class="price-product">
+              <p>$45.00</p>
+              <i class="bi bi-cart3" style="color: #ffffff"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/pots (2).jpg" alt="Fiddle Leaf Fig" width="250" />
+            <i class="bi bi-heart"></i>
+            <div class="overlay">
+              <button class="quick-view-btn">
+                <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="title-product">
+              <div class="rating">
+                <p>Indoor Plant</p>
+                <span>4.7⭐</span>
+              </div>
+              <h3>Fiddle Leaf Fig</h3>
+            </div>
+            <div class="price-product">
+              <p>$45.00</p>
+              <i class="bi bi-cart3" style="color: #ffffff"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/pots (3).jpg" alt="Fiddle Leaf Fig" width="250" />
+            <i class="bi bi-heart"></i>
+            <div class="overlay">
+              <button class="quick-view-btn">
+                <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="title-product">
+              <div class="rating">
+                <p>Accessories</p>
+                <span>4.8⭐</span>
+              </div>
+              <h3>Fiddle Leaf Fig</h3>
+            </div>
+            <div class="price-product">
+              <p>$45.00</p>
+              <i class="bi bi-cart3" style="color: #ffffff"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/pots (4).jpg" alt="Fiddle Leaf Fig" width="250" />
+            <i class="bi bi-heart"></i>
+            <div class="overlay">
+              <button class="quick-view-btn">
+                <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="title-product">
+              <div class="rating">
+                <p>Succulents</p>
+                <span>4.6⭐</span>
+              </div>
+              <h3>Fiddle Leaf Fig</h3>
+            </div>
+            <div class="price-product">
+              <p>$45.00</p>
+              <i class="bi bi-cart3" style="color: #ffffff"></i>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/pots (3).jpg" alt="Fiddle Leaf Fig" width="250"/>
-          <i class="bi bi-heart"></i>
-          <div class="overlay"><button class="quick-view-btn"><i class="bi bi-eye" style="font-size: 17px;"></i> Quick view</button></div>
-        </div>
-        <div class="card-content">
-          <div class="title-product">
-            <div class="rating">
-              <p>Accessories</p>  
-              <span>4.8⭐</span>
-            </div>
-            <h3>Fiddle Leaf Fig</h3>
-          </div>
-          <div class="price-product">
-            <p>$45.00</p>
-            <i class="bi bi-cart3" style="color: #ffffff;"></i>
-          </div>         
-       </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/pots (4).jpg" alt="Fiddle Leaf Fig" width="250"/>
-          <i class="bi bi-heart"></i>
-          <div class="overlay"><button class="quick-view-btn"><i class="bi bi-eye" style="font-size: 17px;"></i> Quick view</button></div>
-        </div>
-        <div class="card-content">
-          <div class="title-product">
-            <div class="rating">
-              <p>Succulents</p>  
-              <span>4.6⭐</span>
-            </div>
-            <h3>Fiddle Leaf Fig</h3>
-          </div>
-          <div class="price-product">
-            <p>$45.00</p>
-            <i class="bi bi-cart3" style="color: #ffffff;"></i>
-          </div>
-       </div>
-      </div>        
-       </div>
-       <div class="products-btn">Explore All Products</div>
+      <div class="products-btn">Explore All Products</div>
     </section>
     <section class="opinions">
       <div class="opinions-header">
-        <h1 style="font-size: 36px;font-weight: 800;">What Our Customers Say</h1>
-        <p>Read reviews from our satisfied customers and see why they love our plants and services.</p>
+        <h1 style="font-size: 36px; font-weight: 800">
+          What Our Customers Say
+        </h1>
+        <p>
+          Read reviews from our satisfied customers and see why they love our
+          plants and services.
+        </p>
       </div>
       <div class="opinions-container">
         <div class="opinions-grid">
-          <i class="fa-solid fa-quote-left" style="color: #d1e6d7;"></i>
-          <p>"The plants I ordered arrived in perfect condition and have thrived in my home. The quality is outstanding!"</p>
+          <i class="fa-solid fa-quote-left" style="color: #d1e6d7"></i>
+          <p>
+            "The plants I ordered arrived in perfect condition and have thrived
+            in my home. The quality is outstanding!"
+          </p>
           <div class="customer-info">
             <img src="/img/customer (1).jpg" class="avatar" alt="Customer 1" />
             <div class="customer">
@@ -235,10 +309,13 @@
           </div>
         </div>
         <div class="opinions-grid">
-          <i class="fa-solid fa-quote-left" style="color: #d1e6d7;"></i>
-          <p>"Excellent customer service and a great selection of plants. I will definitely be shopping here again!"</p>
+          <i class="fa-solid fa-quote-left" style="color: #d1e6d7"></i>
+          <p>
+            "Excellent customer service and a great selection of plants. I will
+            definitely be shopping here again!"
+          </p>
           <div class="customer-info">
-            <img src="/img/customer (2).jpg" class="avatar" alt="Customer 2"/>
+            <img src="/img/customer (2).jpg" class="avatar" alt="Customer 2" />
             <div class="customer">
               <h4>John Smith</h4>
               <span>Interior Designer</span>
@@ -246,10 +323,13 @@
           </div>
         </div>
         <div class="opinions-grid">
-          <i class="fa-solid fa-quote-left" style="color: #d1e6d7;"></i>
-          <p>"My garden has never looked better! The plants are healthy and beautiful. Highly recommend this nursery."</p>
+          <i class="fa-solid fa-quote-left" style="color: #d1e6d7"></i>
+          <p>
+            "My garden has never looked better! The plants are healthy and
+            beautiful. Highly recommend this nursery."
+          </p>
           <div class="customer-info">
-            <img src="/img/customer (3).jpg" class="avatar" alt="Customer 3"/>
+            <img src="/img/customer (3).jpg" class="avatar" alt="Customer 3" />
             <div class="customer">
               <h4>Emily Johnson</h4>
               <span>Home Gardener</span>
@@ -261,47 +341,80 @@
     <section class="newsletter">
       <div class="container">
         <div class="green-circle"></div>
-      <div class="newsletter-content">
-        <h2>Join Our Green Community</h2>
-        <p>Subscribe to our newsletter and get 10% off your first order, plus weekly plant care<br> tips and exclusive offers.</p>
-        <div class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" />
-          <button class="subscribe-btn">Subscribe</button>
+        <div class="newsletter-content">
+          <h2>Join Our Green Community</h2>
+          <p>
+            Subscribe to our newsletter and get 10% off your first order, plus
+            weekly plant care<br />
+            tips and exclusive offers.
+          </p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" />
+            <button class="subscribe-btn">Subscribe</button>
+          </div>
         </div>
-      </div>
-      <div class="purple-circle"></div>
+        <div class="purple-circle"></div>
       </div>
     </section>
     <footer>
       <div class="footer-content">
         <div class="footer-section">
-          <h3><i class="fa-solid fa-leaf" style="color: #487f23; padding-left: 20px"> Plants Nursery</i></h3>
-          <p style="font-size: 14px;line-height: 20px;">Bringing nature closer to you. We provide<br>a curated collection of premium indoor<br>and outdoor plants to transform your<br>living spaces.</p>
-          <a class="socials" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <h3>
+            <i
+              class="fa-solid fa-leaf"
+              style="color: var(--primary-color); padding-left: 20px"
+            ></i
+            ><span
+              style="
+                font-family: &quot;poppins&quot;, sans-serif;
+                font-weight: 800;
+              "
+            >
+              Plants Nursery</span
+            >
+          </h3>
+          <p style="font-size: 14px; line-height: 20px">
+            Bringing nature closer to you. We provide<br />a curated collection
+            of premium indoor<br />and outdoor plants to transform your<br />living
+            spaces.
+          </p>
+          <a class="socials" href="#"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
           <a class="socials" href="#"><i class="bi bi-twitter-x"></i></a>
           <a class="socials" href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a class="socials" href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a class="socials" href="#"
+            ><i class="fa-brands fa-pinterest-p"></i
+          ></a>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="plants.html">Plants</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="faq.html">FAQs</a></li>
             <li><a href="admin.html">Admin Panel</a></li>
+            <li><a href="employee.html">Employee Portal</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h3>Contact Us</h3>
-          <p><i class="contacts fa-solid fa-location-dot"></i> 123 Green St, Plant City, PC 12345</p>
+          <p>
+            <i class="contacts fa-solid fa-location-dot"></i> 123 Green St,
+            Plant City, PC 12345
+          </p>
           <p><i class="contacts fa-solid fa-phone"></i> +1 (123)456-7890</p>
-          <p><i class="contacts fa-solid fa-envelope"></i> info@plantsnursery.com</p>
+          <p>
+            <i class="contacts fa-solid fa-envelope"></i> info@plantsnursery.com
+          </p>
         </div>
         <div class="footer-section">
           <h3>Newsletter</h3>
-          <p style="font-size: 15px;">Subscribe to get special offers, free<br> giveaways, and once-in-a-lifetime deals.</p>
+          <p style="font-size: 15px">
+            Subscribe to get special offers, free<br />
+            giveaways, and once-in-a-lifetime deals.
+          </p>
           <div class="newsletter-form-footer">
             <input type="email" placeholder="Enter your email address" />
             <button class="subscribe-btn-footer">Subscribe</button>
@@ -312,11 +425,10 @@
           <div class="footer-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
-         </div>
+          </div>
         </div>
       </div>
     </footer>
-
     <script src="script-nursery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/get-google-fonts@1.2.2/main.min.js"></script>
   </body>
