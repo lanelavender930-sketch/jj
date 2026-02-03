@@ -1183,3 +1183,99 @@ margin-top: 140px;
   color: white;
   font-size: 15px;
 }
+/*Contacts page*/
+.MSG {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+    margin-bottom: 70px;
+    padding: 20px;
+}
+.MSG-inf-1{
+  display: flex;
+  gap: 30px;
+}
+.MSG-inf h1 {
+    margin-bottom: 10px;
+}
+
+.MSG-inf p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 250px;
+    padding: 18px;
+    border: 1px solid #dddddd50;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 2px solid var(--light-green);
+}
+.form-group input[placeholder="How can we help?"]{
+width:560px;
+}
+textarea{
+  resize: vertical;
+}
+.form-group textarea {
+    padding: 18px;
+    border: 1px solid #dddddd50;
+    border-radius: 15px;
+    font-size: 13px;
+}
+.form-group textarea:focus {
+    outline: none;
+    border: 2px solid var(--light-green);
+}
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 600px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #35974c;
+}
+
+button[type="submit"]:active {
+    background-color: #555;
+}
+.MSG-features{
+  margin-top: 110px;
+  margin-left: 60px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: 500px;
+}
+.feature p{
+  font-size: 14px;
+  color: #7a7a7a;
+}
+.feature i{
+ background-color: rgba(0, 128, 0, 0.089);
+  font-size: 25px;
+  color: var(--light-green);
+  padding: 7px 11px;
+  border-radius: 10px;
+}
