@@ -28,3 +28,12 @@ btn.classList.toggle("active");
         : "0px";
   });
 });
+/* clear btn in shop page */
+
+function clearAllFilters() {
+
+    var allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+    for(var i = 0; i < allCheckboxes.length; i++) {
+        allCheckboxes[i].checked = false;
+    }
+}
