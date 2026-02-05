@@ -45,6 +45,7 @@ button {
   padding: 8px 16px;
   border: 1px #eeeeee solid;
   border-radius: 10px;
+  transition: 0.3s;
 }
 .dash-b .upper .w-g-buttons button i {
   margin-right: 2px;
@@ -53,9 +54,15 @@ button {
   background-color: #ffffff;
   margin-right: 8px;
 }
+.dash-b .upper .w-g-buttons #his-btn:hover {
+  background-color: #deede3;
+}
 .dash-b .upper .w-g-buttons #add-btn {
   background-color: var(--green);
   color: #ffffff;
+}
+.dash-b .upper .w-g-buttons #add-btn:hover {
+  background-color: #16a249e6;
 }
 .dash-b .lower {
   display: grid;
@@ -166,10 +173,12 @@ button {
   font-weight: 600;
 }
 .main-page .container .recent table td span {
+  display: inline-block;
   padding: 4px 10px;
   border-radius: 10px;
   font-size: 12px;
   font-weight: 600;
+  width: 80px;
 }
 .main-page .container .recent table td .Delivered {
   background-color: var(--green);
