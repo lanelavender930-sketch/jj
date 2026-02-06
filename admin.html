@@ -101,22 +101,28 @@
     <div class="admin-bar">
       <div class="container">
         <div class="bar">
-          <button class="active">
+          <button data-page="overview-page" class="tab-btn active">
             <i class="fa-solid fa-bars"></i>overview
           </button>
-          <button><i class="fa-solid fa-box"></i>products</button>
-          <button><i class="fa-solid fa-cart-shopping"></i>orders</button>
-          <button><i class="fa-solid fa-users"></i>employees</button>
+          <button data-page="products-page" class="tab-btn">
+            <i class="fa-solid fa-box"></i>products
+          </button>
+          <button data-page="orders" class="tab-btn">
+            <i class="fa-solid fa-cart-shopping"></i>orders
+          </button>
+          <button data-page="employees-page" class="tab-btn">
+            <i class="fa-solid fa-users"></i>employees
+          </button>
         </div>
       </div>
     </div>
     <div class="main-page">
-      <div class="overview-page active">
+      <div class="page overview-page active">
         <div class="container">
           <div class="recent block">
-            <h3>Recent Orders</h3>
-            <p>You have 12 orders pending shipment today.</p>
-            <table>
+            <h3 class="h-tit">Recent Orders</h3>
+            <p class="p-tit">You have 12 orders pending shipment today.</p>
+            <table class="table-dis">
               <tr>
                 <th>Order ID</th>
                 <th>Customer</th>
@@ -127,26 +133,26 @@
               <tr>
                 <td>ORD-7283</td>
                 <td>Alice Johnson</td>
-                <td><span class="Delivered">Delivered</span></td>
+                <td><span class="badge badge--delivered">Delivered</span></td>
                 <td>$125.00</td>
               </tr>
               <tr>
                 <td>ORD-7284</td>
                 <td>Bob Smith</td>
-                <td><span class="Processing">Processing</span></td>
+                <td><span class="badge badge--processing">Processing</span></td>
                 <td>$45.50</td>
               </tr>
               <tr>
                 <td>ORD-7285</td>
                 <td>Charlie Brown</td>
-                <td><span class="Shipped">Shipped</span></td>
+                <td><span class="badge badge--shipped">Shipped</span></td>
 
                 <td>$89.00</td>
               </tr>
               <tr>
                 <td>ORD-7286</td>
                 <td>Diana Prince</td>
-                <td><span class="Pending">Pending</span></td>
+                <td><span class="badge badge--pending">Pending</span></td>
                 <td>$89.00</td>
               </tr>
             </table>
@@ -182,6 +188,72 @@
           </div>
         </div>
       </div>
+      <div class="page products-page">
+        <div class="container">
+          <div class="block pro-inv">
+            <div class="up-txt">
+              <div class="textt">
+                <h3 class="h-tit">Product Inventory</h3>
+                <p class="p-tit">Manage your plant collection and pricing.</p>
+              </div>
+              <div class="search-i">
+                <label for=""
+                  ><i class="fa-solid fa-magnifying-glass"></i
+                ></label>
+                <input placeholder="Search" type="text" />
+              </div>
+            </div>
+            <table class="table-dis">
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              <tr>
+                <td>Monstera Deliciosa</td>
+                <td>Indoor Plants</td>
+                <td>$45.00</td>
+                <td>24</td>
+                <td><span class="badge badge--delivered">Delivered</span></td>
+
+                <td><i class="fa-solid fa-ellipsis"></i></td>
+              </tr>
+              <tr>
+                <td>Snake Plant</td>
+                <td>Indoor Plants</td>
+                <td>$45.50</td>
+                <td>15</td>
+                <td><span class="badge badge--processing">Processing</span></td>
+
+                <td><i class="fa-solid fa-ellipsis"></i></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera</td>
+                <td>Indoor Plants</td>
+                <td>$125.00</td>
+                <td>10</td>
+                <td><span class="badge badge--shipped">Shipped</span></td>
+
+                <td><i class="fa-solid fa-ellipsis"></i></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera</td>
+                <td>Succulents</td>
+                <td>$89.00</td>
+                <td>9</td>
+                <td><span class="badge badge--pending">Pending</span></td>
+
+                <td><i class="fa-solid fa-ellipsis"></i></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="admin.js"></script>
   </body>
 </html>

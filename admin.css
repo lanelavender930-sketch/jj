@@ -9,6 +9,61 @@ body {
     ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Table-dis Component */
+.table-dis {
+  font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-dis tr {
+  border-bottom: 1px solid #eeeeee;
+}
+
+.table-dis td,
+.table-dis th {
+  padding: 16px;
+  text-align: center;
+}
+
+.table-dis th {
+  color: var(--greycolor);
+  font-weight: 700;
+}
+
+.table-dis td:first-child {
+  font-weight: 600;
+}
+
+/* Status badge */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  width: 80px;
+}
+
+/* Badge states */
+.badge--delivered {
+  background-color: var(--green);
+  color: white;
+}
+
+.badge--processing {
+  background-color: #eeeeee;
+  color: #09431e;
+}
+
+.badge--shipped,
+.badge--pending {
+  border: 1px solid #eeeeee;
+  color: var(--dark-green);
+}
+
+/* end table compnent  */
 button {
   cursor: pointer;
 }
@@ -105,6 +160,7 @@ button {
   color: var(--greycolor);
 }
 /* dashboard end */
+
 /* admin bar start  */
 .admin-bar {
   margin-top: 40px;
@@ -133,72 +189,44 @@ button {
   color: var(--dark-green);
 }
 /* .admin bar end */
+.main-page {
+  margin-top: 30px;
+}
 /* overvew page start  */
-.main-page .container {
+.main-page .active {
+  display: block;
+}
+.main-page .overview-page {
+  display: none;
+}
+
+.main-page .overview-page .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  margin-top: 30px;
 }
-.main-page .container .block {
+
+.main-page .block {
   border: 1px #eeeeee solid;
   border-radius: 6px;
   padding: 20px;
   margin-bottom: 50px;
 }
-.main-page .container .block h3 {
+.main-page .overview-page .container .block h3,
+.h-tit {
   color: var(--dark-green);
   font-size: 24px;
   margin: 0;
   font-weight: 600;
 }
-.main-page .container .block p {
+.main-page .overview-page .container .block p,
+.p-tit {
   font-size: 14px;
   font-weight: 400;
   color: var(--greycolor);
 }
-.main-page .container .recent table {
-  font-size: 16px;
-  width: 100%;
-  border-collapse: collapse;
-}
-.main-page .container .recent table tr {
-  border-bottom: 1px solid #eeeeee;
-}
-.main-page .container .recent table td {
-  padding: 16px;
-  text-align: center;
-}
-.main-page .container .recent table td:first-child {
-  font-weight: 600;
-}
-.main-page .container .recent table td span {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  width: 80px;
-}
-.main-page .container .recent table td .Delivered {
-  background-color: var(--green);
-  color: white;
-}
-.main-page .container .recent table td .Processing {
-  background-color: #eeeeee;
-  color: #09431e;
-}
-.main-page .container .recent table td .Shipped,
-.main-page .container .recent table td .Pending {
-  border: 1px solid #eeeeee;
-  color: var(--dark-green);
-}
-.main-page .container .recent table th {
-  padding: 16px;
-  color: var(--greycolor);
-  font-weight: 700;
-}
-.main-page .container .recent button {
+
+.main-page .overview-page .container .recent button {
   margin-top: 10px;
   width: 100%;
   padding: 8px 16px;
@@ -208,11 +236,11 @@ button {
   color: var(--green);
   font-weight: 700;
 }
-.main-page .container .recent button:hover {
+.main-page .overview-page .container .recent button:hover {
   background-color: #deede3;
   color: var(--dark-green);
 }
-.main-page .container .alert .al-block {
+.main-page .overview-page .container .alert .al-block {
   display: flex;
   border: 1px solid;
   margin-bottom: 15px;
@@ -220,18 +248,18 @@ button {
   align-items: center;
   border-radius: 10px;
 }
-.main-page .container .alert .al-block i {
+.main-page .overview-page .container .alert .al-block i {
   font-size: 20px;
   font-weight: 500;
   margin-right: 30px;
 }
-.main-page .container .alert .al-block p {
+.main-page .overview-page .container .alert .al-block p {
   margin-bottom: 0;
 }
-.main-page .container .alert .al-block h3 {
+.main-page .overview-page .container .alert .al-block h3 {
   font-size: 18px;
 }
-.main-page .container .alert .al-block button {
+.main-page .overview-page .container .alert .al-block button {
   height: 40px;
   padding: 8px 16px;
   border: 1px #eeeeee solid;
@@ -241,27 +269,72 @@ button {
   font-weight: bold;
   margin-left: auto;
 }
-.main-page .container .alert .emergency {
+.main-page .overview-page .container .alert .emergency {
   background-color: #ef44440d;
   border-color: #ff282863;
 }
-.main-page .container .alert .emergency i {
+.main-page .overview-page .container .alert .emergency i {
   font-weight: 700;
   color: #ff2828d8;
 }
-.main-page .container .alert .consider i {
+.main-page .overview-page .container .alert .consider i {
   color: #e2f919;
 }
-.main-page .container .alert .consider {
+.main-page .overview-page .container .alert .consider {
   background-color: #eab3080d;
 
   border-color: #bb921860;
 }
-.main-page .container .alert .safe i {
+.main-page .overview-page .container .alert .safe i {
   color: #16a246;
 }
-.main-page .container .alert .safe {
+.main-page .overview-page .container .alert .safe {
   background-color: #16a2490d;
   border-color: #16a24967;
 }
 /* overvew page end  */
+/* products page start  */
+.main-page .products-page {
+  display: none;
+}
+.main-page .products-page .container .up-txt {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.main-page .products-page .container .up-txt input {
+  border: none;
+  height: 40px;
+  border-radius: 12px;
+  width: 250px;
+}
+.main-page .products-page .container .up-txt input:focus {
+  border: none;
+  outline: none;
+}
+.main-page .products-page .container .up-txt .search-i {
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  height: 45px;
+  width: 300px;
+}
+.main-page .products-page .container .up-txt .search-i:focus-within {
+  border: 2px solid var(--green);
+}
+.main-page .products-page .container .up-txt .search-i i {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.main-page .products-page .container table td {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.main-page .products-page .container table td i {
+  cursor: pointer;
+}
+/* products end  */
+.main-page .active {
+  display: block;
+}
