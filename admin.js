@@ -17,6 +17,7 @@ function showPage(pageClass, btn) {
 
 // إضافة الأحداث عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", () => {
+  // التبويبات
   const tabButtons = document.querySelectorAll(".tab-btn");
 
   tabButtons.forEach((btn) => {
@@ -34,4 +35,38 @@ document.addEventListener("DOMContentLoaded", () => {
       showPage(pageClass, firstBtn);
     }
   }
+
+  // قائمة الكباب (القائمة المنسدلة)
+  const kababIcons = document.querySelectorAll(".f-ic");
+
+  kababIcons.forEach((icon) => {
+    icon.addEventListener("click", (e) => {
+      e.stopPropagation(); // منع انتشار الحدث
+
+      const kababList = icon.nextElementSibling;
+      const allLists = document.querySelectorAll(".kabab-list");
+
+      // إغلاق جميع القوائم الأخرى
+      allLists.forEach((list) => {
+        if (list !== kababList) {
+          list.style.display = "none";
+        }
+      });
+
+      // فتح/إغلاق القائمة الحالية
+      if (kababList.style.display === "block") {
+        kababList.style.display = "none";
+      } else {
+        kababList.style.display = "block";
+      }
+    });
+  });
+
+  // إغلاق القائمة عند الضغط في أي مكان آخر
+  document.addEventListener("click", () => {
+    const allLists = document.querySelectorAll(".kabab-list");
+    allLists.forEach((list) => {
+      list.style.display = "none";
+    });
+  });
 });

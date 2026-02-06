@@ -207,8 +207,8 @@ button {
 }
 
 .main-page .block {
-  border: 1px #eeeeee solid;
-  border-radius: 6px;
+  border: 2px #eeeeee solid;
+  border-radius: 10px;
   padding: 20px;
   margin-bottom: 50px;
 }
@@ -246,7 +246,7 @@ button {
   margin-bottom: 15px;
   padding: 16px;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 .main-page .overview-page .container .alert .al-block i {
   font-size: 20px;
@@ -331,10 +331,94 @@ button {
   padding-top: 25px;
   padding-bottom: 25px;
 }
-.main-page .products-page .container table td i {
+.main-page .products-page .container table .low-stack {
+  background-color: #eeeeee;
+  color: #09431e;
+}
+.main-page .products-page .container table .in-stack {
+  background-color: var(--green);
+  color: white;
+}
+.main-page .products-page .container table td .f-ic {
+  padding: 10px;
+  border-radius: 10px;
+}
+.main-page .products-page .container table td .f-ic:hover {
   cursor: pointer;
+  background-color: #eeeeee;
+  padding: 10px;
 }
 /* products end  */
 .main-page .active {
   display: block;
+}
+.main-page .products-page .container table td .kabab-ic {
+  position: relative;
+}
+.main-page .products-page .container table td .kabab-ic .kabab-list {
+  list-style: none;
+  border: #eeeeee 2px solid;
+  padding: 4px;
+  position: absolute;
+  top: calc(100% - 10px);
+  right: 35%;
+  width: 160px;
+  border-radius: 8px;
+  background-color: white;
+  display: none;
+  z-index: 1;
+}
+
+.main-page .products-page .container table td .kabab-ic .kabab-list li h3 {
+  font-size: 20px;
+  color: var(--dark-green);
+  text-align: left;
+  margin-bottom: 6px;
+  padding-left: 13px;
+  font-weight: 600;
+}
+.main-page .products-page table td .kabab-ic .kabab-list li button {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  padding: 10px 0px;
+  padding-left: 6px;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+
+  font-size: 18px;
+  color: #062d14;
+  font-weight: 400;
+  transition: 0.3s;
+}
+.main-page
+  .products-page
+  .container
+  table
+  td
+  .kabab-ic
+  .kabab-list
+  li
+  button:hover {
+  background-color: #deede3;
+  color: #062d14;
+}
+.main-page .products-page .container table td .kabab-list li button i {
+  padding-left: 3px;
+  padding-right: 8px;
+}
+.main-page .products-page .container table td .kabab-list li button p {
+  margin: 0;
+}
+.main-page .products-page .container table td .kabab-list hr {
+  border: none;
+  height: 1px;
+  background-color: #dcdcdc;
+  width: 100%;
+  margin-bottom: 0;
+}
+.main-page .products-page .container table td .kabab-list li .del-ic {
+  margin-top: 3px;
+  color: #ff2828d8;
 }
