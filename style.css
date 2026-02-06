@@ -1211,7 +1211,7 @@ button[type="submit"]:active {
   transform: translate(-50%, -50%);
   width: 10px;
   height: 10px;
-  background-color: #4CAF50; /* دائرة داخلية خضراء */
+  background-color: #4CAF50; 
   border-radius: 50%;
 }
 .option-item{
@@ -1261,6 +1261,7 @@ button[type="submit"]:active {
     /* showing products */
     .all{
       display: flex;
+      margin-bottom: 120px;
     }
     .right{
       margin-top: 50px;
