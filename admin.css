@@ -9,6 +9,13 @@ body {
     ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
+.main-page .page {
+  display: none;
+}
+
+.main-page .page.active {
+  display: block;
+}
 
 /* Table-dis Component */
 .table-dis {
@@ -193,12 +200,6 @@ button {
   margin-top: 30px;
 }
 /* overvew page start  */
-.main-page .active {
-  display: block;
-}
-.main-page .overview-page {
-  display: none;
-}
 
 .main-page .overview-page .container {
   display: grid;
@@ -294,9 +295,7 @@ button {
 }
 /* overvew page end  */
 /* products page start  */
-.main-page .products-page {
-  display: none;
-}
+
 .main-page .products-page .container .up-txt {
   display: flex;
   justify-content: space-between;
@@ -460,3 +459,83 @@ button {
 .orders-page .in-block button:hover {
   background-color: #deede3;
 }
+/* orders page end  */
+/* employees page start */
+.employees-page .container .out-block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 24px;
+}
+.employees-page .container .out-block .p-tit {
+  font-size: 14px;
+}
+.employees-page .container .out-block .up-text .l-p {
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.employees-page .container .out-block .up-text .to-do {
+  color: white;
+  background-color: #09431e;
+}
+.employees-page .container .out-block .up-text .progresse {
+  color: #09431e;
+  background-color: #eeeeee;
+}
+.employees-page .container .out-block .up-text .completed {
+  background-color: #16a2491a;
+  color: #16a246;
+}
+.employees-page .container .out-block .up-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.employees-page .container .out-block .in-block {
+  padding: 12px;
+  background-color: rgba(237, 245, 239, 0.2);
+}
+.employees-page .container .out-block .in-block .block {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 12px;
+}
+.employees-page .container .out-block .in-block h3 {
+  margin: 0px;
+  font-weight: 500;
+}
+.employees-page .container .out-block .in-block .block .in-h {
+  font-size: 15px;
+  color: var(--dark-green);
+}
+.employees-page .container .out-block .in-block .block .p-tit {
+  margin: 0;
+  padding-top: 6px;
+}
+.employees-page .container .out-block .in-block button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+  color: var(--dark-green);
+  font-weight: 600;
+  font-size: 14px;
+}
+.employees-page .container .out-block .in-block button:hover {
+  background-color: #deede3;
+  color: var(--dark-green);
+}
+.employees-page .container .out-block .in-block .in-progresse {
+  border-color: #16a246;
+}
+.employees-page .container .out-block .in-block .completed {
+  opacity: 0.5;
+}
+.employees-page .container .out-block .in-block .completed h3 {
+  text-decoration: line-through;
+}
+/* employees-page end  */
