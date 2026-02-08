@@ -539,3 +539,70 @@ button {
   text-decoration: line-through;
 }
 /* employees-page end  */
+/* employee css style  */
+.active-tasks-page .container .tasks-block .state-txt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.active-tasks-page .container .tasks-block .h-tit {
+  margin-bottom: 20px;
+  margin-bottom: 0;
+}
+.active-tasks-page .container .tasks-block .block {
+  padding: 2px 7px;
+  border: none;
+  background-color: #f3f7f44c;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.active-tasks-page .container .tasks-block .lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.active-tasks-page .container .tasks-block .lower button {
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px #eeeeee solid;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: var(--green);
+  color: #ffffff;
+}
+.active-tasks-page .container .tasks-block .lower button:hover {
+  background-color: #16a249e6;
+}
+.active-tasks-page .container .tasks-block .lower .st-p {
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #16a2491a;
+  color: #16a246;
+}
+.active-tasks-page .container .st-p {
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.active-tasks-page .container .high-Priority {
+  background-color: #ef4444;
+  color: white;
+  font-weight: 600;
+}
+.active-tasks-page .container .mid-Priority,
+.active-tasks-page .container .low-Priority {
+  color: var(--dark-green);
+  background-color: #eeeeee;
+  font-weight: 600;
+}
+.active-tasks-page .container .tasks-block .lower .state-pen {
+  background-color: #16a2491a;
+  color: #16a246;
+}
+.active-tasks-page .container .tasks-block {
+  margin-bottom: 10px;
+  padding: 20px;
+}
