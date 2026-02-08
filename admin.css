@@ -348,7 +348,7 @@ button {
   background-color: #eeeeee;
   padding: 10px;
 }
-/* products end  */
+
 .main-page .active {
   display: block;
 }
@@ -421,4 +421,42 @@ button {
 .main-page .products-page .container table td .kabab-list li .del-ic {
   margin-top: 3px;
   color: #ff2828d8;
+}
+/* products end  */
+/* orders page stats */
+.orders-page .in-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-style: dashed;
+  padding: 120px 0px;
+  margin-top: 30px;
+}
+.orders-page .in-block h3 {
+  font-weight: 500;
+  font-size: 23px;
+}
+.orders-page .in-block p {
+  font-size: 18px;
+  max-width: 330px;
+  text-align: center;
+}
+.orders-page .in-block i {
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+.orders-page .in-block button {
+  margin-top: 20px;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px #eeeeee solid;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: transparent;
+  color: var(--dark-green);
+  font-weight: 600;
+}
+.orders-page .in-block button:hover {
+  background-color: #deede3;
 }
