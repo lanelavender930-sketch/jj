@@ -19,27 +19,12 @@
     <title>About Us</title>
   </head>
   <body>
-    <nav>
-      <i
-        class="fa-solid fa-leaf"
-        style="color: var(--primary-color); padding-left: 20px"
-      ></i
-      ><span
-        style="font-family: &quot;poppins&quot;, sans-serif; font-weight: 800"
-        >Plants Nursery</span
-      >
-      <ul>
-        <li><a href="index_nursery.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="plants.html">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="faq.html">FAQs</a></li>
-      </ul>
-      <i class="bi bi-search"></i>
-      <i class="bi bi-heart"></i>
-      <i class="bi bi-cart2"></i>
-      <i class="bi bi-person"></i>
-    </nav>
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((r) => r.text())
+        .then((d) => (document.getElementById("navbar").innerHTML = d));
+    </script>
     <section class="about-us">
       <div class="leaf-video">
         <video autoplay muted loop style="width: 60px">
@@ -53,68 +38,96 @@
       </p>
     </section>
     <section class="about-picturs">
-        <img src="/img/pp (1).jpg" width="250">
-        <img src="/img/pp (2).jpg" width="190">
-        <img src="/img/pp (3).jpg" width="190">
-        <div class="rooted-in-passion">
-          <h1>Rooted in Passion</h1>
-          <p>Plants Nursery started in 2015 as a small backyard project in Green<br> Valley. What began as a personal collection of rare monsteras quickly <br>grew into a community of plant lovers seeking high-quality,<br> sustainably grown greenery.</p>
-          <p>Today, we operate a state-of-the-art greenhouse and ship thousands<br> of plants across the country, but our core values remain the same:<br> quality, sustainability, and education.</p>
-          <div class="of">
-             <div class="about-featurs">
-             <i class="bi bi-leaf"></i>
-             <h4>sustainably Grown</h4>
-             <p>Eco-friendly practices from seed to ship.</p>
-             </div>
-             <div class="about-featurs">
-             <i class="bi bi-heart"></i>
-             <h4>Expert Care</h4>
-             <p>Every plant is hand-picked and inspected.</p>
-             </div>
+      <img src="/img/pp (1).jpg" width="250" />
+      <img src="/img/pp (2).jpg" width="190" />
+      <img src="/img/pp (3).jpg" width="190" />
+      <div class="rooted-in-passion">
+        <h1>Rooted in Passion</h1>
+        <p>
+          Plants Nursery started in 2015 as a small backyard project in Green<br />
+          Valley. What began as a personal collection of rare monsteras quickly
+          <br />grew into a community of plant lovers seeking high-quality,<br />
+          sustainably grown greenery.
+        </p>
+        <p>
+          Today, we operate a state-of-the-art greenhouse and ship thousands<br />
+          of plants across the country, but our core values remain the same:<br />
+          quality, sustainability, and education.
+        </p>
+        <div class="of">
+          <div class="about-featurs">
+            <i class="bi bi-leaf"></i>
+            <h4>sustainably Grown</h4>
+            <p>Eco-friendly practices from seed to ship.</p>
+          </div>
+          <div class="about-featurs">
+            <i class="bi bi-heart"></i>
+            <h4>Expert Care</h4>
+            <p>Every plant is hand-picked and inspected.</p>
           </div>
         </div>
-
+      </div>
     </section>
     <section class="guidence">
       <div class="guidence-content">
         <h1>What We Stand For</h1>
-        <p>Our values guide everything we do, from how we grow our<br> plants to how we treat our customers and employees.</p>
+        <p>
+          Our values guide everything we do, from how we grow our<br />
+          plants to how we treat our customers and employees.
+        </p>
       </div>
       <div class="guidence-features-content">
         <div class="guidence-features">
-            <i class="bi bi-shield-check"></i>
-            <h1>Quality First</h1>
-            <p>We never compromise on the health of<br> our plants. If it's not perfect, it doesn't<br> leave our nursery.</p>
-          </div>
-          <div class="guidence-features">
-            <i class="bi bi-people"></i>
-            <h1>Community</h1>
-            <p>We're more than a shop; we're a resource<br> for plant parents at every stage of their<br> journey.</p>
-          </div>
-          <div class="guidence-features">
-            <i class="bi bi-leaf"></i>
-            <h1>Sustainability</h1>
-            <p>From biodegradable packaging to water<br> recycling, we're committed to protecting<br> the planet.</p>
-          </div>
+          <i class="bi bi-shield-check"></i>
+          <h1>Quality First</h1>
+          <p>
+            We never compromise on the health of<br />
+            our plants. If it's not perfect, it doesn't<br />
+            leave our nursery.
+          </p>
+        </div>
+        <div class="guidence-features">
+          <i class="bi bi-people"></i>
+          <h1>Community</h1>
+          <p>
+            We're more than a shop; we're a resource<br />
+            for plant parents at every stage of their<br />
+            journey.
+          </p>
+        </div>
+        <div class="guidence-features">
+          <i class="bi bi-leaf"></i>
+          <h1>Sustainability</h1>
+          <p>
+            From biodegradable packaging to water<br />
+            recycling, we're committed to protecting<br />
+            the planet.
+          </p>
+        </div>
       </div>
-                              
     </section>
     <section class="newsletter">
       <div class="container container2">
         <div class="green-circle"></div>
         <div class="newsletter-content">
-          <h2 style="color: white;font-size: 45px;">Ready to start your jungle?</h2>
-          <p style="color: rgb(219, 219, 219);">
-            Browse our collection and find the perfect plant for your home today.
+          <h2 style="color: white; font-size: 45px">
+            Ready to start your jungle?
+          </h2>
+          <p style="color: rgb(219, 219, 219)">
+            Browse our collection and find the perfect plant for your home
+            today.
           </p>
           <div class="newsletter-form2">
-            <button class="subscribe-btn">Shop All Plants <i class="bi bi-arrow-right-short" style="font-size: 25px;"></i></button>
+            <button class="subscribe-btn">
+              Shop All Plants
+              <i class="bi bi-arrow-right-short" style="font-size: 25px"></i>
+            </button>
           </div>
         </div>
         <div class="purple-circle"></div>
       </div>
     </section>
-        <footer>
+    <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>
@@ -149,7 +162,7 @@
           <h3>Quick Links</h3>
           <ul>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="plants.html">Shop</a></li>
+            <li><a href="shop.html">Shop</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="faq.html">FAQs</a></li>
             <li><a href="admin.html">Admin Panel</a></li>
@@ -187,5 +200,6 @@
         </div>
       </div>
     </footer>
+    <script src="/script-nursery.js"></script>
   </body>
 </html>

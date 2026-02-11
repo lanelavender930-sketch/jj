@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <script
+      src="https://kit.fontawesome.com/1607b70e4a.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <i
+        class="fa-solid fa-leaf"
+        style="color: var(--primary-color); padding-left: 20px"
+      ></i
+      ><span
+        style="font-family: &quot;poppins&quot;, sans-serif; font-weight: 800"
+        >Plants Nursery</span
+      >
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+
+      <i class="bi bi-search"></i>
+      <i class="bi bi-heart"></i>
+      <i class="bi bi-cart2" onclick="window.location.href = 'cart.html'"></i>
+      <i class="bi bi-person"></i>
+    </nav>
+
+    <div class="dash-b">
+      <div class="container">
+        <div class="upper">
+          <div class="text">
+            <h3>Admin Dashboard</h3>
+            <p>Manage your nursery operations and track performance.</p>
+          </div>
+          <div class="w-g-buttons">
+            <button id="his-btn">
+              <i class="fa-solid fa-clock-rotate-left"></i>history
+            </button>
+
+            <button id="add-btn">
+              <i class="fa-solid fa-plus"></i>add product
+            </button>
+          </div>
+        </div>
+        <div class="lower">
+          <div class="blocks">
+            <div class="txt-ic">
+              <p>Total Sales</p>
+              <i class="fa-solid fa-arrow-up"></i>
+            </div>
+            <h3>$12,845.00</h3>
+            <p>+12% from last month</p>
+          </div>
+          <div class="blocks">
+            <div class="txt-ic">
+              <p>Active Orders</p>
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <h3>48</h3>
+            <p>12 pending shipment</p>
+          </div>
+          <div class="blocks">
+            <div class="txt-ic">
+              <p>Total Products</p>
+              <i class="fa-solid fa-box"></i>
+            </div>
+            <h3>156</h3>
+            <p>8 categories</p>
+          </div>
+          <div class="blocks">
+            <div class="txt-ic">
+              <p>Active Users</p>
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h3>1,240</h3>
+            <p>+5% from last week</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="admin-bar">
+      <div class="container">
+        <div class="bar">
+          <button class="active">
+            <i class="fa-solid fa-bars"></i>overview
+          </button>
+          <button><i class="fa-solid fa-box"></i>products</button>
+          <button><i class="fa-solid fa-cart-shopping"></i>orders</button>
+          <button><i class="fa-solid fa-users"></i>employees</button>
+        </div>
+      </div>
+    </div>
+    <div class="main-page">
+      <div class="overview-page active">
+        <div class="container">
+          <div class="recent block">
+            <h3>Recent Orders</h3>
+            <p>You have 12 orders pending shipment today.</p>
+            <table>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+
+                <th>Status</th>
+                <th>Amount</th>
+              </tr>
+              <tr>
+                <td>ORD-7283</td>
+                <td>Alice Johnson</td>
+                <td><span class="Delivered">Delivered</span></td>
+                <td>$125.00</td>
+              </tr>
+              <tr>
+                <td>ORD-7284</td>
+                <td>Bob Smith</td>
+                <td><span class="Processing">Processing</span></td>
+                <td>$45.50</td>
+              </tr>
+              <tr>
+                <td>ORD-7285</td>
+                <td>Charlie Brown</td>
+                <td><span class="Shipped">Shipped</span></td>
+
+                <td>$89.00</td>
+              </tr>
+              <tr>
+                <td>ORD-7286</td>
+                <td>Diana Prince</td>
+                <td><span class="Pending">Pending</span></td>
+                <td>$89.00</td>
+              </tr>
+            </table>
+            <button>view all</button>
+          </div>
+          <div class="alert block">
+            <h3>Inventory Alerts</h3>
+            <p>Products that need your attention.</p>
+            <div class="emergency al-block">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <div>
+                <h3>Fiddle Leaf Fig is out of stock</h3>
+                <p>3 customers have this in their wishlist.</p>
+              </div>
+              <button>restock</button>
+            </div>
+            <div class="consider al-block">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h3>Snake Plant is low on stock</h3>
+                <p>Only 5 units remaining in inventory.</p>
+              </div>
+              <button>restock</button>
+            </div>
+            <div class="safe al-block">
+              <i class="fa-regular fa-circle-check"></i>
+              <div>
+                <h3>New shipment arrived</h3>
+                <p>24 units of Monstera added to stock.</p>
+              </div>
+              <button>view</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/script-nursery.js"></script>
+  </body>
+</html>

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -17,98 +17,126 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <title>Document</title>
-</head>
-<body>
-    <nav>
-      <i
-        class="fa-solid fa-leaf"
-        style="color: var(--primary-color); padding-left: 20px"
-      ></i
-      ><span
-        style="font-family: &quot;poppins&quot;, sans-serif; font-weight: 800"
-        >Plants Nursery</span
-      >
-      <ul>
-        <li><a href="index_nursery.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="plants.html">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="faq.html">FAQs</a></li>
-      </ul>
-      <i class="bi bi-search"></i>
-      <i class="bi bi-heart"></i>
-      <i class="bi bi-cart2"></i>
-      <i class="bi bi-person"></i>
-    </nav>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((r) => r.text())
+        .then((d) => (document.getElementById("navbar").innerHTML = d));
+    </script>
     <section class="faq">
-        <h1>Frequently Asked Questions</h1>
-        <p>Everything you need to know about our plants, shipping, and care. Can't find what you're looking for? Contact our support team.</p>
-        <form>
-            <i class="bi bi-search"></i>
-           <input type="search" class="search" placeholder="Search for answers...">
-        </form>
+      <h1>Frequently Asked Questions</h1>
+      <p>
+        Everything you need to know about our plants, shipping, and care. Can't
+        find what you're looking for? Contact our support team.
+      </p>
+      <form>
+        <i class="bi bi-search"></i>
+        <input
+          type="search"
+          class="search"
+          placeholder="Search for answers..."
+        />
+      </form>
     </section>
     <section class="faq-questions-answers">
-        <div class="faq-item">
-    <button class="faq-question">How do I know when to water my plants?<i class="bi bi-chevron-down"></i></button>
-    <div class="faq-answer">
-      <p>
-        The best way is to check the soil moisture. Stick your finger about 2 inches into the soil; if it feels dry, it's time to water. You can also use a moisture meter for more accuracy.
-      </p>
-    </div>
-  </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I know when to water my plants?<i
+            class="bi bi-chevron-down"
+          ></i>
+        </button>
+        <div class="faq-answer">
+          <p>
+            The best way is to check the soil moisture. Stick your finger about
+            2 inches into the soil; if it feels dry, it's time to water. You can
+            also use a moisture meter for more accuracy.
+          </p>
+        </div>
+      </div>
 
-  <div class="faq-item">
-    <button class="faq-question">Do you ship plants during winter?<i class="bi bi-chevron-down"></i></button>
-    <div class="faq-answer">
-      <p>Yes, we ship year-round! During winter, we include heat packs and extra insulation to ensure your plants stay warm and healthy during transit.</p>
-    </div>
-  </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Do you ship plants during winter?<i class="bi bi-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, we ship year-round! During winter, we include heat packs and
+            extra insulation to ensure your plants stay warm and healthy during
+            transit.
+          </p>
+        </div>
+      </div>
 
-  <div class="faq-item">
-    <button class="faq-question">What is your 30-day health guarantee?<i class="bi bi-chevron-down"></i></button>
-    <div class="faq-answer">
-      <p>If your plant arrives damaged or dies within 30 days of delivery, we will replace it for free. Just send us a photo of the plant and your order number.</p>
-    </div>
-  </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What is your 30-day health guarantee?<i
+            class="bi bi-chevron-down"
+          ></i>
+        </button>
+        <div class="faq-answer">
+          <p>
+            If your plant arrives damaged or dies within 30 days of delivery, we
+            will replace it for free. Just send us a photo of the plant and your
+            order number.
+          </p>
+        </div>
+      </div>
 
-  <div class="faq-item">
-    <button class="faq-question">Are your pots included with the plants?<i class="bi bi-chevron-down"></i></button>
-    <div class="faq-answer">
-      <p>Most of our plants come in a standard nursery pot. However, we offer a wide selection of decorative ceramic and terracotta pots that you can add to your order.</p>
-    </div>
-  </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Are your pots included with the plants?<i
+            class="bi bi-chevron-down"
+          ></i>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Most of our plants come in a standard nursery pot. However, we offer
+            a wide selection of decorative ceramic and terracotta pots that you
+            can add to your order.
+          </p>
+        </div>
+      </div>
 
-  <div class="faq-item">
-    <button class="faq-question">How long does shipping take?<i class="bi bi-chevron-down"></i></button>
-    <div class="faq-answer">
-      <p>Standard shipping typically takes 3-5 business days. Express shipping is available for 1-2 business day delivery.</p>
-    </div>
-  </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          How long does shipping take?<i class="bi bi-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Standard shipping typically takes 3-5 business days. Express
+            shipping is available for 1-2 business day delivery.
+          </p>
+        </div>
+      </div>
     </section>
-        <section class="guidence f1">
-            <div class="green-circle"></div>
+    <section class="guidence f1">
+      <div class="green-circle"></div>
       <div class="guidence-content f2">
         <h1>Still have questions?</h1>
-        <p>Our team of plant experts is here to help you with any<br> questions or concerns.</p>
+        <p>
+          Our team of plant experts is here to help you with any<br />
+          questions or concerns.
+        </p>
       </div>
       <div class="guidence-features-content f3">
         <div class="guidence-features f4">
-            <i class="bi bi-chat"></i>
-            <h1>Live Chat</h1>
-            <p><u style="cursor: pointer;">Start Chat</u></p>
-          </div>
-          <div class="guidence-features f4">
-            <i class="bi bi-envelope"></i>
-            <h1>Email Us</h1>
-            <p><u style="cursor: pointer;">Send Email</u></p>
-          </div>
-          <div class="guidence-features f4">
-            <i class="bi bi-telephone"></i>
-            <h1>Call Us</h1>
-            <p><u style="cursor: pointer;">+1 (555) 000-0000</u></p>
-          </div>
-      </div>                  
+          <i class="bi bi-chat"></i>
+          <h1>Live Chat</h1>
+          <p><u style="cursor: pointer">Start Chat</u></p>
+        </div>
+        <div class="guidence-features f4">
+          <i class="bi bi-envelope"></i>
+          <h1>Email Us</h1>
+          <p><u style="cursor: pointer">Send Email</u></p>
+        </div>
+        <div class="guidence-features f4">
+          <i class="bi bi-telephone"></i>
+          <h1>Call Us</h1>
+          <p><u style="cursor: pointer">+1 (555) 000-0000</u></p>
+        </div>
+      </div>
     </section>
     <footer>
       <div class="footer-content">
@@ -184,5 +212,5 @@
       </div>
     </footer>
     <script src="/script-nursery.js"></script>
-</body>
+  </body>
 </html>
