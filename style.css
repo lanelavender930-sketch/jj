@@ -1287,7 +1287,7 @@ button[type="submit"]:active {
 /* showing products */
 .all {
   display: flex;
-  margin-bottom: 120px;
+  margin-bottom: 60px;
 }
 .right {
   margin-top: 50px;
@@ -1450,3 +1450,82 @@ button[type="submit"]:active {
 .total-price .subscribe-btn-footer:hover {
   background-color: #1a841cc6;
 }
+.pagination {
+  margin-top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: none;
+      padding: 12px 20px;
+    }
+
+    .page-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 30px;
+      border: 1px solid #e2e6ea;
+      background: #fff;
+      color: #000000;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .page-btn:hover {
+      background: #a0caa879;
+      border: none;
+      color: black;
+    }
+
+    .page-btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .page-btn.active {
+      background: #2edd3a25;
+      border: none;
+      color: #444444;
+    }
+
+    .page-btn.nav {
+      width: auto;
+      padding: 0 18px;
+      gap: 6px;
+      color: #588b66;
+      font-weight: 500;
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .page-btn.nav:hover {
+      background: #f0fff1;
+      border-color: #a0f0b8;
+      color: var(--primary-color);
+    }
+
+    .page-btn.nav:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+      border-color: transparent;
+      color: #9ca3af;
+    }
+
+    .arrow {
+      font-size: 13px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 24px;
+      background: #e2e6ea;
+      margin: 0 4px;
+    }

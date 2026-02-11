@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8" />
+
+    <!-- Viewport settings for responsive design on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Admin-specific styles -->
+    <link rel="stylesheet" href="admin.css" />
+
+    <!-- Google Fonts preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Nunito font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Normalize for cross-browser consistency -->
+    <link rel="stylesheet" href="normalize.css" />
+
+    <!-- Font Awesome icon library -->
+    <script
+      src="https://kit.fontawesome.com/1607b70e4a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Navigation Bar Section -->
+    <nav>
+      <!-- Logo icon (leaf) -->
+      <i
+        class="fa-solid fa-leaf"
+        style="color: var(--primary-color); padding-left: 20px"
+      ></i>
+
+      <!-- Brand name -->
+      <span
+        style="font-family: &quot;poppins&quot;, sans-serif; font-weight: 800"
+        >Plants Nursery</span
+      >
+
+      <!-- Main navigation menu -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="plants.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+
+      <!-- Navigation utility icons -->
+      <i class="bi bi-search"></i>
+      <!-- Search icon -->
+      <i class="bi bi-heart"></i>
+      <!-- Wishlist/favorites icon -->
+      <i class="bi bi-cart2"></i>
+      <!-- Shopping cart icon -->
+      <i class="bi bi-person"></i>
+      <!-- User account icon -->
+    </nav>
+    <div class="dash-b">
+      <div class="container">
+        <!-- Upper section with title and action buttons -->
+        <div class="upper">
+          <!-- Dashboard title and description -->
+          <div class="text">
+            <h3>Admin Dashboard</h3>
+            <p>Manage your nursery operations and track performance.</p>
+          </div>
+
+          <!-- Action buttons wrapper -->
+          <div class="w-g-buttons">
+            <!-- History button -->
+            <button id="his-btn">
+              <i class="fa-solid fa-clock-rotate-left"></i>task history
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Admin Navigation Bar with tabs -->
+    <div class="admin-bar">
+      <div class="container">
+        <div class="bar">
+          <!-- Overview tab button (active by default) -->
+          <button data-page="active-tasks-page" class="tab-btn active">
+            <i class="fa-regular fa-clock"></i>active tasks
+          </button>
+
+          <!-- Products tab button -->
+          <button data-page="completed-task-page" class="tab-btn">
+            <i class="fa-solid fa-box"></i>completed task
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="main-page">
+      <div class="active-tasks-page">
+        <div class="container">
+          <div class="block tasks-block">
+            <div class="state-txt">
+              <p class="st-p high-Priority">High Priority</p>
+              <p class="p-tit">Today, 4:00 PM</p>
+            </div>
+            <h3 class="h-tit">Water Greenhouse A</h3>
+            <div class="block">
+              <p class="p-tit">
+                " Focus on the tropical section, they need extra humidity today.
+                "
+              </p>
+            </div>
+            <div class="lower">
+              <p class="st-p state-pen">Pending</p>
+              <button>
+                <i class="fa-regular fa-circle-check"></i> Mark as Completed
+              </button>
+            </div>
+          </div>
+          <div class="block tasks-block">
+            <div class="state-txt">
+              <p class="st-p mid-Priority">medium Priority</p>
+              <p class="p-tit">Today, 4:00 PM</p>
+            </div>
+            <h3 class="h-tit">Water Greenhouse A</h3>
+            <div class="block">
+              <p class="p-tit">
+                " Focus on the tropical section, they need extra humidity today.
+                "
+              </p>
+            </div>
+            <div class="lower">
+              <p class="st-p state-pen">Pending</p>
+              <button>
+                <i class="fa-regular fa-circle-check"></i> Mark as Completed
+              </button>
+            </div>
+          </div>
+          <div class="block tasks-block">
+            <div class="state-txt">
+              <p class="st-p low-Priority">low Priority</p>
+              <p class="p-tit">Today, 4:00 PM</p>
+            </div>
+            <h3 class="h-tit">Water Greenhouse A</h3>
+            <div class="block">
+              <p class="p-tit">
+                " Focus on the tropical section, they need extra humidity today.
+                "
+              </p>
+            </div>
+            <div class="lower">
+              <p class="st-p state-pen">Pending</p>
+              <button>
+                <i class="fa-regular fa-circle-check"></i> Mark as Completed
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,97 +1,146 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8" />
+
+    <!-- Viewport settings for responsive design on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Admin-specific styles -->
     <link rel="stylesheet" href="admin.css" />
+
+    <!-- Google Fonts preconnect for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Nunito font from Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Bootstrap Icons CDN -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
     />
+
+    <!-- CSS Normalize for cross-browser consistency -->
     <link rel="stylesheet" href="normalize.css" />
+
+    <!-- Font Awesome icon library -->
     <script
       src="https://kit.fontawesome.com/1607b70e4a.js"
       crossorigin="anonymous"
     ></script>
+
     <title>Document</title>
   </head>
   <body>
+    <!-- Navigation Bar Section -->
     <nav>
+      <!-- Logo icon (leaf) -->
       <i
         class="fa-solid fa-leaf"
         style="color: var(--primary-color); padding-left: 20px"
-      ></i
-      ><span
+      ></i>
+
+      <!-- Brand name -->
+      <span
         style="font-family: &quot;poppins&quot;, sans-serif; font-weight: 800"
         >Plants Nursery</span
       >
+
+      <!-- Main navigation menu -->
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="shop.html">Shop</a></li>
+        <li><a href="plants.html">Shop</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQs</a></li>
       </ul>
 
+      <!-- Navigation utility icons -->
       <i class="bi bi-search"></i>
+      <!-- Search icon -->
       <i class="bi bi-heart"></i>
-      <i class="bi bi-cart2" onclick="window.location.href = 'cart.html'"></i>
+      <!-- Wishlist/favorites icon -->
+      <i class="bi bi-cart2"></i>
+      <!-- Shopping cart icon -->
       <i class="bi bi-person"></i>
+      <!-- User account icon -->
     </nav>
 
+    <!-- Dashboard Header Section -->
     <div class="dash-b">
       <div class="container">
+        <!-- Upper section with title and action buttons -->
         <div class="upper">
+          <!-- Dashboard title and description -->
           <div class="text">
             <h3>Admin Dashboard</h3>
             <p>Manage your nursery operations and track performance.</p>
           </div>
+
+          <!-- Action buttons wrapper -->
           <div class="w-g-buttons">
+            <!-- History button -->
             <button id="his-btn">
               <i class="fa-solid fa-clock-rotate-left"></i>history
             </button>
 
+            <!-- Add product button -->
             <button id="add-btn">
               <i class="fa-solid fa-plus"></i>add product
             </button>
           </div>
         </div>
+
+        <!-- Lower section with statistics blocks -->
         <div class="lower">
+          <!-- Total Sales statistics block -->
           <div class="blocks">
             <div class="txt-ic">
               <p>Total Sales</p>
               <i class="fa-solid fa-arrow-up"></i>
+              <!-- Upward trend icon -->
             </div>
             <h3>$12,845.00</h3>
             <p>+12% from last month</p>
           </div>
+
+          <!-- Active Orders statistics block -->
           <div class="blocks">
             <div class="txt-ic">
               <p>Active Orders</p>
               <i class="fa-solid fa-cart-shopping"></i>
+              <!-- Shopping cart icon -->
             </div>
             <h3>48</h3>
             <p>12 pending shipment</p>
           </div>
+
+          <!-- Total Products statistics block -->
           <div class="blocks">
             <div class="txt-ic">
               <p>Total Products</p>
               <i class="fa-solid fa-box"></i>
+              <!-- Box icon -->
             </div>
             <h3>156</h3>
             <p>8 categories</p>
           </div>
+
+          <!-- Active Users statistics block -->
           <div class="blocks">
             <div class="txt-ic">
               <p>Active Users</p>
               <i class="fa-solid fa-users"></i>
+              <!-- Users icon -->
             </div>
             <h3>1,240</h3>
             <p>+5% from last week</p>
@@ -99,81 +148,122 @@
         </div>
       </div>
     </div>
+
+    <!-- Admin Navigation Bar with tabs -->
     <div class="admin-bar">
       <div class="container">
         <div class="bar">
-          <button class="active">
+          <!-- Overview tab button (active by default) -->
+          <button data-page="overview-page" class="tab-btn active">
             <i class="fa-solid fa-bars"></i>overview
           </button>
-          <button><i class="fa-solid fa-box"></i>products</button>
-          <button><i class="fa-solid fa-cart-shopping"></i>orders</button>
-          <button><i class="fa-solid fa-users"></i>employees</button>
+
+          <!-- Products tab button -->
+          <button data-page="products-page" class="tab-btn">
+            <i class="fa-solid fa-box"></i>products
+          </button>
+
+          <!-- Orders tab button -->
+          <button data-page="orders-page" class="tab-btn">
+            <i class="fa-solid fa-cart-shopping"></i>orders
+          </button>
+
+          <!-- Employees tab button -->
+          <button data-page="employees-page" class="tab-btn">
+            <i class="fa-solid fa-users"></i>employees
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- Main Content Area with multiple pages -->
     <div class="main-page">
-      <div class="overview-page active">
+      <!-- ========== OVERVIEW PAGE START ========== -->
+      <div class="page overview-page active">
         <div class="container">
+          <!-- Recent Orders Section -->
           <div class="recent block">
-            <h3>Recent Orders</h3>
-            <p>You have 12 orders pending shipment today.</p>
-            <table>
+            <h3 class="h-tit">Recent Orders</h3>
+            <p class="p-tit">You have 12 orders pending shipment today.</p>
+
+            <!-- Orders table -->
+            <table class="table-dis">
+              <!-- Table header row -->
               <tr>
                 <th>Order ID</th>
                 <th>Customer</th>
-
                 <th>Status</th>
                 <th>Amount</th>
               </tr>
+
+              <!-- Order 1 - Delivered -->
               <tr>
                 <td>ORD-7283</td>
                 <td>Alice Johnson</td>
-                <td><span class="Delivered">Delivered</span></td>
+                <td><span class="badge badge--delivered">Delivered</span></td>
                 <td>$125.00</td>
               </tr>
+
+              <!-- Order 2 - Processing -->
               <tr>
                 <td>ORD-7284</td>
                 <td>Bob Smith</td>
-                <td><span class="Processing">Processing</span></td>
+                <td><span class="badge badge--processing">Processing</span></td>
                 <td>$45.50</td>
               </tr>
+
+              <!-- Order 3 - Shipped -->
               <tr>
                 <td>ORD-7285</td>
                 <td>Charlie Brown</td>
-                <td><span class="Shipped">Shipped</span></td>
-
+                <td><span class="badge badge--shipped">Shipped</span></td>
                 <td>$89.00</td>
               </tr>
+
+              <!-- Order 4 - Pending -->
               <tr>
                 <td>ORD-7286</td>
                 <td>Diana Prince</td>
-                <td><span class="Pending">Pending</span></td>
+                <td><span class="badge badge--pending">Pending</span></td>
                 <td>$89.00</td>
               </tr>
             </table>
+
+            <!-- View all orders button -->
             <button>view all</button>
           </div>
+
+          <!-- Inventory Alerts Section -->
           <div class="alert block">
             <h3>Inventory Alerts</h3>
             <p>Products that need your attention.</p>
+
+            <!-- Critical alert - Out of stock -->
             <div class="emergency al-block">
               <i class="fa-solid fa-circle-exclamation"></i>
+              <!-- Warning icon -->
               <div>
                 <h3>Fiddle Leaf Fig is out of stock</h3>
                 <p>3 customers have this in their wishlist.</p>
               </div>
               <button>restock</button>
             </div>
+
+            <!-- Warning alert - Low stock -->
             <div class="consider al-block">
               <i class="fa-regular fa-clock"></i>
+              <!-- Clock icon -->
               <div>
                 <h3>Snake Plant is low on stock</h3>
                 <p>Only 5 units remaining in inventory.</p>
               </div>
               <button>restock</button>
             </div>
+
+            <!-- Success alert - New shipment -->
             <div class="safe al-block">
               <i class="fa-regular fa-circle-check"></i>
+              <!-- Check icon -->
               <div>
                 <h3>New shipment arrived</h3>
                 <p>24 units of Monstera added to stock.</p>
@@ -183,8 +273,301 @@
           </div>
         </div>
       </div>
+      <!-- ========== OVERVIEW PAGE END ========== -->
+
+      <!-- ========== PRODUCTS PAGE START ========== -->
+      <div class="page products-page">
+        <div class="container">
+          <!-- Product Inventory Section -->
+          <div class="block pro-inv">
+            <!-- Header with search functionality -->
+            <div class="up-txt">
+              <!-- Section title and description -->
+              <div class="textt">
+                <h3 class="h-tit">Product Inventory</h3>
+                <p class="p-tit">Manage your plant collection and pricing.</p>
+              </div>
+
+              <!-- Search input field -->
+              <div class="search-i">
+                <label for="">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <!-- Search icon -->
+                </label>
+                <input placeholder="Search" type="text" />
+              </div>
+            </div>
+
+            <!-- Products inventory table -->
+            <table class="table-dis">
+              <!-- Table header row -->
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+
+              <!-- Product 1 - Monstera Deliciosa -->
+              <tr>
+                <td>Monstera Deliciosa</td>
+                <td>Indoor Plants</td>
+                <td>$45.00</td>
+                <td>24</td>
+                <td><span class="badge in-stack">in-stack</span></td>
+                <td>
+                  <!-- Kebab menu for actions -->
+                  <div class="kabab-ic">
+                    <i class="f-ic fa-solid fa-ellipsis"></i>
+                    <!-- Three dots icon -->
+                    <!-- Dropdown menu -->
+                    <ul class="kabab-list">
+                      <li>
+                        <h3>Actions</h3>
+                      </li>
+                      <!-- Edit product option -->
+                      <li>
+                        <button class="edit-ic">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                          <p>Edit product</p>
+                        </button>
+                      </li>
+                      <!-- Update stock option -->
+                      <li>
+                        <button class="upd-ic">
+                          <i class="fa-solid fa-box"></i>
+                          <p>Update Stock</p>
+                        </button>
+                      </li>
+                      <hr />
+                      <!-- Separator line -->
+                      <!-- Delete option -->
+                      <li>
+                        <button class="del-ic">
+                          <i class="fa-solid fa-trash"></i>
+                          <p>Delete</p>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Product 2 - Snake Plant -->
+              <tr>
+                <td>Snake Plant</td>
+                <td>Indoor Plants</td>
+                <td>$45.50</td>
+                <td>15</td>
+                <td><span class="badge in-stack">in-stack</span></td>
+                <td>
+                  <!-- Kebab menu for actions -->
+                  <div class="kabab-ic">
+                    <i class="f-ic fa-solid fa-ellipsis"></i>
+                    <!-- Dropdown menu -->
+                    <ul class="kabab-list">
+                      <li>
+                        <h3>Actions</h3>
+                      </li>
+                      <li>
+                        <button class="edit-ic">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                          <p>Edit product</p>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="upd-ic">
+                          <i class="fa-solid fa-box"></i>
+                          <p>Update Stock</p>
+                        </button>
+                      </li>
+                      <hr />
+                      <li>
+                        <button class="del-ic">
+                          <i class="fa-solid fa-trash"></i>
+                          <p>Delete</p>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Product 3 - Aloe Vera (Indoor Plants category) -->
+              <tr>
+                <td>Aloe Vera</td>
+                <td>Indoor Plants</td>
+                <td>$125.00</td>
+                <td>10</td>
+                <td><span class="badge low-stack">low-stack</span></td>
+                <td>
+                  <!-- Kebab menu for actions -->
+                  <div class="kabab-ic">
+                    <i class="f-ic fa-solid fa-ellipsis"></i>
+                    <!-- Dropdown menu -->
+                    <ul class="kabab-list">
+                      <li>
+                        <h3>Actions</h3>
+                      </li>
+                      <li>
+                        <button class="edit-ic">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                          <p>Edit product</p>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="upd-ic">
+                          <i class="fa-solid fa-box"></i>
+                          <p>Update Stock</p>
+                        </button>
+                      </li>
+                      <hr />
+                      <li>
+                        <button class="del-ic">
+                          <i class="fa-solid fa-trash"></i>
+                          <p>Delete</p>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Product 4 - Aloe Vera (Succulents category) -->
+              <tr>
+                <td>Aloe Vera</td>
+                <td>Succulents</td>
+                <td>$89.00</td>
+                <td>9</td>
+                <td><span class="badge low-stack">low-stack</span></td>
+                <td>
+                  <!-- Kebab menu for actions -->
+                  <div class="kabab-ic">
+                    <i class="f-ic fa-solid fa-ellipsis"></i>
+                    <!-- Dropdown menu -->
+                    <ul class="kabab-list">
+                      <li>
+                        <h3>Actions</h3>
+                      </li>
+                      <li>
+                        <button class="edit-ic">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                          <p>Edit product</p>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="upd-ic">
+                          <i class="fa-solid fa-box"></i>
+                          <p>Update Stock</p>
+                        </button>
+                      </li>
+                      <hr />
+                      <li>
+                        <button class="del-ic">
+                          <i class="fa-solid fa-trash"></i>
+                          <p>Delete</p>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- ========== PRODUCTS PAGE END ========== -->
+
+      <!-- ========== ORDERS PAGE START ========== -->
+      <div class="orders-page page">
+        <div class="container">
+          <div class="block">
+            <h3 class="h-tit">Order Management</h3>
+            <p class="p-tit">Track and fulfill customer orders.</p>
+
+            <!-- Placeholder block for order management system -->
+            <div class="in-block block">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <!-- Shopping cart icon -->
+              <h3 class="h-tit">Order Management System</h3>
+              <p class="p-tit">
+                This section is being populated with real-time order data.
+              </p>
+              <!-- Refresh data button -->
+              <button class="w-g-buttons">Refresh Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ========== ORDERS PAGE END ========== -->
+
+      <!-- ========== EMPLOYEES/TASKS PAGE START ========== -->
+      <div class="employees-page page">
+        <div class="container">
+          <!-- Task board container -->
+          <div class="block out-block">
+            <!-- To Do column -->
+            <div class="block in-block">
+              <!-- Column header -->
+              <div class="up-text">
+                <p class="l-p to-do">To Do</p>
+                <p class="p-tit">3 Tasks</p>
+              </div>
+
+              <!-- Task card 1 -->
+              <div class="block">
+                <h3 class="in-h">Water Greenhouse A</h3>
+                <p class="p-tit">Due: Today, 4 PM</p>
+              </div>
+
+              <!-- Task card 2 -->
+              <div class="block">
+                <h3 class="in-h">Water Greenhouse A</h3>
+                <p class="p-tit">Due: Today, 4 PM</p>
+              </div>
+
+              <!-- Add new task button -->
+              <button>add task</button>
+            </div>
+
+            <!-- In Progress column -->
+            <div class="block in-block">
+              <!-- Column header -->
+              <div class="up-text">
+                <p class="l-p progresse">In Progress</p>
+                <p class="p-tit">1 Task</p>
+              </div>
+
+              <!-- Task card in progress -->
+              <div class="block in-progresse">
+                <h3 class="in-h">Water Greenhouse A</h3>
+                <p class="p-tit">Due: Today, 4 PM</p>
+              </div>
+            </div>
+
+            <!-- Completed column -->
+            <div class="block in-block">
+              <!-- Column header -->
+              <div class="up-text">
+                <p class="l-p completed">Completed</p>
+                <p class="p-tit">8 Tasks</p>
+              </div>
+
+              <!-- Completed task card -->
+              <div class="block completed">
+                <h3 class="in-h">Water Greenhouse A</h3>
+                <p class="p-tit">Due: Today, 4 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ========== EMPLOYEES/TASKS PAGE END ========== -->
     </div>
 
-    <script src="/script-nursery.js"></script>
+    <!-- JavaScript file for admin dashboard functionality -->
+    <script src="admin.js"></script>
   </body>
 </html>

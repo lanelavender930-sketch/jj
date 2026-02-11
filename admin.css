@@ -9,6 +9,68 @@ body {
     ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
+.main-page .page {
+  display: none;
+}
+
+.main-page .page.active {
+  display: block;
+}
+
+/* Table-dis Component */
+.table-dis {
+  font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-dis tr {
+  border-bottom: 1px solid #eeeeee;
+}
+
+.table-dis td,
+.table-dis th {
+  padding: 16px;
+  text-align: center;
+}
+
+.table-dis th {
+  color: var(--greycolor);
+  font-weight: 700;
+}
+
+.table-dis td:first-child {
+  font-weight: 600;
+}
+
+/* Status badge */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  width: 80px;
+}
+
+/* Badge states */
+.badge--delivered {
+  background-color: var(--green);
+  color: white;
+}
+
+.badge--processing {
+  background-color: #eeeeee;
+  color: #09431e;
+}
+
+.badge--shipped,
+.badge--pending {
+  border: 1px solid #eeeeee;
+  color: var(--dark-green);
+}
+
+/* end table compnent  */
 button {
   cursor: pointer;
 }
@@ -45,6 +107,7 @@ button {
   padding: 8px 16px;
   border: 1px #eeeeee solid;
   border-radius: 10px;
+  transition: 0.3s;
 }
 .dash-b .upper .w-g-buttons button i {
   margin-right: 2px;
@@ -53,9 +116,15 @@ button {
   background-color: #ffffff;
   margin-right: 8px;
 }
+.dash-b .upper .w-g-buttons #his-btn:hover {
+  background-color: #deede3;
+}
 .dash-b .upper .w-g-buttons #add-btn {
   background-color: var(--green);
   color: #ffffff;
+}
+.dash-b .upper .w-g-buttons #add-btn:hover {
+  background-color: #16a249e6;
 }
 .dash-b .lower {
   display: grid;
@@ -98,6 +167,7 @@ button {
   color: var(--greycolor);
 }
 /* dashboard end */
+
 /* admin bar start  */
 .admin-bar {
   margin-top: 40px;
@@ -126,70 +196,38 @@ button {
   color: var(--dark-green);
 }
 /* .admin bar end */
+.main-page {
+  margin-top: 30px;
+}
 /* overvew page start  */
-.main-page .container {
+
+.main-page .overview-page .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  margin-top: 30px;
 }
-.main-page .container .block {
-  border: 1px #eeeeee solid;
-  border-radius: 6px;
+
+.main-page .block {
+  border: 2px #eeeeee solid;
+  border-radius: 10px;
   padding: 20px;
   margin-bottom: 50px;
 }
-.main-page .container .block h3 {
+.main-page .overview-page .container .block h3,
+.h-tit {
   color: var(--dark-green);
   font-size: 24px;
   margin: 0;
   font-weight: 600;
 }
-.main-page .container .block p {
+.main-page .overview-page .container .block p,
+.p-tit {
   font-size: 14px;
   font-weight: 400;
   color: var(--greycolor);
 }
-.main-page .container .recent table {
-  font-size: 16px;
-  width: 100%;
-  border-collapse: collapse;
-}
-.main-page .container .recent table tr {
-  border-bottom: 1px solid #eeeeee;
-}
-.main-page .container .recent table td {
-  padding: 16px;
-  text-align: center;
-}
-.main-page .container .recent table td:first-child {
-  font-weight: 600;
-}
-.main-page .container .recent table td span {
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-}
-.main-page .container .recent table td .Delivered {
-  background-color: var(--green);
-  color: white;
-}
-.main-page .container .recent table td .Processing {
-  background-color: #eeeeee;
-  color: #09431e;
-}
-.main-page .container .recent table td .Shipped,
-.main-page .container .recent table td .Pending {
-  border: 1px solid #eeeeee;
-  color: var(--dark-green);
-}
-.main-page .container .recent table th {
-  padding: 16px;
-  color: var(--greycolor);
-  font-weight: 700;
-}
-.main-page .container .recent button {
+
+.main-page .overview-page .container .recent button {
   margin-top: 10px;
   width: 100%;
   padding: 8px 16px;
@@ -199,30 +237,30 @@ button {
   color: var(--green);
   font-weight: 700;
 }
-.main-page .container .recent button:hover {
+.main-page .overview-page .container .recent button:hover {
   background-color: #deede3;
   color: var(--dark-green);
 }
-.main-page .container .alert .al-block {
+.main-page .overview-page .container .alert .al-block {
   display: flex;
   border: 1px solid;
   margin-bottom: 15px;
   padding: 16px;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 12px;
 }
-.main-page .container .alert .al-block i {
+.main-page .overview-page .container .alert .al-block i {
   font-size: 20px;
   font-weight: 500;
   margin-right: 30px;
 }
-.main-page .container .alert .al-block p {
+.main-page .overview-page .container .alert .al-block p {
   margin-bottom: 0;
 }
-.main-page .container .alert .al-block h3 {
+.main-page .overview-page .container .alert .al-block h3 {
   font-size: 18px;
 }
-.main-page .container .alert .al-block button {
+.main-page .overview-page .container .alert .al-block button {
   height: 40px;
   padding: 8px 16px;
   border: 1px #eeeeee solid;
@@ -232,27 +270,339 @@ button {
   font-weight: bold;
   margin-left: auto;
 }
-.main-page .container .alert .emergency {
+.main-page .overview-page .container .alert .emergency {
   background-color: #ef44440d;
   border-color: #ff282863;
 }
-.main-page .container .alert .emergency i {
+.main-page .overview-page .container .alert .emergency i {
   font-weight: 700;
   color: #ff2828d8;
 }
-.main-page .container .alert .consider i {
+.main-page .overview-page .container .alert .consider i {
   color: #e2f919;
 }
-.main-page .container .alert .consider {
+.main-page .overview-page .container .alert .consider {
   background-color: #eab3080d;
 
   border-color: #bb921860;
 }
-.main-page .container .alert .safe i {
+.main-page .overview-page .container .alert .safe i {
   color: #16a246;
 }
-.main-page .container .alert .safe {
+.main-page .overview-page .container .alert .safe {
   background-color: #16a2490d;
   border-color: #16a24967;
 }
 /* overvew page end  */
+/* products page start  */
+
+.main-page .products-page .container .up-txt {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.main-page .products-page .container .up-txt input {
+  border: none;
+  height: 40px;
+  border-radius: 12px;
+  width: 250px;
+}
+.main-page .products-page .container .up-txt input:focus {
+  border: none;
+  outline: none;
+}
+.main-page .products-page .container .up-txt .search-i {
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  height: 45px;
+  width: 300px;
+}
+.main-page .products-page .container .up-txt .search-i:focus-within {
+  border: 2px solid var(--green);
+}
+.main-page .products-page .container .up-txt .search-i i {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.main-page .products-page .container table td {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.main-page .products-page .container table .low-stack {
+  background-color: #eeeeee;
+  color: #09431e;
+}
+.main-page .products-page .container table .in-stack {
+  background-color: var(--green);
+  color: white;
+}
+.main-page .products-page .container table td .f-ic {
+  padding: 10px;
+  border-radius: 10px;
+}
+.main-page .products-page .container table td .f-ic:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+  padding: 10px;
+}
+
+.main-page .active {
+  display: block;
+}
+.main-page .products-page .container table td .kabab-ic {
+  position: relative;
+}
+.main-page .products-page .container table td .kabab-ic .kabab-list {
+  list-style: none;
+  border: #eeeeee 2px solid;
+  padding: 4px;
+  position: absolute;
+  top: calc(100% - 10px);
+  right: 35%;
+  width: 160px;
+  border-radius: 8px;
+  background-color: white;
+  display: none;
+  z-index: 1;
+}
+
+.main-page .products-page .container table td .kabab-ic .kabab-list li h3 {
+  font-size: 20px;
+  color: var(--dark-green);
+  text-align: left;
+  margin-bottom: 6px;
+  padding-left: 13px;
+  font-weight: 600;
+}
+.main-page .products-page table td .kabab-ic .kabab-list li button {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  padding: 10px 0px;
+  padding-left: 6px;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+
+  font-size: 18px;
+  color: #062d14;
+  font-weight: 400;
+  transition: 0.3s;
+}
+.main-page
+  .products-page
+  .container
+  table
+  td
+  .kabab-ic
+  .kabab-list
+  li
+  button:hover {
+  background-color: #deede3;
+  color: #062d14;
+}
+.main-page .products-page .container table td .kabab-list li button i {
+  padding-left: 3px;
+  padding-right: 8px;
+}
+.main-page .products-page .container table td .kabab-list li button p {
+  margin: 0;
+}
+.main-page .products-page .container table td .kabab-list hr {
+  border: none;
+  height: 1px;
+  background-color: #dcdcdc;
+  width: 100%;
+  margin-bottom: 0;
+}
+.main-page .products-page .container table td .kabab-list li .del-ic {
+  margin-top: 3px;
+  color: #ff2828d8;
+}
+/* products end  */
+/* orders page stats */
+.orders-page .in-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-style: dashed;
+  padding: 120px 0px;
+  margin-top: 30px;
+}
+.orders-page .in-block h3 {
+  font-weight: 500;
+  font-size: 23px;
+}
+.orders-page .in-block p {
+  font-size: 18px;
+  max-width: 330px;
+  text-align: center;
+}
+.orders-page .in-block i {
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+.orders-page .in-block button {
+  margin-top: 20px;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px #eeeeee solid;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: transparent;
+  color: var(--dark-green);
+  font-weight: 600;
+}
+.orders-page .in-block button:hover {
+  background-color: #deede3;
+}
+/* orders page end  */
+/* employees page start */
+.employees-page .container .out-block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 24px;
+}
+.employees-page .container .out-block .p-tit {
+  font-size: 14px;
+}
+.employees-page .container .out-block .up-text .l-p {
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.employees-page .container .out-block .up-text .to-do {
+  color: white;
+  background-color: #09431e;
+}
+.employees-page .container .out-block .up-text .progresse {
+  color: #09431e;
+  background-color: #eeeeee;
+}
+.employees-page .container .out-block .up-text .completed {
+  background-color: #16a2491a;
+  color: #16a246;
+}
+.employees-page .container .out-block .up-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.employees-page .container .out-block .in-block {
+  padding: 12px;
+  background-color: rgba(237, 245, 239, 0.2);
+}
+.employees-page .container .out-block .in-block .block {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 12px;
+}
+.employees-page .container .out-block .in-block h3 {
+  margin: 0px;
+  font-weight: 500;
+}
+.employees-page .container .out-block .in-block .block .in-h {
+  font-size: 15px;
+  color: var(--dark-green);
+}
+.employees-page .container .out-block .in-block .block .p-tit {
+  margin: 0;
+  padding-top: 6px;
+}
+.employees-page .container .out-block .in-block button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+  color: var(--dark-green);
+  font-weight: 600;
+  font-size: 14px;
+}
+.employees-page .container .out-block .in-block button:hover {
+  background-color: #deede3;
+  color: var(--dark-green);
+}
+.employees-page .container .out-block .in-block .in-progresse {
+  border-color: #16a246;
+}
+.employees-page .container .out-block .in-block .completed {
+  opacity: 0.5;
+}
+.employees-page .container .out-block .in-block .completed h3 {
+  text-decoration: line-through;
+}
+/* employees-page end  */
+/* employee css style  */
+.active-tasks-page .container .tasks-block .state-txt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.active-tasks-page .container .tasks-block .h-tit {
+  margin-bottom: 20px;
+  margin-bottom: 0;
+}
+.active-tasks-page .container .tasks-block .block {
+  padding: 2px 7px;
+  border: none;
+  background-color: #f3f7f44c;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.active-tasks-page .container .tasks-block .lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.active-tasks-page .container .tasks-block .lower button {
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px #eeeeee solid;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: var(--green);
+  color: #ffffff;
+}
+.active-tasks-page .container .tasks-block .lower button:hover {
+  background-color: #16a249e6;
+}
+.active-tasks-page .container .tasks-block .lower .st-p {
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #16a2491a;
+  color: #16a246;
+}
+.active-tasks-page .container .st-p {
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.active-tasks-page .container .high-Priority {
+  background-color: #ef4444;
+  color: white;
+  font-weight: 600;
+}
+.active-tasks-page .container .mid-Priority,
+.active-tasks-page .container .low-Priority {
+  color: var(--dark-green);
+  background-color: #eeeeee;
+  font-weight: 600;
+}
+.active-tasks-page .container .tasks-block .lower .state-pen {
+  background-color: #16a2491a;
+  color: #16a246;
+}
+.active-tasks-page .container .tasks-block {
+  margin-bottom: 10px;
+  padding: 20px;
+}

@@ -52,4 +52,28 @@ document.getElementById("searchIcon").onclick = function () {
   }
 };
 
+let currentPage = 1;
+const totalPages = 3;
 
+function setPage(page) {
+  currentPage = page;
+  updateUI();
+}
+
+function changePage(direction) {
+  const newPage = currentPage + direction;
+  if (newPage >= 1 && newPage <= totalPages) {
+    currentPage = newPage;
+    updateUI();
+  }
+}
+
+function updateUI() {
+  for (let i = 1; i <= totalPages; i++) {
+    document
+      .getElementById("page" + i)
+      .classList.toggle("active", i === currentPage);
+  }
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+}
