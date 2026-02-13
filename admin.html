@@ -41,6 +41,7 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="b-overlay" id="b-overlay"></div>
     <!-- Navigation Bar Section -->
     <nav>
       <!-- Logo icon (leaf) -->
@@ -97,9 +98,44 @@
             <button id="add-btn">
               <i class="fa-solid fa-plus"></i>add product
             </button>
+            <div class="add_product_form"></div>
           </div>
         </div>
-
+        <div class="popup_modul">
+          <div class="up-form">
+            <h3>Add Product</h3>
+            <button id="close_btn">X</button>
+          </div>
+          <form action="" class="product_form">
+            <div class="form_grp">
+              <label for="">name</label>
+              <input type="text" />
+            </div>
+            <div class="form_grp">
+              <label for="">Category</label>
+              <select name="" id="">
+                <option value="">In Door</option>
+                <option value="">Out Door</option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+            <div class="form_grp in_form">
+              <div>
+                <label for="">Price ($)</label>
+                <input type="number" />
+              </div>
+              <div>
+                <label for=""> Stock</label>
+                <input type="number" />
+              </div>
+            </div>
+            <div class="low_form">
+              <button class="low_button">Cancel</button>
+              <button class="low_button">Save</button>
+            </div>
+          </form>
+        </div>
         <!-- Lower section with statistics blocks -->
         <div class="lower">
           <!-- Total Sales statistics block -->
