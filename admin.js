@@ -70,3 +70,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+const addBtn = document.getElementById("add-btn");
+const overlay = document.getElementById("b-overlay");
+const popup = document.querySelector(".popup_modul");
+const close_btn = document.querySelector("#close_btn");
+// فتح النافذة
+addBtn.addEventListener("click", () => {
+  overlay.classList.add("active");
+  popup.classList.add("active");
+});
+
+// غلق النافذة عند الضغط على الخلفية
+close_btn.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  popup.classList.remove("active");
+});
+overlay.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  popup.classList.remove("active");
+});
