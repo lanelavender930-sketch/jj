@@ -18,48 +18,59 @@
     <title>Nursery Plants</title>
   </head>
   <body>
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((r) => r.text())
+        .then((d) => (document.getElementById("navbar").innerHTML = d));
+    </script>
 
-     <div id="navbar"></div>
-  <script>
-             fetch("navbar.html")
-    .then(r => r.text())
-    .then(d => document.getElementById("navbar").innerHTML = d);
-   
-</script>
-
-       <section class="interface">
-        <div class="green-circle"></div>
-        <div class="left-interface">
-                   <h1 style="font-size: 60px">Bring <span style="color: var(--primary-color);">Nature</span><br>  To Your Home</h1>
-        <p style="font-size: 17px;color: #7a7a7a;font-style: italic;">
-          Discover our curated collection of premium indoor and outdoor plants. We provide<br> healthy, beautiful greenery to transform your living spaces into a peaceful sanctuary.
+    <section class="interface">
+      <div class="green-circle"></div>
+      <div class="left-interface">
+        <h1 style="font-size: 60px">
+          Bring <span style="color: var(--primary-color)">Nature</span><br />
+          To Your Home
+        </h1>
+        <p style="font-size: 17px; color: #7a7a7a; font-style: italic">
+          Discover our curated collection of premium indoor and outdoor plants.
+          We provide<br />
+          healthy, beautiful greenery to transform your living spaces into a
+          peaceful sanctuary.
         </p>
         <div class="interface-content">
-           <form>
+          <form>
             <i class="bi bi-search"></i>
-           <input type="search" class="search" placeholder="Search for answers...">
-        </form>
-        <a href="shop.html" style="text-decoration: none;"><button
-          class="btn-left"
-          style="
-            padding:8px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 20px;
-          "
-        >
-          Shop Now
-        <i class="bi bi-arrow-right-short" style="font-size: 25px;"></i>
-      </button></a>
+            <input
+              type="search"
+              class="search"
+              placeholder="Search for answers..."
+            />
+          </form>
+          <a href="shop.html" style="text-decoration: none"
+            ><button
+              class="btn-left"
+              style="
+                padding: 8px 20px;
+                border-radius: 10px;
+                cursor: pointer;
+                font-size: 14px;
+                margin-top: 20px;
+              "
+            >
+              Shop Now
+              <i
+                class="bi bi-arrow-right-short"
+                style="font-size: 25px"
+              ></i></button
+          ></a>
         </div>
-        
-        </div>
-        <div class="right-interface">
-          <img src="/img/Water drop-bro.png" width="450px">
-        </div>
-           <div class="purple-circle"></div>
-       </section>
+      </div>
+      <div class="right-interface">
+        <img src="/img/Water drop-bro.png" width="450px" />
+      </div>
+      <div class="purple-circle"></div>
+    </section>
     <section class="featurs">
       <div class="featurs-grid rounded">
         <i class="bi bi-truck"></i>
@@ -128,7 +139,7 @@
 
         <h1>
           WE Help You Creat Your Own<br /><span
-            style="color: rgb(247, 162, 233);"
+            style="color: rgb(247, 162, 233)"
             >Beautiful Garden</span
           >
         </h1>
@@ -150,7 +161,9 @@
           <i class="bi bi-arrow-right-short"></i>
           <p class="steps">Lifetime plant care support and advice</p>
         </div>
-        <a href="about.html"><button class="our-story-btn">Learn More About Us</button></a>
+        <a href="about.html"
+          ><button class="our-story-btn">Learn More About Us</button></a
+        >
       </div>
     </section>
     <section class="cards-products">
@@ -167,7 +180,7 @@
           <div class="card-image">
             <img src="/img/pots (1).jpg" alt="Fiddle Leaf Fig" width="250" />
             <div class="overlay">
-              <button class="quick-view-btn">
+              <button class="quick-view-btn" onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -192,7 +205,7 @@
             <img src="/img/pots (2).jpg" alt="Fiddle Leaf Fig" width="250" />
             <i class="bi bi-heart"></i>
             <div class="overlay">
-              <button class="quick-view-btn">
+              <button class="quick-view-btn"  onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -216,7 +229,7 @@
             <img src="/img/pots (3).jpg" alt="Fiddle Leaf Fig" width="250" />
             <i class="bi bi-heart"></i>
             <div class="overlay">
-              <button class="quick-view-btn">
+              <button class="quick-view-btn"  onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -240,7 +253,7 @@
             <img src="/img/pots (4).jpg" alt="Fiddle Leaf Fig" width="250" />
             <i class="bi bi-heart"></i>
             <div class="overlay">
-              <button class="quick-view-btn">
+              <button class="quick-view-btn"  onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -260,7 +273,44 @@
           </div>
         </div>
       </div>
-      <a href="shop.html" style="text-decoration: none;"><div class="products-btn">Explore All Products</div></a>
+      <a href="shop.html" style="text-decoration: none"
+        ><div class="products-btn">Explore All Products</div></a
+      >
+
+
+<div id="quickViewModal" class="modal-overlay" onclick="if(event.target === this) closeModal()">
+    <div class="modal-content">
+      <img src="" alt="Plant in modal" width="250" height="300">
+      <div class="plant-info">
+        <div class="m">
+        <p id="modal-type"></p>
+        <h3 id="modal-title"></h3>
+        <span id="modal-price"></span>
+        <p class="plant-information">The Monstera Deliciosa, also known as the Swiss Cheese Plant, is a stunning tropical plant famous for its large, heart-shaped leaves with natural holes (fenestrations). It's a relatively easy-to-care-for plant that can grow quite large, making it a perfect statement piece for any room.</P>
+        </div>
+
+          <div class="m2">
+          <div class="quantity">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+          </div>
+          <div class="m2-button">
+             <button><i class="bi bi-cart3"></i> Add to Cart</button>
+          </div>
+          <div class="m2-heart">
+             <i class="bi bi-heart"></i>
+          </div>
+          </div>
+          <div class="share">
+             <button><i class="bi bi-share"></i> Share this plant</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
     </section>
     <section class="opinions">
       <div class="opinions-header">
@@ -408,7 +458,7 @@
         </div>
       </div>
     </footer>
-    
+
     <script src="script-nursery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/get-google-fonts@1.2.2/main.min.js"></script>
   </body>

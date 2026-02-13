@@ -103,7 +103,7 @@
             <div class="card-image">
               <img src="/img/pots (1).jpg" alt="Fiddle Leaf Fig" width="250" />
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -128,7 +128,7 @@
               <img src="/img/pots (2).jpg" alt="Fiddle Leaf Fig" width="250" />
               <i class="bi bi-heart"></i>
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -152,7 +152,7 @@
               <img src="/img/pots (3).jpg" alt="Fiddle Leaf Fig" width="250" />
               <i class="bi bi-heart"></i>
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -176,7 +176,7 @@
               <img src="/img/pots (4).jpg" alt="Fiddle Leaf Fig" width="250" />
               <i class="bi bi-heart"></i>
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -199,7 +199,7 @@
             <div class="card-image">
               <img src="/img/pots (1).jpg" alt="Fiddle Leaf Fig" width="250" />
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -224,7 +224,7 @@
               <img src="/img/pots (2).jpg" alt="Fiddle Leaf Fig" width="250" />
               <i class="bi bi-heart"></i>
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -248,7 +248,7 @@
               <img src="/img/pots (3).jpg" alt="Fiddle Leaf Fig" width="250" />
               <i class="bi bi-heart"></i>
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -272,7 +272,7 @@
               <img src="/img/pots (4).jpg" alt="Fiddle Leaf Fig" width="250" />
               <i class="bi bi-heart"></i>
               <div class="overlay">
-                <button class="quick-view-btn">
+                <button class="quick-view-btn"  onclick="openModal()">
                   <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
                 </button>
               </div>
@@ -292,6 +292,12 @@
             </div>
           </div>
         </div>
+
+        <div id="quickViewModal" class="modal-overlay" onclick="if(event.target === this) closeModal()">
+    <div class="modal-content">
+    </div>
+  </div>
+  
         <div class="pagination" aria-label="Pagination">
     <!-- Previous Button -->
     <button class="page-btn nav" id="prevBtn" onclick="changePage(-1)" disabled>
