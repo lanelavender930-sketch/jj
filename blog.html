@@ -17,6 +17,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
+    <style>
+      /* --- CSS Styles --- */
+      :root {
+        --primary-green: hsl(142, 76%, 36%);
+        --text-dark: #000000;
+        --text-light: #666;
+        --bg-light: #f9f9f9;
+      }
+    </style>
   </head>
   <body>
     <div id="navbar"></div>
@@ -25,6 +34,99 @@
         .then((r) => r.text())
         .then((d) => (document.getElementById("navbar").innerHTML = d));
     </script>
+
+    <!-- Header Section -->
+    <div class="header">
+      <h1>Gardening Blog</h1>
+      <p>
+        Expert advice, plant care guides, and interior design inspiration to
+        help you grow your own urban jungle.
+      </p>
+      <!-- تم إزالة البحث من هنا -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="container11">
+      <!-- Blog Posts Column (Left) -->
+      <main class="blog-posts">
+        <!-- Article 1 -->
+        <article class="blog-card">
+          <img src="/img/categories (1).jpg" alt="Plant Care" />
+          <div class="meta-info">
+            <span class="category-tag">Plant Care</span>
+            <span><i class="bi bi-calendar4"></i> March 10, 2024</span>
+            <span><i class="bi bi-person"></i> Emma Green</span>
+          </div>
+          <h2>10 Essential Tips for First-Time Plant Parents</h2>
+          <p>
+            Starting your plant journey can be overwhelming. Here are the most
+            important things you need to know to keep your new green friends
+            alive and thriving.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="blog-card">
+          <img src="/img/categories (2).jpg" alt="Monstera" />
+          <div class="meta-info">
+            <span class="category-tag">Propagation</span>
+            <span><i class="bi bi-calendar4"></i> February 28, 2024</span>
+            <span><i class="bi bi-person"></i> Emma Green</span>
+          </div>
+          <h2>How to Propagate Your Monstera Like a Pro</h2>
+          <p>
+            Want more Swiss Cheese plants for free? Propagation is easier than
+            you think. Follow our step-by-step guide to water propagation.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="blog-card">
+          <img src="/img/categories (3).jpg" alt="Office Plants" />
+          <div class="meta-info">
+            <span class="category-tag">Interior Design</span>
+            <span><i class="bi bi-calendar4"></i> March 5, 2024</span>
+            <span><i class="bi bi-person"></i> David Leaf</span>
+          </div>
+          <h2>The Best Low-Light Plants for Your Home Office</h2>
+          <p>
+            Don't have a window in your workspace? No problem. These resilient
+            plants thrive in low-light conditions and will brighten up your
+            desk.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </article>
+
+        <button class="load-more-btn">Load More Articles</button>
+      </main>
+
+      <!-- Sidebar Column (Right) -->
+      <aside>
+        <!-- Search Widget (Moved Here) -->
+        <div class="sidebar-widget">
+          <h3>Search Blog</h3>
+          <input
+            type="text"
+            class="search-input-sidebar"
+            placeholder="Search articles..."
+            id="searchInput"
+          />
+        </div>
+
+        <!-- Newsletter Widget -->
+        <div class="newsletter-box">
+          <h3>Join Our Newsletter</h3>
+          <p>
+            Get weekly plant care tips and exclusive offers delivered to your
+            inbox.
+          </p>
+          <input type="email" placeholder="Your email" id="emailInput" />
+          <button>Subscribe</button>
+        </div>
+      </aside>
+    </div>
 
     <footer>
       <div class="footer-content">

@@ -151,79 +151,60 @@ document.querySelectorAll(".tab").forEach((tab) => {
   });
 });
 /*login form */
+function showForm(formId) {
+  document.getElementById("login-form").style.display =
+    formId === "login" ? "block" : "none";
+  document.getElementById("register-form").style.display =
+    formId === "register" ? "block" : "none";
+}
 
- function showForm(formId) {
-    document.getElementById('login-form').style.display = formId === 'login' ? 'block' : 'none';
-    document.getElementById('register-form').style.display = formId === 'register' ? 'block' : 'none';
+function animateSwitch(toFormId) {
+  const login = document.getElementById("login-form");
+  const reg = document.getElementById("register-form");
+
+  login.classList.remove("slide-out", "slide-in");
+  reg.classList.remove("slide-out", "slide-in");
+
+  if (toFormId === "register") {
+    login.classList.add("slide-out");
+    reg.classList.add("slide-in");
+    setTimeout(() => {
+      showForm("register");
+      login.classList.remove("slide-out");
+      reg.classList.remove("slide-in");
+    }, 0);
+  } else if (toFormId === "login") {
+    reg.classList.add("slide-out");
+    login.classList.add("slide-in");
+    setTimeout(() => {
+      showForm("login");
+      reg.classList.remove("slide-out");
+      login.classList.remove("slide-in");
+    }, 0);
   }
+}
 
-  // Login validation
-  function handleLogin() {
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
+// تركيز تلقائي عند التحميل
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("login-email").focus();
+});
 
-    const emailError = document.getElementById('login-email-error');
-    const passError = document.getElementById('login-password-error');
+/* blog page */
+// وظيفة البحث
+const searchInput = document.getElementById("searchInput");
+const articles = document.querySelectorAll(".blog-card");
 
-    let isValid = true;
+searchInput.addEventListener("keyup", function (e) {
+  const term = e.target.value.toLowerCase();
 
-    if (!email) {
-      emailError.style.display = 'block';
-      isValid = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      emailError.textContent = 'Please enter a valid email address.';
-      emailError.style.display = 'block';
-      isValid = false;
+  articles.forEach((article) => {
+    const title = article.querySelector("h2").textContent.toLowerCase();
+    const desc = article.querySelector("p").textContent.toLowerCase();
+
+    if (title.indexOf(term) != -1 || desc.indexOf(term) != -1) {
+      article.style.display = "block";
     } else {
-      emailError.style.display = 'none';
+      article.style.display = "none";
     }
-
-    if (!password || password.length < 6) {
-      passError.style.display = 'block';
-      isValid = false;
-    } else {
-      passError.style.display = 'none';
-    }
-
-    if (isValid) {
-      alert('✅ Login successful! (Demo)');
-      // Here you'd send to backend: fetch('/login', { method: 'POST', body: JSON.stringify({email, password}) })
-    }
-  }
-
-  // Register validation
-  function handleRegister() {
-    const firstName = document.getElementById('reg-first').value.trim();
-    const lastName = document.getElementById('reg-last').value.trim();
-    const email = document.getElementById('reg-email').value.trim();
-    const password = document.getElementById('reg-password').value;
-    const terms = document.getElementById('terms').checked;
-
-    if (!firstName || !lastName) {
-      alert('Please fill in both first and last name.');
-      return;
-    }
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Please enter a valid email.');
-      return;
-    }
-
-    if (password.length < 6) {
-      alert('Password must be at least 6 characters.');
-      return;
-    }
-
-    if (!terms) {
-      alert('You must agree to the terms and conditions.');
-      return;
-    }
-
-    alert('✅ Account created! (Demo)');
-    // Here: fetch('/register', { method: 'POST', body: JSON.stringify({firstName, lastName, email, password}) })
-  }
-
-  // Optional: auto-focus on first input
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('login-email').focus();
   });
+});
