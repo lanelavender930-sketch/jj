@@ -205,7 +205,7 @@
             <img src="/img/pots (2).jpg" alt="Fiddle Leaf Fig" width="250" />
             <i class="bi bi-heart"></i>
             <div class="overlay">
-              <button class="quick-view-btn"  onclick="openModal(this)">
+              <button class="quick-view-btn" onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -229,7 +229,7 @@
             <img src="/img/pots (3).jpg" alt="Fiddle Leaf Fig" width="250" />
             <i class="bi bi-heart"></i>
             <div class="overlay">
-              <button class="quick-view-btn"  onclick="openModal(this)">
+              <button class="quick-view-btn" onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -253,7 +253,7 @@
             <img src="/img/pots (4).jpg" alt="Fiddle Leaf Fig" width="250" />
             <i class="bi bi-heart"></i>
             <div class="overlay">
-              <button class="quick-view-btn"  onclick="openModal(this)">
+              <button class="quick-view-btn" onclick="openModal(this)">
                 <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
               </button>
             </div>
@@ -277,40 +277,108 @@
         ><div class="products-btn">Explore All Products</div></a
       >
 
+      <div
+        id="quickViewModal"
+        class="modal-overlay"
+        onclick="if (event.target === this) closeModal();"
+      >
+        <div class="modal-content">
+          <img src="" alt="Plant in modal" width="200" height="250" />
+          <div class="plant-info">
+            <div class="m">
+              <p id="modal-type"></p>
+              <h3 id="modal-title"></h3>
+              <span id="modal-price"></span>
+              <p class="plant-information">
+                The Monstera Deliciosa, also known as the Swiss Cheese Plant, is
+                a stunning tropical plant famous for its large, heart-shaped
+                leaves with natural holes (fenestrations). It's a relatively
+                easy-to-care-for plant that can grow quite large, making it a
+                perfect statement piece for any room.
+              </p>
+            </div>
+            <div class="m2">
+              <div class="quantity">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+              </div>
+              <div class="m2-button">
+                <button><i class="bi bi-cart3"></i> Add to Cart</button>
+              </div>
+              <div class="m2-heart">
+                <i class="bi bi-heart"></i>
+              </div>
+            </div>
+            <div class="share">
+              <button><i class="bi bi-share"></i> Share this plant</button>
+            </div>
+          </div>
+          <div class="care">
+            <div class="care-header">
+              <p class="tab active" data-target="care-content">
+                Care Instructions
+              </p>
+              <p class="tab" data-target="details-content">Product Details</p>
+            </div>
 
-<div id="quickViewModal" class="modal-overlay" onclick="if(event.target === this) closeModal()">
-    <div class="modal-content">
-      <img src="" alt="Plant in modal" width="250" height="300">
-      <div class="plant-info">
-        <div class="m">
-        <p id="modal-type"></p>
-        <h3 id="modal-title"></h3>
-        <span id="modal-price"></span>
-        <p class="plant-information">The Monstera Deliciosa, also known as the Swiss Cheese Plant, is a stunning tropical plant famous for its large, heart-shaped leaves with natural holes (fenestrations). It's a relatively easy-to-care-for plant that can grow quite large, making it a perfect statement piece for any room.</P>
+            <div id="care-content" class="tab-content active">
+              <div class="tab-content0">
+                <div class="care-item">
+                  <div class="text">
+                    <strong
+                      ><i class="bi bi-brightness-high"></i> Sunlight</strong
+                    >
+                    <p>
+                      Bright indirect light. Avoid direct<br />
+                      sunlight which can burn the leaves.
+                    </p>
+                  </div>
+                </div>
+                <div class="care-item">
+                  <div class="text">
+                    <strong><i class="bi bi-droplet"></i> Water</strong>
+                    <p>
+                      Water every 1-2 weeks, allowing soil<br />
+                      to dry out between waterings.
+                    </p>
+                  </div>
+                </div>
+                <div class="care-item">
+                  <div class="text">
+                    <strong
+                      ><i class="bi bi-thermometer-half"></i>
+                      Temperature</strong
+                    >
+                    <p>
+                      65°F-85°F (18°C-30°C). Keep away<br />
+                      from cold drafts.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="details-content" class="tab-content">
+              <div class="keyF">
+                <h3>Key Features</h3>
+                <ul>
+                  <div class="hl">
+                    <div class="tab-content-c">
+                      <li>Air purifying qualitiesggiiii</li>
+                      <li>Fast growing in right conditions</li>
+                    </div>
+                    <div class="tab-content-c">
+                      <li>Pet-friendly and non-toxic</li>
+                      <li>Comes in a 6-inch ceramic pot</li>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-          <div class="m2">
-          <div class="quantity">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
-          </div>
-          <div class="m2-button">
-             <button><i class="bi bi-cart3"></i> Add to Cart</button>
-          </div>
-          <div class="m2-heart">
-             <i class="bi bi-heart"></i>
-          </div>
-          </div>
-          <div class="share">
-             <button><i class="bi bi-share"></i> Share this plant</button>
-          </div>
       </div>
-    </div>
-  </div>
-
-
-
     </section>
     <section class="opinions">
       <div class="opinions-header">

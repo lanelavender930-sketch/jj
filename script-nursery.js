@@ -83,29 +83,27 @@ function updateUI() {
 
 /*Quick view Modal Window */
 function openModal(button) {
-
-    const card = button.closest('.card');
+  const card = button.closest(".card");
 
   // 2. نأخذ الصورة من البطاقة
-  const imgSrc = card.querySelector('img')?.src || '';
+  const imgSrc = card.querySelector("img")?.src || "";
 
   // 3. نأخذ اسم النبتة من <h3> داخل البطاقة
-  const titleText = card.querySelector('h3')?.textContent || 'نبتة غير معروفة';
- const paragraphs = card.querySelectorAll('p');
-  const typeText = paragraphs[0]?.textContent || 'غير محدد';
-  const priceText = paragraphs[1]?.textContent || '$0.00';
+  const titleText = card.querySelector("h3")?.textContent || "نبتة غير معروفة";
+  const paragraphs = card.querySelectorAll("p");
+  const typeText = paragraphs[0]?.textContent || "غير محدد";
+  const priceText = paragraphs[1]?.textContent || "$0.00";
   // 4. نملأ النافذة:
-  const modalImg = document.querySelector('#quickViewModal img');
-  const modalTitle = document.getElementById('modal-title');
-  const modalType = document.getElementById('modal-type');
-  const modalPrice = document.getElementById('modal-price');
+  const modalImg = document.querySelector("#quickViewModal img");
+  const modalTitle = document.getElementById("modal-title");
+  const modalType = document.getElementById("modal-type");
+  const modalPrice = document.getElementById("modal-price");
 
-   if (modalImg) modalImg.src = imgSrc;
+  if (modalImg) modalImg.src = imgSrc;
   if (modalTitle) modalTitle.textContent = titleText;
   if (modalType) modalType.textContent = typeText;
   if (modalPrice) modalPrice.textContent = priceText;
 
-  
   document.getElementById("quickViewModal").style.display = "flex";
   document.body.style.overflow = "hidden";
 }
@@ -134,3 +132,21 @@ fetch("navbar.html")
       }
     });
   });
+/*care instractions */
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    // إزالة التفعيل من كل التبويبات والمحتويات
+    document
+      .querySelectorAll(".tab")
+      .forEach((t) => t.classList.remove("active"));
+    document
+      .querySelectorAll(".tab-content")
+      .forEach((c) => c.classList.remove("active"));
+    // تفعيل التبويب المضغوط
+    tab.classList.add("active");
+
+    // عرض المحتوى المرتبط
+    const targetId = tab.getAttribute("data-target");
+    document.getElementById(targetId).classList.add("active");
+  });
+});

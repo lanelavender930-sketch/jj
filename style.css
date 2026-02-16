@@ -443,27 +443,27 @@ nav button {
 }
 
 .modal-content {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   background: rgb(231, 230, 230);
   border-radius: 16px;
   padding: 30px;
-  width: 70%;
+  width: 64%;
   height: 70%;
   overflow-y: auto;
-  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-  margin: 0 auto;
 }
-.modal-content img{
- border-radius: 20px;
-  outline: 2px solid var(--light-green);
-  outline-offset: 4px;
+.modal-content img {
+  border-radius: 20px;
 }
-.plant-info{
-  margin-left: 30px;
+.plant-info {
   line-height: 15px;
+  margin-right: 40px !important;
 }
-.plant-info p{
+.plant-info p {
   background-color: #b6e0c04c;
   border-radius: 20px;
   text-align: center;
@@ -474,7 +474,7 @@ nav button {
   color: #082809;
   font-style: italic;
 }
-.plant-info p:last-child{
+.plant-info p:last-child {
   background: none;
   width: 600px;
   font-weight: normal;
@@ -482,41 +482,41 @@ nav button {
   text-align: left;
   color: #7a7a7a;
 }
-.plant-information{
+.plant-information {
   line-height: 23px;
 }
-.plant-info h3{
+.plant-info h3 {
   font-size: 23px;
 }
-.plant-info span{
+.plant-info span {
   font-size: 25px;
- font-weight: bold;
- color: var(--primary-color);
+  font-weight: bold;
+  color: var(--primary-color);
 }
-.plant-info .quantity{
+.plant-info .quantity {
   display: flex;
   align-items: center;
 }
-.plant-info .quantity span{
-   font-size: 20px;
-   color: #000000;
+.plant-info .quantity span {
+  font-size: 20px;
+  color: #000000;
 }
-.m2{
+.m2 {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.m2-button button{
+.m2-button button {
   padding: 12px 105px;
   border-radius: 25px;
   border: none;
   color: white;
   background-color: var(--primary-color);
 }
-.m2-button button:hover{
+.m2-button button:hover {
   background-color: #16a249e6;
 }
-.m2-heart i{
+.m2-heart i {
   cursor: pointer;
   background: none;
   padding: 10px 13px;
@@ -524,11 +524,11 @@ nav button {
   border-radius: 50%;
   border: 1px solid rgba(128, 128, 128, 0.21);
 }
-.m2-heart i:hover{
+.m2-heart i:hover {
   background-color: #5dce7745;
   color: var(--forth-color);
 }
-.share button{
+.share button {
   margin-top: 10px;
   padding: 6px 177px;
   border-radius: 16px;
@@ -536,9 +536,105 @@ nav button {
   background: none;
   color: rgb(114, 114, 114);
 }
-.share button:hover{
+.share button:hover {
   background-color: #5dce7713;
   color: black;
+}
+.care {
+  width: 220px;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.care-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  gap: 70px;
+}
+
+/* تنسيق التبويبات */
+.care-header p {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+  padding-bottom: 8px;
+  margin: 0;
+  transition: color 0.7s;
+}
+.care-header p:hover {
+  color: #333;
+}
+/* الخط الأخضر يظهر فقط للـ active */
+.care-header .tab.active {
+  border-bottom: 2px solid var(--primary-color);
+  color: #333;
+}
+
+/* إخفاء المحتويات غير النشطة */
+.tab-content {
+  display: none;
+  gap: 60px;
+}
+.tab-content0 {
+  display: flex;
+  gap: 30px;
+}
+.tab-content0 p {
+  font-style: italic;
+}
+.tab-content.active {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.tab-content-c {
+  display: flex;
+  gap: 60px;
+}
+/* تنسيق محتوى Care Instructions */
+.care-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.icon {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.text strong {
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 4px;
+}
+.keyF {
+  display: block;
+}
+.keyF h3 {
+  margin-left: 20px;
+}
+/* تنسيق Product Details */
+.tab-content ul {
+  padding-right: 20px;
+  margin: 10px 0;
+}
+
+.tab-content li {
+  margin-bottom: 8px;
+  list-style: none;
+  position: relative;
+}
+
+.tab-content li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: -18px;
 }
 .card-image:hover .overlay {
   opacity: 1;
@@ -1465,19 +1561,19 @@ button[type="submit"]:active {
   justify-content: space-around;
 }
 .quantity button {
-    background: none;
-    border: none;
-    font-size: 22px;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.2s ease;
+  background: none;
+  border: none;
+  font-size: 22px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
 }
 .quantity button:hover {
-    background-color: #6fba714a;
+  background-color: #6fba714a;
 }
 
 .total {
