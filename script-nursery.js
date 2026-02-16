@@ -150,3 +150,80 @@ document.querySelectorAll(".tab").forEach((tab) => {
     document.getElementById(targetId).classList.add("active");
   });
 });
+/*login form */
+
+ function showForm(formId) {
+    document.getElementById('login-form').style.display = formId === 'login' ? 'block' : 'none';
+    document.getElementById('register-form').style.display = formId === 'register' ? 'block' : 'none';
+  }
+
+  // Login validation
+  function handleLogin() {
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    const emailError = document.getElementById('login-email-error');
+    const passError = document.getElementById('login-password-error');
+
+    let isValid = true;
+
+    if (!email) {
+      emailError.style.display = 'block';
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailError.textContent = 'Please enter a valid email address.';
+      emailError.style.display = 'block';
+      isValid = false;
+    } else {
+      emailError.style.display = 'none';
+    }
+
+    if (!password || password.length < 6) {
+      passError.style.display = 'block';
+      isValid = false;
+    } else {
+      passError.style.display = 'none';
+    }
+
+    if (isValid) {
+      alert('✅ Login successful! (Demo)');
+      // Here you'd send to backend: fetch('/login', { method: 'POST', body: JSON.stringify({email, password}) })
+    }
+  }
+
+  // Register validation
+  function handleRegister() {
+    const firstName = document.getElementById('reg-first').value.trim();
+    const lastName = document.getElementById('reg-last').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const password = document.getElementById('reg-password').value;
+    const terms = document.getElementById('terms').checked;
+
+    if (!firstName || !lastName) {
+      alert('Please fill in both first and last name.');
+      return;
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email.');
+      return;
+    }
+
+    if (password.length < 6) {
+      alert('Password must be at least 6 characters.');
+      return;
+    }
+
+    if (!terms) {
+      alert('You must agree to the terms and conditions.');
+      return;
+    }
+
+    alert('✅ Account created! (Demo)');
+    // Here: fetch('/register', { method: 'POST', body: JSON.stringify({firstName, lastName, email, password}) })
+  }
+
+  // Optional: auto-focus on first input
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('login-email').focus();
+  });

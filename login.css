@@ -1,0 +1,217 @@
+:root {
+      --primary: hsl(142, 76%, 36%);
+      --primary-dark: hsl(137, 73%, 41%);
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --dark: black;
+      --border: #dee2e6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, hsla(142, 76%, 36%, 0.279), #ffffff, #ffffff,#ffffff, hsla(142, 76%, 36%, 0.279), hsla(142, 76%, 36%, 0.653));
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+        margin-top: 100px;
+        margin-left: 420px;
+        margin-bottom: 50px;
+      width: 100%;
+      max-width: 440px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .form-container {
+      padding: 30px;
+    }
+
+    .form-title {
+      text-align: center;
+      font-size: 29px;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .form-subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .btn-social {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      color: var(--dark);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-social:hover {
+      background: #eafff4;
+      transform: translateY(-2px);
+    }
+
+    .btn-social i {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .dividere {
+      display: flex;
+      align-items: center;
+      margin: 24px 0;
+    }
+
+    .dividere::before,
+    .dividere::after {
+      content: '';
+      flex: 1;
+      border-top: 1px solid var(--border);
+    }
+
+    .dividere span {
+      padding: 0 12px;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+     .input-group0{
+        display: flex;
+        gap: 15px;
+     }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+    .forgot-password:hover{
+        text-decoration: underline;
+      cursor: pointer;
+      color: var(--primary);
+    }
+    .forgot-password a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--gray);
+    }
+
+    .signup-link a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+     .signup-link a:hover{
+           text-decoration: underline;
+      cursor: pointer;
+      color: var(--primary);
+     }
+    .form-switch {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .form-switch a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .terms {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .terms input {
+      margin-right: 8px;
+      width: auto;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 440px) {
+      .social-login {
+        flex-direction: column;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }

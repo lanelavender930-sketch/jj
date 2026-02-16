@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=local_shipping"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((r) => r.text())
+        .then((d) => (document.getElementById("navbar").innerHTML = d));
+    </script>
+    
+    <div class="container">
+  <!-- Login Form (default visible) -->
+  <div id="login-form" class="form-container">
+    <h2 class="form-title"><i
+    class="fa-solid fa-leaf"
+    style="color: var(--primary); padding-left: 20px"
+  ></i
+  > Welcome Back</h2>
+    <p class="form-subtitle">Enter your credentials to access your account</p>
+
+    <div class="social-login">
+      <button class="btn-social" onclick="alert('Google login clicked')">
+        <img src="/img/google (1).png" width="17" style="margin-right: 5px;"> Google
+      </button>
+      <button class="btn-social" onclick="alert('GitHub login clicked')">
+        <i class="fab fa-github" style="color:black;"></i> GitHub
+      </button>
+    </div>
+
+    <div class="dividere">
+      <span>OR CONTINUE WITH EMAIL</span>
+    </div>
+
+    <div class="input-group">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" placeholder="hello@example.com" required>
+      <div id="login-email-error" class="error-message">Please enter a valid email.</div>
+    </div>
+
+    <div class="input-group">
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" required>
+      <div id="login-password-error" class="error-message">Password must be at least 6 characters.</div>
+      <div class="forgot-password">
+        <a href="#" onclick="alert('Forgot password?')">Forgot password?</a>
+      </div>
+    </div>
+
+    <button class="btn" onclick="handleLogin()">Sign In</button>
+
+    <p class="signup-link">
+      Don't have an account? <a href="#" onclick="showForm('register')">Sign up</a>
+    </p>
+  </div>
+
+  <!-- Register Form -->
+  <div id="register-form" class="form-container" style="display:none;">
+    <h2 class="form-title"><i
+    class="fa-solid fa-leaf"
+    style="color: var(--primary); padding-left: 20px"
+  ></i
+  > Create Account</h2>
+    <p class="form-subtitle">Join our green community today</p>
+
+    <div class="social-login">
+      <button class="btn-social" onclick="alert('Google sign up clicked')">
+        <img src="/img/google (1).png" width="17" style="margin-right: 5px;"> Google
+      </button>
+      <button class="btn-social" onclick="alert('GitHub sign up clicked')">
+        <i class="fab fa-github" style="color:black;"></i> GitHub
+      </button>
+    </div>
+
+    <div class="dividere">
+      <span>OR REGISTER WITH EMAIL</span>
+    </div>
+      <div class="input-group0">
+         <div class="input-group">
+      <label for="reg-first">First Name</label>
+      <input type="text" id="reg-first" placeholder="Jane" required>
+    </div>
+
+    <div class="input-group">
+      <label for="reg-last">Last Name</label>
+      <input type="text" id="reg-last" placeholder="Doe" required>
+    </div>
+      </div>
+   
+
+    <div class="input-group">
+      <label for="reg-email">Email</label>
+      <input type="email" id="reg-email" placeholder="jane@example.com" required>
+    </div>
+
+    <div class="input-group">
+      <label for="reg-password">Password</label>
+      <input type="password" id="reg-password" minlength="6" required>
+    </div>
+
+    <div class="terms">
+      <input type="checkbox" id="terms" required>
+      <label for="terms">I agree to the terms and conditions</label>
+    </div>
+
+    <button class="btn" onclick="handleRegister()">Create Account</button>
+
+    <p class="signup-link">
+      Already have an account? <a href="#" onclick="showForm('login')">Sign in</a>
+    </p>
+  </div>
+</div>
+
+<footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>
+            <i
+              class="fa-solid fa-leaf"
+              style="color: var(--primary-color); padding-left: 20px"
+            ></i
+            ><span
+              style="
+                font-family: &quot;poppins&quot;, sans-serif;
+                font-weight: 800;
+              "
+            >
+              Plants Nursery</span
+            >
+          </h3>
+          <p style="font-size: 14px; line-height: 20px">
+            Bringing nature closer to you. We provide<br />a curated collection
+            of premium indoor<br />and outdoor plants to transform your<br />living
+            spaces.
+          </p>
+          <a class="socials" href="#"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a class="socials" href="#"><i class="bi bi-twitter-x"></i></a>
+          <a class="socials" href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a class="socials" href="#"
+            ><i class="fa-brands fa-pinterest-p"></i
+          ></a>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="admin.html">Admin Panel</a></li>
+            <li><a href="employee.html">Employee Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            <i class="contacts fa-solid fa-location-dot"></i> 123 Green St,
+            Plant City, PC 12345
+          </p>
+          <p><i class="contacts fa-solid fa-phone"></i> +1 (123)456-7890</p>
+          <p>
+            <i class="contacts fa-solid fa-envelope"></i> info@plantsnursery.com
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p style="font-size: 15px">
+            Subscribe to get special offers, free<br />
+            giveaways, and once-in-a-lifetime deals.
+          </p>
+          <div class="newsletter-form-footer">
+            <input type="email" placeholder="Enter your email address" />
+            <button class="subscribe-btn-footer">Subscribe</button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Plants Nursery. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script-nursery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/get-google-fonts@1.2.2/main.min.js"></script>
+</body>
+</html>
