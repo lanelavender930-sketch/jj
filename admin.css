@@ -648,17 +648,17 @@ button {
   justify-content: space-between;
   align-items: center;
 }
-.popup_modul .form_grp {
+.form_grp {
   margin-bottom: 15px;
 }
-.popup_modul .form_grp label {
+.form_grp label {
   padding-right: 4px;
   padding-bottom: 4px;
   font-size: 14px;
   font-weight: 600;
 }
 
-.popup_modul .form_grp input {
+.form_grp input {
   width: 100%;
   border: 1px #e0e0e0 solid;
   border-radius: 6px;
@@ -666,13 +666,13 @@ button {
   margin-top: 6px;
   font-size: small;
 }
-.popup_modul .form_grp input:focus {
+.form_grp input:focus {
   outline: none;
   border-color: var(--green);
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(22, 162, 70, 0.12);
 }
-.popup_modul .in_form {
+.in_form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -724,4 +724,189 @@ button {
 
 .popup_modul.active {
   display: block;
+}
+/* employee portal style end  */
+/* profile start  */
+.profile_section {
+  margin-top: 130px;
+}
+.profile_section .container {
+  display: flex;
+}
+.profile_section .side_page {
+  width: 240px;
+}
+.profile_section .side_page .admin_frame {
+  background-color: #f3f7f44c;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.profile_section .side_page .admin_pic {
+  width: auto;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 35px;
+  background-color: #16a2491a;
+}
+.profile_section .side_page .admin_frame h3 {
+  margin-bottom: 0;
+}
+.profile_section .side_page .admin_frame p {
+  margin-top: 5px;
+  color: var(--greycolor);
+  font-size: 14px;
+}
+.profile_section .side_page .tab {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.profile_section .side_page button {
+  padding: 14px 16px;
+  width: 100%;
+  text-align: left;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+  border: none;
+  background-color: white;
+  transition: 0.3s;
+}
+.profile_section .side_page .tab .active {
+  background-color: #eeeeee;
+}
+.profile_section .side_page .tab .tab-btn:hover {
+  color: var(--dark-green);
+  background-color: #deede3;
+}
+.profile_section .side_page button i {
+  padding-right: 8px;
+}
+.profile_section .side_page .tab hr {
+  border: none;
+  height: 2px;
+  background-color: #e0e0e0;
+  margin-top: 10px;
+  width: 100%;
+}
+.profile_section .side_page .sign-out {
+  color: #ef4444;
+}
+.profile_section .side_page .sign-out:hover {
+  background-color: #ef44441a;
+}
+.profile_section .main-page {
+  margin-top: 50px;
+  width: 100%;
+  margin-left: 50px;
+}
+.profile_section .main-page .frame {
+  margin-bottom: 30px;
+}
+.profile_section .main-page .frame .up_frame {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  background-color: #f3f7f433;
+  border: #eeeeee 1px solid;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.profile_section .main-page .frame .up_frame .information {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.profile_section .main-page .frame .up_frame .information div {
+}
+.profile_section .main-page .frame .up_frame .information p {
+  font-size: 12px;
+  color: var(--greycolor);
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.profile_section .main-page .frame .up_frame .information h3 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+}
+.profile_section .main-page .frame .up_frame #details {
+  height: 40px;
+  padding: 8px 14px;
+  border: 1px #eeeeee solid;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: white;
+}
+.profile_section .main-page .frame .up_frame #details:hover {
+  color: var(--dark-green);
+  background-color: #deede3;
+}
+.profile_section .main-page .frame .down_frame {
+  padding: 24px;
+  font-size: 14px;
+  border: #eeeeee 1px solid;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.profile_section .main-page .frame .down_frame .state {
+  display: flex;
+  color: #16a246;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.profile_section .main-page .frame .down_frame p {
+  margin: 0;
+}
+.profile_section .main-page .frame .down_frame .state .p_state {
+  color: var(--greycolor);
+  margin-left: 10px;
+  margin: 0;
+}
+
+.profile_section .main-page .frame .down_frame .state h3 {
+  margin: 0;
+}
+.profile_section .main-page .frame .down_frame .products div {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+.profile_section .main-page .card-image .bi-heart {
+  color: red;
+}
+.main-page .acc_seetings_page .cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.main-page .acc_seetings_page .form_grp {
+  margin-bottom: 20px;
+}
+.main-page .acc_seetings_page .form_grp input {
+  padding: 4px;
+}
+.main-page .acc_seetings_page button {
+  padding: 8px 16px;
+  border: 1px #eeeeee solid;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: white;
+}
+
+.main-page .acc_seetings_page .upd_pass:hover {
+  color: var(--dark-green);
+  background-color: #deede3;
 }
