@@ -910,3 +910,25 @@ button {
   color: var(--dark-green);
   background-color: #deede3;
 }
+.product_form .prod_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #4caf50;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%; /* حجم مناسب للنبات */
+  height: 350px; /* أطول من العرض */
+  overflow: hidden;
+  transition: 0.3s;
+}
+.product_form .prod_img:hover {
+  background-color: #f0fff0;
+}
+.product_form .prod_img #preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}

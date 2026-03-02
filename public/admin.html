@@ -106,33 +106,55 @@
             <h3>Add Product</h3>
             <button id="close_btn">X</button>
           </div>
-          <form action="" class="product_form">
+          <form action="/admin" class="product_form" method="post">
             <div class="form_grp">
               <label for="">name</label>
-              <input type="text" />
+              <input type="text" id="name" name="name" required />
             </div>
             <div class="form_grp">
               <label for="">Category</label>
-              <select name="" id="">
-                <option value="">In Door</option>
-                <option value="">Out Door</option>
-                <option value=""></option>
-                <option value=""></option>
+              <select name="category" id="Category">
+                <option value="In Door">In Door</option>
+                <option value="Out Door">Out Door</option>
               </select>
             </div>
             <div class="form_grp in_form">
               <div>
-                <label for="">Price ($)</label>
-                <input type="number" />
+                <label for="price">Price ($)</label>
+                <input
+                  type="number"
+                  step="any"
+                  id="price"
+                  name="price"
+                  min="1"
+                  required
+                />
               </div>
               <div>
                 <label for=""> Stock</label>
-                <input type="number" />
+                <input
+                  type="number"
+                  min="1"
+                  id="quantity"
+                  name="quantity"
+                  required
+                />
               </div>
             </div>
+            <div class="prod_img" id="prod_img">
+              <p id="pr_txt">add the product picture +</p>
+              <input
+                name="image"
+                type="file"
+                id="fileInput"
+                accept="image/*"
+                hidden
+                required
+              />
+              <img id="preview" />
+            </div>
             <div class="low_form">
-              <button class="low_button">Cancel</button>
-              <button class="low_button">Save</button>
+              <button class="low_button" type="submit">Save</button>
             </div>
           </form>
         </div>
@@ -167,7 +189,7 @@
               <i class="fa-solid fa-box"></i>
               <!-- Box icon -->
             </div>
-            <h3>156</h3>
+            <h3 id="plant_count">12</h3>
             <p>8 categories</p>
           </div>
 
@@ -336,180 +358,18 @@
 
             <!-- Products inventory table -->
             <table class="table-dis">
-              <!-- Table header row -->
-              <tr>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-
-              <!-- Product 1 - Monstera Deliciosa -->
-              <tr>
-                <td>Monstera Deliciosa</td>
-                <td>Indoor Plants</td>
-                <td>$45.00</td>
-                <td>24</td>
-                <td><span class="badge in-stack">in-stack</span></td>
-                <td>
-                  <!-- Kebab menu for actions -->
-                  <div class="kabab-ic">
-                    <i class="f-ic fa-solid fa-ellipsis"></i>
-                    <!-- Three dots icon -->
-                    <!-- Dropdown menu -->
-                    <ul class="kabab-list">
-                      <li>
-                        <h3>Actions</h3>
-                      </li>
-                      <!-- Edit product option -->
-                      <li>
-                        <button class="edit-ic">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                          <p>Edit product</p>
-                        </button>
-                      </li>
-                      <!-- Update stock option -->
-                      <li>
-                        <button class="upd-ic">
-                          <i class="fa-solid fa-box"></i>
-                          <p>Update Stock</p>
-                        </button>
-                      </li>
-                      <hr />
-                      <!-- Separator line -->
-                      <!-- Delete option -->
-                      <li>
-                        <button class="del-ic">
-                          <i class="fa-solid fa-trash"></i>
-                          <p>Delete</p>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- Product 2 - Snake Plant -->
-              <tr>
-                <td>Snake Plant</td>
-                <td>Indoor Plants</td>
-                <td>$45.50</td>
-                <td>15</td>
-                <td><span class="badge in-stack">in-stack</span></td>
-                <td>
-                  <!-- Kebab menu for actions -->
-                  <div class="kabab-ic">
-                    <i class="f-ic fa-solid fa-ellipsis"></i>
-                    <!-- Dropdown menu -->
-                    <ul class="kabab-list">
-                      <li>
-                        <h3>Actions</h3>
-                      </li>
-                      <li>
-                        <button class="edit-ic">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                          <p>Edit product</p>
-                        </button>
-                      </li>
-                      <li>
-                        <button class="upd-ic">
-                          <i class="fa-solid fa-box"></i>
-                          <p>Update Stock</p>
-                        </button>
-                      </li>
-                      <hr />
-                      <li>
-                        <button class="del-ic">
-                          <i class="fa-solid fa-trash"></i>
-                          <p>Delete</p>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- Product 3 - Aloe Vera (Indoor Plants category) -->
-              <tr>
-                <td>Aloe Vera</td>
-                <td>Indoor Plants</td>
-                <td>$125.00</td>
-                <td>10</td>
-                <td><span class="badge low-stack">low-stack</span></td>
-                <td>
-                  <!-- Kebab menu for actions -->
-                  <div class="kabab-ic">
-                    <i class="f-ic fa-solid fa-ellipsis"></i>
-                    <!-- Dropdown menu -->
-                    <ul class="kabab-list">
-                      <li>
-                        <h3>Actions</h3>
-                      </li>
-                      <li>
-                        <button class="edit-ic">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                          <p>Edit product</p>
-                        </button>
-                      </li>
-                      <li>
-                        <button class="upd-ic">
-                          <i class="fa-solid fa-box"></i>
-                          <p>Update Stock</p>
-                        </button>
-                      </li>
-                      <hr />
-                      <li>
-                        <button class="del-ic">
-                          <i class="fa-solid fa-trash"></i>
-                          <p>Delete</p>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- Product 4 - Aloe Vera (Succulents category) -->
-              <tr>
-                <td>Aloe Vera</td>
-                <td>Succulents</td>
-                <td>$89.00</td>
-                <td>9</td>
-                <td><span class="badge low-stack">low-stack</span></td>
-                <td>
-                  <!-- Kebab menu for actions -->
-                  <div class="kabab-ic">
-                    <i class="f-ic fa-solid fa-ellipsis"></i>
-                    <!-- Dropdown menu -->
-                    <ul class="kabab-list">
-                      <li>
-                        <h3>Actions</h3>
-                      </li>
-                      <li>
-                        <button class="edit-ic">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                          <p>Edit product</p>
-                        </button>
-                      </li>
-                      <li>
-                        <button class="upd-ic">
-                          <i class="fa-solid fa-box"></i>
-                          <p>Update Stock</p>
-                        </button>
-                      </li>
-                      <hr />
-                      <li>
-                        <button class="del-ic">
-                          <i class="fa-solid fa-trash"></i>
-                          <p>Delete</p>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
-              </tr>
+              <thead>
+                <!-- Table header row -->
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <thead id="plant-table-body"></thead>
             </table>
           </div>
         </div>
