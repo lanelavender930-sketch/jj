@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   load_plants();
   loadPlantCount();
+  loadUsers();
+  load_employees();
 });
 
 // kabab delegation
@@ -57,7 +59,7 @@ document.addEventListener("click", (e) => {
 
 const addBtn = document.getElementById("add-btn");
 const overlay = document.getElementById("b-overlay");
-const popup = document.querySelector(".popup_modul");
+const popup = document.querySelector(".popup_modul:not(.popup_employee)");
 const close_btn = document.querySelector("#close_btn");
 
 addBtn.addEventListener("click", () => {
@@ -73,7 +75,130 @@ close_btn.addEventListener("click", () => {
 overlay.addEventListener("click", () => {
   overlay.classList.remove("active");
   popup.classList.remove("active");
+  const employeePopup = document.getElementById("add-employee-popup");
+  if (employeePopup) employeePopup.classList.remove("active");
+  const taskPopup = document.getElementById("add-task-popup");
+  if (taskPopup) taskPopup.classList.remove("active");
 });
+
+// Add Employee popup
+const addEmployeeBtn = document.getElementById("add-employee-btn");
+const addEmployeePopup = document.getElementById("add-employee-popup");
+const closeEmployeeBtn = document.getElementById("close_employee_btn");
+const addEmployeeForm = document.getElementById("add-employee-form");
+const employeesTableBody = document.getElementById("employees-table-body");
+
+if (addEmployeeBtn && addEmployeePopup) {
+  addEmployeeBtn.addEventListener("click", () => {
+    overlay.classList.add("active");
+    addEmployeePopup.classList.add("active");
+  });
+}
+
+if (closeEmployeeBtn && addEmployeePopup) {
+  closeEmployeeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+    addEmployeePopup.classList.remove("active");
+  });
+}
+
+if (addEmployeeForm && employeesTableBody) {
+  addEmployeeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("employee_name").value.trim();
+    const role = document.getElementById("employee_role").value;
+    const email = document.getElementById("employee_email").value.trim();
+    const status = document.getElementById("employee_status").value;
+    if (!name || !role || !email) return;
+    const statusClass =
+      status === "Active" ? "badge--delivered" : "badge--processing";
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${name}</td>
+      <td>${role}</td>
+      <td>${email}</td>
+      <td><span class="badge ${statusClass}">${status}</span></td>
+      <td>
+        <button type="button" class="edit-ic" style="border:none;background:transparent;cursor:pointer;padding:4px 8px;" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button type="button" class="del-ic" style="border:none;background:transparent;cursor:pointer;padding:4px 8px;color:#ff2828;" title="Delete"><i class="fa-solid fa-trash"></i></button>
+      </td>`;
+    employeesTableBody.appendChild(row);
+    addEmployeeForm.reset();
+    overlay.classList.remove("active");
+    addEmployeePopup.classList.remove("active");
+  });
+}
+
+// Add Task popup
+const addTaskBtn = document.getElementById("add-task-btn");
+const addTaskPopup = document.getElementById("add-task-popup");
+const closeTaskBtn = document.getElementById("close_task_btn");
+const addTaskForm = document.getElementById("add-task-form");
+
+if (addTaskBtn && addTaskPopup) {
+  addTaskBtn.addEventListener("click", () => {
+    overlay.classList.add("active");
+    addTaskPopup.classList.add("active");
+  });
+}
+
+if (closeTaskBtn && addTaskPopup) {
+  closeTaskBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+    addTaskPopup.classList.remove("active");
+  });
+}
+
+if (addTaskForm) {
+  addTaskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("task_title").value.trim();
+    const assigned = document.getElementById("task_assigned").value;
+    const dueDate = document.getElementById("task_due_date").value;
+    const dueTime = document.getElementById("task_due_time").value || "16:00";
+    if (!title || !dueDate) return;
+    const dueLabel = formatDueLabel(dueDate, dueTime);
+    const todoColumn = document.querySelector(
+      ".tasks-page .out-block .in-block",
+    );
+    const addTaskBtnEl = document.getElementById("add-task-btn");
+    if (!todoColumn || !addTaskBtnEl) return;
+    const card = document.createElement("div");
+    card.className = "block";
+    card.innerHTML = `<h3 class="in-h">${escapeHtml(title)}</h3><p class="p-tit task-assigned"><i class="fa-solid fa-user"></i> ${escapeHtml(assigned)}</p><p class="p-tit">Due: ${escapeHtml(dueLabel)}</p>`;
+    todoColumn.insertBefore(card, addTaskBtnEl);
+    addTaskForm.reset();
+    document.getElementById("task_due_time").value = "16:00";
+    overlay.classList.remove("active");
+    addTaskPopup.classList.remove("active");
+  });
+}
+
+function formatDueLabel(dateStr, timeStr) {
+  const d = new Date(dateStr + "T" + (timeStr || "00:00"));
+  const today = new Date();
+  const isToday = d.toDateString() === today.toDateString();
+  const datePart = isToday
+    ? "Today"
+    : d.toLocaleDateString(undefined, {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+  const timePart = timeStr
+    ? new Date("2000-01-01T" + timeStr).toLocaleTimeString(undefined, {
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "";
+  return timePart ? `${datePart}, ${timePart}` : datePart;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
 
 const dropArea = document.getElementById("prod_img");
 const fileInput = document.getElementById("fileInput");
@@ -93,8 +218,8 @@ fileInput.addEventListener("change", () => {
   }
 });
 
-async function load_plants() {
-  const res = await fetch("/plants");
+async function load_plants(search = "") {
+  const res = await fetch(`/plants?search=${search}`);
   const plants = await res.json();
   const tableBody = document.getElementById("plant-table-body");
   tableBody.innerHTML = "";
@@ -155,4 +280,51 @@ async function loadPlantCount() {
   const data = await res.json();
   const countElem = document.getElementById("plant_count");
   countElem.textContent = `${data.total}`;
+}
+async function loadUsers() {
+  const res = await fetch("/custo");
+  const data = await res.json();
+  const count_user = document.getElementById("customer_count");
+  count_user.textContent = `${data.total}`;
+}
+function deletePlant(id) {
+  if (confirm("Are you sure?")) {
+    fetch(`/plant/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+      .then(() => location.reload());
+  }
+}
+const search_inp = document.getElementById("search_inp");
+
+search_inp.addEventListener("input", function () {
+  const value = this.value;
+  load_plants(value);
+});
+async function load_employees() {
+  const res = await fetch("/getemplyee");
+  const employee = await res.json();
+  const employee_body = document.getElementById("employees-table-body");
+
+  employee.forEach((employee) => {
+    if (employee.status == "active") {
+      statusClass = "delivered";
+    } else {
+      statusClass = "processing";
+    }
+    row = `<tr>
+                  <td>${employee.name}</td>
+                  <td>${employee.role}</td>
+                  <td>${employee.email}</td>
+                  <td><span class="badge badge--${statusClass}">${employee.statu}</span></td>
+                  <td>
+                    <button type="button" class="edit-ic" oncklick="edit_employee(${employee.employee_id})"title="Edit">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="del-ic" oncklick="delete_employee(${employee.employee_id})" title="Delete">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>`;
+    employee_body.innerHTML += row;
+  });
 }
