@@ -89,3 +89,16 @@ overlay.addEventListener("click", () => {
   overlay.classList.remove("active");
   popup.classList.remove("active");
 });
+
+/* showing nav search */
+setTimeout(() => {
+  const icon = document.getElementById("searchIcon");
+  const box = document.getElementById("searchBox");
+
+  if (icon && box) {
+    icon.addEventListener("click", () => {
+      box.classList.toggle("active");
+      box.focus();
+    });
+  }
+}, 500);

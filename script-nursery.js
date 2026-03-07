@@ -34,10 +34,20 @@ document.querySelectorAll(".faq-question").forEach((btn) => {
 /* clear btn in shop page */
 
 function clearAllFilters() {
+  // 1. نلغوا كل الـ checkboxes
   var allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
   for (var i = 0; i < allCheckboxes.length; i++) {
     allCheckboxes[i].checked = false;
   }
+  
+  // 2. نرجعوا الـ radio buttons للوضع الافتراضي
+  var allRadios = document.querySelectorAll('input[name="c"]');
+  allRadios.forEach(radio => {
+    radio.checked = false;
+  });
+  
+  // 3. نرجعوا نحمّلوا كل المنتجات من جديد ✅
+  loadProducts();
 }
 
 /* showing nav search */
@@ -186,25 +196,10 @@ function animateSwitch(toFormId) {
 
 // تركيز تلقائي عند التحميل
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("login-email").focus();
-});
-
-/* blog page */
-// وظيفة البحث
-const searchInput = document.getElementById("searchInput");
-const articles = document.querySelectorAll(".blog-card");
-
-searchInput.addEventListener("keyup", function (e) {
-  const term = e.target.value.toLowerCase();
-
-  articles.forEach((article) => {
-    const title = article.querySelector("h2").textContent.toLowerCase();
-    const desc = article.querySelector("p").textContent.toLowerCase();
-
-    if (title.indexOf(term) != -1 || desc.indexOf(term) != -1) {
-      article.style.display = "block";
-    } else {
-      article.style.display = "none";
+    const loginEmail = document.getElementById("login-email");
+    if (loginEmail) {  // ✅ تأكد إنه موجود قبل ما تستخدمه
+        loginEmail.focus();
     }
-  });
 });
+
+
