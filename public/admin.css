@@ -460,61 +460,61 @@ button {
   background-color: #deede3;
 }
 /* orders page end  */
-/* employees page start */
-.employees-page .container .out-block {
+/* tasks page start */
+.tasks-page .container .out-block {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 24px;
 }
-.employees-page .container .out-block .p-tit {
+.tasks-page .container .out-block .p-tit {
   font-size: 14px;
 }
-.employees-page .container .out-block .up-text .l-p {
+.tasks-page .container .out-block .up-text .l-p {
   border-radius: 10px;
   padding: 2px 10px;
   font-size: 14px;
   font-weight: 600;
 }
-.employees-page .container .out-block .up-text .to-do {
+.tasks-page .container .out-block .up-text .to-do {
   color: white;
   background-color: #09431e;
 }
-.employees-page .container .out-block .up-text .progresse {
+.tasks-page .container .out-block .up-text .progresse {
   color: #09431e;
   background-color: #eeeeee;
 }
-.employees-page .container .out-block .up-text .completed {
+.tasks-page .container .out-block .up-text .completed {
   background-color: #16a2491a;
   color: #16a246;
 }
-.employees-page .container .out-block .up-text {
+.tasks-page .container .out-block .up-text {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.employees-page .container .out-block .in-block {
+.tasks-page .container .out-block .in-block {
   padding: 12px;
   background-color: rgba(237, 245, 239, 0.2);
 }
-.employees-page .container .out-block .in-block .block {
+.tasks-page .container .out-block .in-block .block {
   background-color: white;
   margin-bottom: 10px;
   padding: 12px;
 }
-.employees-page .container .out-block .in-block h3 {
+.tasks-page .container .out-block .in-block h3 {
   margin: 0px;
   font-weight: 500;
 }
-.employees-page .container .out-block .in-block .block .in-h {
+.tasks-page .container .out-block .in-block .block .in-h {
   font-size: 15px;
   color: var(--dark-green);
 }
-.employees-page .container .out-block .in-block .block .p-tit {
+.tasks-page .container .out-block .in-block .block .p-tit {
   margin: 0;
   padding-top: 6px;
 }
-.employees-page .container .out-block .in-block button {
+.tasks-page .container .out-block .in-block button {
   margin-top: 10px;
   width: 100%;
   padding: 8px 16px;
@@ -525,20 +525,67 @@ button {
   font-weight: 600;
   font-size: 14px;
 }
-.employees-page .container .out-block .in-block button:hover {
+.tasks-page .container .out-block .in-block button:hover {
   background-color: #deede3;
   color: var(--dark-green);
 }
-.employees-page .container .out-block .in-block .in-progresse {
+.tasks-page .container .out-block .in-block .in-progresse {
   border-color: #16a246;
 }
-.employees-page .container .out-block .in-block .completed {
+.tasks-page .container .out-block .in-block .completed {
   opacity: 0.5;
 }
-.employees-page .container .out-block .in-block .completed h3 {
+.tasks-page .container .out-block .in-block .completed h3 {
   text-decoration: line-through;
 }
-/* employees-page end  */
+.tasks-page .p-tit.task-assigned {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: var(--dark-green);
+}
+.tasks-page .p-tit.task-assigned i {
+  color: var(--greycolor);
+  font-size: 12px;
+}
+/* tasks-page end */
+
+/* employees page start */
+.employees-page .container .block .up-txt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.employees-page .container .block .up-txt .search-i {
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  height: 45px;
+  min-width: 250px;
+}
+.employees-page .container .block .up-txt .search-i:focus-within {
+  border: 2px solid var(--green);
+}
+.employees-page .container .block .up-txt .search-i input {
+  border: none;
+  height: 100%;
+  border-radius: 12px;
+  padding: 0 12px;
+}
+.employees-page .container .block .up-txt .search-i input:focus {
+  outline: none;
+}
+.employees-page .container #add-employee-btn:hover {
+  background-color: #16a249e6;
+}
+.employees-page .container .block table td {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+/* employee-page end */
 /* employee css style  */
 .container .tasks-block .state-txt {
   display: flex;
@@ -909,4 +956,39 @@ button {
 .main-page .acc_seetings_page .upd_pass:hover {
   color: var(--dark-green);
   background-color: #deede3;
+}
+.product_form .prod_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #4caf50;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%; /* حجم مناسب للنبات */
+  height: 350px; /* أطول من العرض */
+  overflow: hidden;
+  transition: 0.3s;
+}
+.product_form .prod_img:hover {
+  background-color: #f0fff0;
+}
+.product_form .prod_img #preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}
+#employees-table-body .edit-ic {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+#employees-table-body .del-ic {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: #ff2828;
 }
