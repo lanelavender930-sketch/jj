@@ -89,7 +89,7 @@
           <a href="shop.html"><button class="products-left-btn">
             <i class="bi bi-handbag"></i> Continue Shopping
           </button></a>
-          <button class="products-right-btn">Clear Cart</button>
+          <button class="products-right-btn" onclick="clearCart()">Clear Cart</button>
         </div>
       </div>
       <div class="total-price">
@@ -106,9 +106,9 @@
             <p>Shipping</p>
             <span>FREE</span>
           </div>
-          <div class="subtotal">
-            <p>Total</p>
-            <span>$109.00</span>
+          <div class="total" style="margin-bottom: 20px;margin-top: 10px;white-space: nowrap;">
+            <b>Total</b>
+             <span id="final-total" style="color: rgb(34, 197, 94); font-weight: bold;margin-left: 150px;">$0.00</span>
           </div>
         </div>
         <div class="form-group">
@@ -196,7 +196,7 @@
         </div>
       </div>
     </footer>
-
     <script src="/public/script-nursery.js"></script>
+    <script src="/public/cart-logic.js"></script>
   </body>
 </html>

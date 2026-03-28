@@ -1,204 +1,264 @@
 let allProducts = [];
+let filteredProducts = [];
+let currentPage = 1;
+const itemsPerPage = 9;
 
-// ========== دالة جلب المنتجات من API ==========
+// ========== جلب المنتجات ==========
 async function loadProducts() {
   try {
     console.log('🔄 جاري جلب المنتجات...');
-    
     const response = await fetch('http://localhost:5000/api/products');
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch products: ' + response.status);
-    }
+    if (!response.ok) throw new Error('HTTP error: ' + response.status);
     
     allProducts = await response.json();
+    filteredProducts = [...allProducts];
     console.log('✅ تم جلب', allProducts.length, 'منتج');
     
+    currentPage = 1;
     displayProducts();
     updateProductsCount();
+    updatePaginationUI();
     
   } catch (error) {
-    console.error('❌ خطأ في جلب المنتجات:', error);
+    console.error('❌ خطأ:', error);
   }
 }
 
-// ========== دالة عرض المنتجات في الصفحة ==========
+// ========== عرض المنتجات ==========
 function displayProducts() {
+  // ✅ استخدام الكلاس الموجود عندك
   const container = document.querySelector('.cardss.c1');
   
   if (!container) {
-    console.log('⚠️ لم يتم العثور على الحاوية .cardss.c1');
+    console.error('❌ لم أجد .cardss.c1');
     return;
   }
   
-  // مسح المحتوى القديم
   container.innerHTML = '';
   
-  // إذا لم توجد منتجات
-  if (allProducts.length === 0) {
-    container.innerHTML = '<p style="text-align:center; width:100%;">No products found</p>';
+  if (filteredProducts.length === 0) {
+    container.innerHTML = '<p style="text-align:center;width:100%;padding:20px;">لا توجد منتجات</p>';
     return;
   }
   
-  // إنشاء بطاقة لكل منتج
-  allProducts.forEach(product => {
+  // حساب الـ pagination
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const productsToShow = filteredProducts.slice(start, end);
+  
+  console.log(`📄 الصفحة ${currentPage} من ${totalPages} - عرض ${productsToShow.length} منتج`);
+  
+  productsToShow.forEach(product => {
     const card = document.createElement('div');
     card.className = 'card';
     
-    // ✅ معالجة مسار الصورة: تجربة عدة احتمالات
-    let imageUrl = product.image || product.image_url || 'img/default.jpg';
-        // إذا كان المسار نسبي ولا يبدأ بـ http أو / نضيف /
-    if (!imageUrl.startsWith('http') && !imageUrl.startsWith('/')) {
-      imageUrl = '/' + imageUrl;
-    }
+    let imgUrl = product.image || product.image_url || 'img/default.jpg';
+    if (!imgUrl.startsWith('http') && !imgUrl.startsWith('/')) imgUrl = '/' + imgUrl;
     
-    // ✅ إنشاء HTML البطاقة (تم إصلاح Template Literals بـ backticks ``)
     card.innerHTML = `
       <div class="card-image">
-        <img 
-          src="${imageUrl}" 
-          alt="${product.name || 'Product'}" 
-          width="250" 
-          onerror="this.src='/img/default.jpg'; console.log('صورة غير موجودة:', this.src);"
-        />
+        <img src="${imgUrl}" alt="${product.name}" width="250" 
+             onerror="this.src='/img/default.jpg'">
         <div class="overlay">
           <button class="quick-view-btn" onclick="openModal(this)">
-            <i class="bi bi-eye" style="font-size: 17px"></i> Quick view
+            <i class="bi bi-eye"></i> Quick view
           </button>
         </div>
-        <div class="bi bi-heart"></div>
+        <i class="bi bi-heart"></i>
       </div>
       <div class="card-content">
         <div class="title-product">
           <div class="rating">
-            <p class="category-badge">${product.category_name || 'Indoor Plants'}</p>
-            <span>${product.rating || '4.5'} ⭐</span>
+            <span class="category-badge">${product.category_name || 'Plants'}</span>
+            <span>${product.rating || '4.5'}⭐</span>
           </div>
-          <h3>${product.name || 'Unnamed Product'}</h3>
+          <h3>${product.name}</h3>
         </div>
         <div class="price-product">
-          <p>$${product.price || '0.00'}</p>
-          <i class="bi bi-cart3" style="color: #ffffff; cursor:pointer;" onclick="addToCart(${product.id})"></i>
+          <p>$${product.price}</p>
+          <i class="bi bi-cart3"></i>
         </div>
       </div>
     `;
     
-    // ✅ حفظ بيانات المنتج في dataset للبحث والتصنيف
-    card.dataset.productId = product.id || '';
-    card.dataset.productName = (product.name || '').toLowerCase();
-    card.dataset.productCategory = (product.category_name || product.category || '').toLowerCase();
+    card.dataset.name = (product.name || '').toLowerCase();
+    card.dataset.category = (product.category_name || '').toLowerCase();
     
     container.appendChild(card);
   });
   
-  console.log(`🎨 تم عرض ${allProducts.length} منتج في الصفحة`);
+  updateProductsCount();
+  updatePaginationUI();
 }
 
-// ========== دالة تحديث عدد المنتجات المعروضة ==========
+// ========== تحديث عدد المنتجات ==========
 function updateProductsCount() {
-  const countElement = document.querySelector('.right-content p');
-  if (countElement) {
-    // نحسبوا البطاقات المرئية فقط
-    const visibleCards = document.querySelectorAll('.card[style="block"], .card:not([style*="display: none"])');
-    const count = visibleCards.length;
-    countElement.textContent = `Showing ${count} product${count !== 1 ? 's' : ''}`;
+  // ✅ استخدام الكلاس الموجود عندك
+  const countEl = document.querySelector('.right-content p');
+  if (countEl) {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = Math.min(start + itemsPerPage, filteredProducts.length);
+    const count = end - start;
+    countEl.textContent = `Showing ${count} product${count !== 1 ? 's' : ''}`;
   }
 }
 
-// ========== دالة البحث والتصفية ==========
-function setupSearch() {
-  const searchInput = document.querySelector('.search, #searchInput');
+// ========== تحديث حالة الـ Pagination ==========
+function updatePaginationUI() {
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   
-  if (searchInput) {
-    searchInput.addEventListener('input', function(e) {
-      const searchTerm = e.target.value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.card');
-      
-      if (searchTerm === '') {
-        cards.forEach(card => card.style.display = 'block');
-        updateProductsCount(); // ✅ أضف هذا
-        return;
+  // ✅ تحديث الأزرار الموجودة عندك
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  // تعطيل/تفعيل Previous
+  if (prevBtn) {
+    if (currentPage === 1) {
+      prevBtn.disabled = true;
+      prevBtn.style.opacity = '0.5';
+    } else {
+      prevBtn.disabled = false;
+      prevBtn.style.opacity = '1';
+    }
+  }
+  
+  // تعطيل/تفعيل Next
+  if (nextBtn) {
+    if (currentPage >= totalPages) {
+      nextBtn.disabled = true;
+      nextBtn.style.opacity = '0.5';
+    } else {
+      nextBtn.disabled = false;
+      nextBtn.style.opacity = '1';
+    }
+    
+    // إخفاء Next إذا ما فيش إلا صفحة واحدة
+    if (totalPages <= 1) {
+      nextBtn.style.display = 'none';
+    } else {
+      nextBtn.style.display = 'inline-block';
+    }
+  }
+  
+  // ✅ تحديث أرقام الصفحات
+  document.querySelectorAll('.page-btn').forEach(btn => {
+    const pageNum = parseInt(btn.id.replace('page', ''));
+    if (!isNaN(pageNum)) {
+      // إضافة/إزالة active
+      if (pageNum === currentPage) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
       }
       
-      cards.forEach(card => {
-        const name = card.dataset.productName || '';
-        const category = card.dataset.productCategory || '';
-        
-        if (name.includes(searchTerm) || category.includes(searchTerm)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-      
-      // ✅ أضف هذا السطر لتحديث العدد
-      updateProductsCount();
-    });
+      // إخفاء الصفحات اللي ما عندهاش منتجات
+      if (pageNum > totalPages) {
+        btn.style.display = 'none';
+      } else {
+        btn.style.display = 'inline-block';
+      }
+    }
+  });
+}
+
+// ========== دالة changePage (موجودة عندك في HTML) ==========
+function changePage(direction) {
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const newPage = currentPage + direction;
+  
+  if (newPage >= 1 && newPage <= totalPages) {
+    currentPage = newPage;
+    console.log('🔄 الانتقال للصفحة:', currentPage);
+    displayProducts();
+    
+    // سكرول للأعلى
+    const container = document.querySelector('.cardss.c1');
+    if (container) {
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
 
-// ========== دالة تصفية حسب التصنيف (Radio Buttons) ==========
+// ========== دالة setPage (موجودة عندك في HTML) ==========
+function setPage(pageNum) {
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  if (pageNum >= 1 && pageNum <= totalPages) {
+    currentPage = pageNum;
+    console.log('🔄 الانتقال للصفحة:', currentPage);
+    displayProducts();
+  }
+}
+
+// ========== البحث ==========
+function setupSearch() {
+  const searchInput = document.querySelector('.search input, #searchInput');
+  if (!searchInput) return;
+  
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase().trim();
+    
+    if (term === '') {
+      filteredProducts = [...allProducts];
+    } else {
+      filteredProducts = allProducts.filter(p => 
+        (p.name || '').toLowerCase().includes(term) ||
+        (p.category_name || '').toLowerCase().includes(term)
+      );
+    }
+    
+    currentPage = 1;
+    displayProducts();
+  });
+}
+
+// ========== الفلاتر ==========
 function setupCategoryFilter() {
   const categoryRadios = document.querySelectorAll('input[name="c"]');
-  
   categoryRadios.forEach(radio => {
-    radio.addEventListener('change', function() {
-      const selectedCategory = this.value.toLowerCase();
-      const cards = document.querySelectorAll('.card');
+    radio.addEventListener('change', (e) => {
+      const category = e.target.value.toLowerCase();
       
-      cards.forEach(card => {
-        const category = card.dataset.productCategory || '';
-        
-        if (selectedCategory === 'all' || category === selectedCategory) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      if (category === 'all' || category === '') {
+        filteredProducts = [...allProducts];
+      } else {
+        filteredProducts = allProducts.filter(p => 
+          (p.category_name || '').toLowerCase() === category
+        );
+      }
       
-      // ✅ أضف هذا السطر لتحديث العدد
-      updateProductsCount();
+      currentPage = 1;
+      displayProducts();
     });
   });
 }
 
 function setupSuppliesFilter() {
   const suppliesCheckboxes = document.querySelectorAll('input[name="supplies"]');
-  
-  suppliesCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', filterBySupplies);
+  suppliesCheckboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checked = document.querySelectorAll('input[name="supplies"]:checked');
+      
+      if (checked.length === 0) {
+        filteredProducts = [...allProducts];
+      } else {
+        const values = Array.from(checked).map(c => c.value.toLowerCase());
+        filteredProducts = allProducts.filter(p => 
+          values.some(v => (p.category_name || '').toLowerCase().includes(v))
+        );
+      }
+      
+      currentPage = 1;
+      displayProducts();
+    });
   });
 }
 
-function filterBySupplies() {
-  const checkedBoxes = document.querySelectorAll('input[name="supplies"]:checked');
-  const selectedSupplies = Array.from(checkedBoxes).map(cb => cb.value);
-  
-  if (selectedSupplies.length === 0) {
-    // إذا ما فيش اختيار، عرض الكل
-    loadProducts();
-    return;
-  }
-  
-  // فلترة محلية (أسرع)
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    const category = card.dataset.productCategory || '';
-    const matches = selectedSupplies.some(supply => 
-      category.toLowerCase().includes(supply.toLowerCase())
-    );
-    card.style.display = matches ? 'block' : 'none';
-  });
-  
-  updateProductsCount();
-}
-
-// ========== التشغيل عند تحميل الصفحة ==========
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🌱 الصفحة جاهزة، جاري تحميل المنتجات...');
-  
+// ========== التشغيل ==========
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('🌱 الصفحة جاهزة!');
   loadProducts();
   setupSearch();
   setupCategoryFilter();
-  setupSuppliesFilter(); 
+  setupSuppliesFilter();
 });

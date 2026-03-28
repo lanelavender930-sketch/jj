@@ -1,13 +1,20 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql2");
+const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
 app.use(express.static("public"));
 app.use(express.urlencoded());
 app.use(express.json());
+app.use(cors({
+  origin: 'http://127.0.0.1:5500',
+  credentials: true
+}));
 const db = mysql.createConnection({
   host: "localhost",
   user: "root", // المستخدم الافتراضي في MySQL هو root
-  password: "broo123", // اتركها فارغة إذا لم تضع كلمة سر
+  password: "hanyos2005", // اتركها فارغة إذا لم تضع كلمة سر
   database: "mydb", // اسم قاعدة البيانات التي أنشأتها
 });
 db.connect((err) => {
@@ -87,5 +94,5 @@ app.get("/getemplyee", (req, res) => {
   });
 });
 app.listen(3000, () => {
-  console.log("listening on port3000");
+  console.log('🚀 Server running on http://localhost:3000');
 });

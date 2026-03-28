@@ -19,6 +19,23 @@
   <input type="text" id="searchBox" placeholder="Search..." />
   <i class="bi bi-search" id="searchIcon"></i>
   <i class="bi bi-heart"></i>
-  <i class="bi bi-cart2" onclick="window.location.href = 'cart.html'"></i>
+  <div style="position: relative; display: inline-block;">
+    <i class="bi bi-cart2" style="cursor: pointer;" onclick="window.location.href = 'cart.html'"></i>
+    <span id="cart-badge" style="
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        background-color: #ff4117; /* لون أخضر مثل شعار الموقع */
+        color: white;
+        border-radius: 50%;
+        padding: 2px 3px;
+        font-size: 10px;
+        display: none; /* يختفي إذا كانت السلة فارغة */
+        align-items: center;
+        justify-content: center;
+        min-width: 11px;
+        height: 11px;
+    ">0</span>
+</div>
   <i class="bi bi-person" onclick="window.location.href = 'login.html'"></i>
 </nav>

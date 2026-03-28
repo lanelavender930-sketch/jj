@@ -1,3 +1,5 @@
+const API_BASE = 'http://localhost:3000';
+
 function showPage(pageClass, btn) {
   const pages = document.querySelectorAll(".main-page .page");
   pages.forEach((page) => page.classList.remove("active"));
@@ -219,79 +221,116 @@ fileInput.addEventListener("change", () => {
 });
 
 async function load_plants(search = "") {
-  const res = await fetch(`/plants?search=${search}`);
-  const plants = await res.json();
-  const tableBody = document.getElementById("plant-table-body");
-  tableBody.innerHTML = "";
+  try {
+    const res = await fetch(`${API_BASE}/plants?search=${encodeURIComponent(search)}`);
+    if (!res.ok) throw new Error('Failed to fetch plants');
+    
+    const plants = await res.json();
+    const tableBody = document.getElementById("plant-table-body");
+    if (!tableBody) return;
+    
+    tableBody.innerHTML = "";
 
-  plants.forEach((plant) => {
-    let statusClass = "in-stack";
-    let statusText = "in-stock";
-    if (plant.quantity == 0) {
-      statusClass = "out-of-stack";
-      statusText = "out-of-stock";
-    } else if (plant.quantity <= 10) {
-      statusClass = "low-stack";
-      statusText = "low-stock";
+    if (plants.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;">No plants found</td></tr>`;
+      return;
     }
 
-    const row = `
-      <tr>
-        <td>${plant.name}</td>
-        <td>${plant.category}</td>
-        <td>$${plant.price}</td>
-        <td>${plant.quantity}</td>
-        <td><span class="badge ${statusClass}">${statusText}</span></td>
-        <td>
-          <div class="kabab-ic">
-            <i class="f-ic fa-solid fa-ellipsis"></i>
-            <ul class="kabab-list">
-              <li><h3>Actions</h3></li>
-              <li>
-                <button class="edit-ic" onclick="editPlant(${plant.plant_id})">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <p>Edit product</p>
-                </button>
-              </li>
-              <li>
-                <button class="upd-ic" onclick="updateStock(${plant.plant_id})">
-                  <i class="fa-solid fa-box"></i>
-                  <p>Update Stock</p>
-                </button>
-              </li>
-              <hr />
-              <li>
-                <button class="del-ic" onclick="deletePlant(${plant.plant_id})">
-                  <i class="fa-solid fa-trash"></i>
-                  <p>Delete</p>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-    `;
-    tableBody.innerHTML += row;
-  });
+    plants.forEach((plant) => {
+      let statusClass = "in-stack";
+      let statusText = "in-stock";
+      if (plant.quantity == 0) {
+        statusClass = "out-of-stack";
+        statusText = "out-of-stock";
+      } else if (plant.quantity <= 10) {
+        statusClass = "low-stack";
+        statusText = "low-stock";
+      }
+
+      const row = `
+        <tr>
+          <td>${plant.name || '-'}</td>
+          <td>${plant.category || '-'}</td>
+          <td>$${plant.price || '0'}</td>
+          <td>${plant.quantity || 0}</td>
+          <td><span class="badge ${statusClass}">${statusText}</span></td>
+          <td>
+            <div class="kabab-ic">
+              <i class="f-ic fa-solid fa-ellipsis"></i>
+              <ul class="kabab-list">
+                <li><h3>Actions</h3></li>
+                <li>
+                  <button class="edit-ic" onclick="editPlant(${plant.plant_id})">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <p>Edit product</p>
+                  </button>
+                </li>
+                <li>
+                  <button class="upd-ic" onclick="updateStock(${plant.plant_id})">
+                    <i class="fa-solid fa-box"></i>
+                    <p>Update Stock</p>
+                  </button>
+                </li>
+                <hr />
+                <li>
+                  <button class="del-ic" onclick="deletePlant(${plant.plant_id})">
+                    <i class="fa-solid fa-trash"></i>
+                    <p>Delete</p>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+  } catch (error) {
+    console.error('Error loading plants:', error);
+    const tableBody = document.getElementById("plant-table-body");
+    if (tableBody) {
+      tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:red;">Error loading plants</td></tr>`;
+    }
+  }
 }
 
 async function loadPlantCount() {
-  const res = await fetch("/plants/count");
-  const data = await res.json();
-  const countElem = document.getElementById("plant_count");
-  countElem.textContent = `${data.total}`;
+  try {
+    const res = await fetch(`${API_BASE}/plants/count`);
+    if (!res.ok) throw new Error('Failed to fetch count');
+    
+    const data = await res.json();
+    const countElem = document.getElementById("plant_count");
+    if (countElem) {
+      countElem.textContent = `${data.total || 0}`;
+    }
+  } catch (error) {
+    console.error('Error loading plant count:', error);
+  }
 }
 async function loadUsers() {
-  const res = await fetch("/custo");
-  const data = await res.json();
-  const count_user = document.getElementById("customer_count");
-  count_user.textContent = `${data.total}`;
+  try {
+    const res = await fetch(`${API_BASE}/custo`);
+    if (!res.ok) throw new Error('Failed to fetch customers');
+    
+    const data = await res.json();
+    const count_user = document.getElementById("customer_count");
+    if (count_user) {
+      count_user.textContent = `${data.total || 0}`;
+    }
+  } catch (error) {
+    console.error('Error loading users:', error);
+  }
 }
 function deletePlant(id) {
-  if (confirm("Are you sure?")) {
-    fetch(`/plant/${id}`, { method: "DELETE" })
-      .then((res) => res.json())
-      .then(() => location.reload());
+  if (confirm("Are you sure you want to delete this plant?")) {
+    fetch(`${API_BASE}/plant/${id}`, { method: "DELETE" })
+      .then(res => res.json())
+      .then(data => {
+        load_plants();
+        loadPlantCount();
+      })
+      .catch(err => console.error('Delete error:', err));
   }
 }
 const search_inp = document.getElementById("search_inp");
@@ -301,32 +340,44 @@ search_inp.addEventListener("input", function () {
   load_plants(value);
 });
 async function load_employees() {
-  const res = await fetch("/getemplyee");
-  const employee = await res.json();
-  const employee_body = document.getElementById("employees-table-body");
+  try {
+    const res = await fetch(`${API_BASE}/getemplyee`);
+    if (!res.ok) throw new Error('Failed to fetch employees');
+    
+    const employees = await res.json();
+    const employee_body = document.getElementById("employees-table-body");
+    if (!employee_body) return;
 
-  employee.forEach((employee) => {
-    if (employee.status == "active") {
-      statusClass = "delivered";
-    } else {
-      statusClass = "processing";
+    employee_body.innerHTML = "";
+    
+    if (employees.length === 0) {
+      employee_body.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:20px;">No employees found</td></tr>`;
+      return;
     }
-    row = `<tr>
-                  <td>${employee.name}</td>
-                  <td>${employee.role}</td>
-                  <td>${employee.email}</td>
-                  <td><span class="badge badge--${statusClass}">${employee.statu}</span></td>
-                  <td>
-                    <button type="button" class="edit-ic" oncklick="edit_employee(${employee.employee_id})"title="Edit">
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button type="button" class="del-ic" oncklick="delete_employee(${employee.employee_id})" title="Delete">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>`;
-    employee_body.innerHTML += row;
-  });
+
+    employees.forEach((employee) => {
+      const statusClass = employee.status == "active" ? "delivered" : "processing";
+      const statusText = employee.status || 'Unknown';
+      
+      const row = `<tr>
+        <td>${employee.name || '-'}</td>
+        <td>${employee.role || '-'}</td>
+        <td>${employee.email || '-'}</td>
+        <td><span class="badge badge--${statusClass}">${statusText}</span></td>
+        <td>
+          <button type="button" class="edit-ic" onclick="edit_employee(${employee.employee_id})" title="Edit">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button type="button" class="del-ic" onclick="delete_employee(${employee.employee_id})" title="Delete">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </td>
+      </tr>`;
+      employee_body.innerHTML += row;
+    });
+  } catch (error) {
+    console.error('Error loading employees:', error);
+  }
 }
 /* showing nav search */
 setTimeout(() => {

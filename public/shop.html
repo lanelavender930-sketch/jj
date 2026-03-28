@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="admin.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -42,6 +43,7 @@
             <input
               type="search"
               class="search"
+              id="search_inp"
               placeholder="Search for products..."
             />
           </form>
@@ -68,10 +70,16 @@
           <ul class="options-list">
             <li class="option-item">
               <input
-                type="checkbox" name="supplies" value="Greenhouses" />Greenhouses
+                type="checkbox" name="supplies" value="Flowers" />Flowers
             </li>
             <li class="option-item">
               <input type="checkbox" name="supplies" value="Care Supplies" />Care Supplies
+            </li>
+            <li class="option-item">
+              <input type="checkbox" name="supplies" value="Herbs" />Herbs
+            </li>
+            <li class="option-item">
+              <input type="checkbox" name="supplies" value="Medicinal" />Medicinal
             </li>
             <li class="option-item">
               <input type="checkbox" name="supplies" value="Pots & Containers" />Pots & Containers
@@ -98,7 +106,6 @@
           <div class="line"></div>
         </div>
         <div class="cardss c1">
-
         </div>
 
         <div class="pagination" aria-label="Pagination">
@@ -307,7 +314,8 @@
         </div>
       </div>
     </footer>
+    
     <script src="/public/script-nursery.js"></script>
-    <script src="/backend/backend.js"></script>
+    <script src="/public/admin.js"></script>
   </body>
 </html>
