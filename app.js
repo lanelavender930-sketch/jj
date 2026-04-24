@@ -377,6 +377,63 @@ app.get("/api/admin/stats", (req, res) => {
     });
 });
 
+// ========== Admin Dashboard Summary API Route ==========
+app.get("/api/admin/dashboard-summary", async (req, res) => {
+  try {
+    const queries = {
+      totalOrders: "SELECT COUNT(*) AS count FROM orders",
+      pendingOrders: "SELECT COUNT(*) AS count FROM orders WHERE LOWER(status) = 'pending'",
+      totalRevenue: "SELECT COALESCE(SUM(oi.quantity * oi.price), 0.00) AS total FROM order_details oi JOIN orders o ON oi.order_id = o.order_id WHERE LOWER(o.status) = 'completed'",
+      inventoryAlerts: "SELECT name, quantity FROM plant WHERE quantity < 5",
+      urgentAlerts: "SELECT COUNT(*) AS count FROM orders WHERE LOWER(status) = 'pending' AND DATE(order_date) = CURDATE()",
+      recentOrders: `
+        SELECT o.order_id, c.full_name AS customer_name, o.status, 
+               COALESCE(SUM(oi.quantity * oi.price), 0) AS total_amount
+        FROM orders o
+        JOIN customer c ON o.customer_id = c.id
+        LEFT JOIN order_details oi ON o.order_id = oi.order_id
+        GROUP BY o.order_id
+        ORDER BY o.order_date DESC
+        LIMIT 4
+      `
+    };
+
+    const results = {};
+
+    const queryPromises = Object.entries(queries).map(([key, sql]) => {
+      return new Promise((resolve, reject) => {
+        db.query(sql, (err, result) => {
+          if (err) return reject(err);
+          
+          if (key === 'inventoryAlerts' || key === 'recentOrders') {
+            results[key] = result;
+          } else {
+            results[key] = result[0].count !== undefined ? result[0].count : result[0].total;
+          }
+          resolve();
+        });
+      });
+    });
+
+    await Promise.all(queryPromises);
+
+    res.json({
+      counters: {
+        totalOrders: results.totalOrders,
+        pendingOrders: results.pendingOrders,
+        totalRevenue: results.totalRevenue
+      },
+      inventoryAlerts: results.inventoryAlerts,
+      urgentAlerts: results.urgentAlerts,
+      recentOrders: results.recentOrders
+    });
+
+  } catch (err) {
+    console.error("Error fetching dashboard summary:", err.message);
+    res.status(500).json({ error: "Failed to fetch dashboard summary" });
+  }
+});
+
 // ========== Customer API (Products) Routes ==========
 app.get("/api/products", (req, res) => {
   const sql = "SELECT * FROM products";

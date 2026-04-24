@@ -232,39 +232,38 @@
             </div>
           </form>
         </div>
-        <!-- Lower section with statistics blocks -->
         <div class="lower">
-          <!-- Total Sales statistics block -->
+          <!-- Total Revenue statistics block -->
           <div class="blocks">
             <div class="txt-ic">
-              <p>Total Sales</p>
+              <p>Total Revenue</p>
               <i class="fa-solid fa-arrow-up"></i>
               <!-- Upward trend icon -->
             </div>
-            <h3>$12,845.00</h3>
-            <p>+12% from last month</p>
+            <h3 id="total_revenue">0.00 DA</h3>
+            <p>From completed orders</p>
           </div>
 
-          <!-- Active Orders statistics block -->
+          <!-- Total Orders statistics block -->
           <div class="blocks">
             <div class="txt-ic">
-              <p>Active Orders</p>
+              <p>Total Orders</p>
               <i class="fa-solid fa-cart-shopping"></i>
               <!-- Shopping cart icon -->
             </div>
-            <h3 id="active_orders_count">48</h3>
-            <p>12 pending shipment</p>
+            <h3 id="total_orders">0</h3>
+            <p>All time orders</p>
           </div>
 
-          <!-- Total Products statistics block -->
+          <!-- Pending Orders statistics block -->
           <div class="blocks">
             <div class="txt-ic">
-              <p>Total Products</p>
+              <p>Pending Orders</p>
               <i class="fa-solid fa-box"></i>
               <!-- Box icon -->
             </div>
-            <h3 id="plant_count">12</h3>
-            <p>8 categories</p>
+            <h3 id="pending_orders">0</h3>
+            <p>Awaiting fulfillment</p>
           </div>
 
           <!-- Active Users statistics block -->
@@ -321,53 +320,26 @@
           <!-- Recent Orders Section -->
           <div class="recent block">
             <h3 class="h-tit">Recent Orders</h3>
-            <p class="p-tit">You have 12 orders pending shipment today.</p>
+            <p class="p-tit" id="recent_pending_text">You have 0 orders pending shipment today.</p>
 
             <!-- Orders table -->
             <table class="table-dis">
-              <!-- Table header row -->
-              <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Status</th>
-                <th>Amount</th>
-              </tr>
-
-              <!-- Order 1 - Delivered -->
-              <tr>
-                <td>ORD-7283</td>
-                <td>Alice Johnson</td>
-                <td><span class="badge badge--delivered">Delivered</span></td>
-                <td>$125.00</td>
-              </tr>
-
-              <!-- Order 2 - Processing -->
-              <tr>
-                <td>ORD-7284</td>
-                <td>Bob Smith</td>
-                <td><span class="badge badge--processing">Processing</span></td>
-                <td>$45.50</td>
-              </tr>
-
-              <!-- Order 3 - Shipped -->
-              <tr>
-                <td>ORD-7285</td>
-                <td>Charlie Brown</td>
-                <td><span class="badge badge--shipped">Shipped</span></td>
-                <td>$89.00</td>
-              </tr>
-
-              <!-- Order 4 - Pending -->
-              <tr>
-                <td>ORD-7286</td>
-                <td>Diana Prince</td>
-                <td><span class="badge badge--pending">Pending</span></td>
-                <td>$89.00</td>
-              </tr>
+              <thead>
+                <!-- Table header row -->
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody id="recent_orders_body">
+                <!-- Recent orders will be loaded here -->
+              </tbody>
             </table>
 
             <!-- View all orders button -->
-            <button>view all</button>
+            <button onclick="document.querySelector('[data-page=\'orders-page\']').click()">view all</button>
           </div>
 
           <!-- Inventory Alerts Section -->

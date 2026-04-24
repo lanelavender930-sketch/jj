@@ -270,21 +270,20 @@ button {
   font-weight: bold;
   margin-left: auto;
 }
-.main-page .overview-page .container .alert .emergency {
+.main-page .overview-page .container .alert .critical {
   background-color: #ef44440d;
-  border-color: #ff282863;
+  border-color: #ef444463;
 }
-.main-page .overview-page .container .alert .emergency i {
+.main-page .overview-page .container .alert .critical i {
   font-weight: 700;
-  color: #ff2828d8;
+  color: #ef4444;
 }
-.main-page .overview-page .container .alert .consider i {
-  color: #e2f919;
+.main-page .overview-page .container .alert .warning i {
+  color: #f59e0b;
 }
-.main-page .overview-page .container .alert .consider {
-  background-color: #eab3080d;
-
-  border-color: #bb921860;
+.main-page .overview-page .container .alert .warning {
+  background-color: #f59e0b0d;
+  border-color: #f59e0b60;
 }
 .main-page .overview-page .container .alert .safe i {
   color: #16a246;

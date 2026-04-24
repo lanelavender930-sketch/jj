@@ -14,7 +14,7 @@ function showPage(pageClass, btn) {
   
   // Load stats when overview page is shown
   if (pageClass === 'overview-page') {
-    loadStats();
+    hydrateDashboard();
   }
 }
 
@@ -781,137 +781,165 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load stats and alerts on page load
-  loadStats();
+  hydrateDashboard();
 });
 
-// ========== Load Stats Function ==========
-async function loadStats() {
+// ========== Hydrate Dashboard Function ==========
+async function hydrateDashboard() {
   try {
-    const res = await fetch(`${API_BASE}/api/admin/stats`);
-    if (!res.ok) throw new Error('Failed to fetch stats');
+    const res = await fetch(`${API_BASE}/api/admin/dashboard-summary`);
+    if (!res.ok) throw new Error('Failed to fetch dashboard summary');
     
     const data = await res.json();
     
-    // Update overview cards
-    updateOverviewCards(data.overview);
+    // Update Overview Cards
+    updateDashboardCards(data.counters);
     
-    // Update alerts
-    updateAlerts(data.alerts);
+    // Update Alerts
+    updateDashboardAlerts(data.inventoryAlerts, data.urgentAlerts);
+
+    // Update Recent Orders
+    updateRecentOrders(data.recentOrders, data.counters.pendingOrders);
     
   } catch (error) {
-    console.error('Error loading stats:', error);
+    console.error('Error hydrating dashboard:', error);
   }
 }
 
-// ========== Update Overview Cards Function ==========
-function updateOverviewCards(overview) {
-  // Update plant count
-  const plantCountElem = document.getElementById('plant_count');
-  if (plantCountElem) {
-    plantCountElem.textContent = overview.totalPlants || 0;
+function updateDashboardCards(counters) {
+  // Format currency (DA)
+  const currencyFormatter = new Intl.NumberFormat('en-DZ', {
+    style: 'currency',
+    currency: 'DZD',
+    minimumFractionDigits: 2
+  });
+
+  const totalRevenueElem = document.getElementById('total_revenue');
+  if (totalRevenueElem) {
+    totalRevenueElem.textContent = currencyFormatter.format(counters.totalRevenue || 0).replace('DZD', 'DA');
   }
-  
-  // Update customer count
-  const customerCountElem = document.getElementById('customer_count');
-  if (customerCountElem) {
-    customerCountElem.textContent = overview.totalCustomers || 0;
+
+  const totalOrdersElem = document.getElementById('total_orders');
+  if (totalOrdersElem) {
+    totalOrdersElem.textContent = counters.totalOrders || 0;
   }
-  
-  // Update active orders (pending orders)
-  const activeOrdersElem = document.getElementById('active_orders_count');
-  if (activeOrdersElem) {
-    activeOrdersElem.textContent = overview.pendingOrders || 0;
+
+  const pendingOrdersElem = document.getElementById('pending_orders');
+  if (pendingOrdersElem) {
+    pendingOrdersElem.textContent = counters.pendingOrders || 0;
   }
 }
 
-// ========== Update Alerts Function ==========
-function updateAlerts(alertsData) {
+function updateDashboardAlerts(inventoryAlerts, urgentAlerts) {
   const alertsContainer = document.getElementById('alerts-container');
   if (!alertsContainer) return;
   
-  // Find the alerts content area (skip the header)
-  const alertsContent = alertsContainer.querySelector('p');
-  if (!alertsContent) return;
+  // Keep the header h3 and p, remove existing al-block
+  const headers = Array.from(alertsContainer.children).filter(el => el.tagName === 'H3' || el.tagName === 'P');
+  alertsContainer.innerHTML = '';
+  headers.forEach(h => alertsContainer.appendChild(h));
   
-  // Clear existing alerts (remove all al-block elements)
-  const existingAlerts = alertsContainer.querySelectorAll('.al-block');
-  existingAlerts.forEach(alert => alert.remove());
-  
-  // If no alerts, show a message
-  if (!alertsData || alertsData.length === 0) {
-    const noAlertsDiv = document.createElement('div');
-    noAlertsDiv.className = 'al-block safe';
-    noAlertsDiv.innerHTML = `
-      <i class="fa-regular fa-circle-check"></i>
+  let alertsCount = 0;
+
+  // Urgent Alerts (Orders pending from today)
+  if (urgentAlerts > 0) {
+    alertsCount++;
+    const urgentDiv = document.createElement('div');
+    urgentDiv.className = 'al-block critical';
+    urgentDiv.innerHTML = `
+      <i class="fa-solid fa-circle-exclamation" style="font-size:24px;"></i>
       <div>
-        <h3>All good!</h3>
-        <p>No alerts at this time.</p>
+        <h3 style="color:#ef4444;">Urgent: New Orders</h3>
+        <p>You have ${urgentAlerts} new order(s) placed today awaiting fulfillment.</p>
+      </div>
+      <button onclick="document.querySelector('[data-page=\\'orders-page\\']').click()">view</button>
+    `;
+    alertsContainer.appendChild(urgentDiv);
+  }
+
+  // Inventory Alerts (Low Stock)
+  if (inventoryAlerts && inventoryAlerts.length > 0) {
+    const lowStockCount = inventoryAlerts.length;
+    const maxDisplay = 3;
+    const toDisplay = inventoryAlerts.slice(0, maxDisplay);
+
+    toDisplay.forEach(alert => {
+      alertsCount++;
+      const warningDiv = document.createElement('div');
+      warningDiv.className = 'al-block warning';
+      warningDiv.innerHTML = `
+        <i class="fa-regular fa-clock" style="font-size:24px;"></i>
+        <div>
+          <h3 style="color:#f59e0b;">Low Stock: ${alert.name}</h3>
+          <p>Only ${alert.quantity} unit(s) remaining in inventory.</p>
+        </div>
+        <button onclick="document.querySelector('[data-page=\\'products-page\\']').click()">restock</button>
+      `;
+      alertsContainer.appendChild(warningDiv);
+    });
+
+    if (lowStockCount > maxDisplay) {
+      const seeMoreDiv = document.createElement('div');
+      seeMoreDiv.style.textAlign = 'center';
+      seeMoreDiv.style.marginTop = '10px';
+      seeMoreDiv.innerHTML = `<a href="#" onclick="document.querySelector('[data-page=\\'products-page\\']').click(); return false;" style="color: var(--green); font-weight: 600; text-decoration: none;">See more (${lowStockCount - maxDisplay} additional low stock items)</a>`;
+      alertsContainer.appendChild(seeMoreDiv);
+    }
+  }
+
+  // If no alerts at all
+  if (alertsCount === 0) {
+    const safeDiv = document.createElement('div');
+    safeDiv.className = 'al-block safe';
+    safeDiv.innerHTML = `
+      <i class="fa-regular fa-circle-check" style="font-size:24px; color:var(--green);"></i>
+      <div>
+        <h3>All clear!</h3>
+        <p>No inventory or urgent alerts at this time.</p>
       </div>
     `;
-    alertsContainer.appendChild(noAlertsDiv);
+    alertsContainer.appendChild(safeDiv);
+  }
+}
+
+function updateRecentOrders(recentOrders, pendingCount) {
+  const pendingTextElem = document.getElementById('recent_pending_text');
+  if (pendingTextElem) {
+    pendingTextElem.textContent = `You have ${pendingCount || 0} order(s) pending shipment.`;
+  }
+
+  const tableBody = document.getElementById('recent_orders_body');
+  if (!tableBody) return;
+
+  tableBody.innerHTML = '';
+
+  if (!recentOrders || recentOrders.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:15px;">No recent orders</td></tr>';
     return;
   }
-  
-  // Add new alerts
-  alertsData.forEach(alert => {
-    const alertDiv = document.createElement('div');
-    
-    // Set class based on priority
-    let alertClass = 'al-block ';
-    let buttonText = 'view';
-    let buttonAction = '';
-    
-    switch (alert.priority) {
-      case 'warning':
-        alertClass += 'consider'; // Yellow/warning
-        buttonText = 'restock';
-        buttonAction = 'restock';
-        break;
-      case 'critical':
-        alertClass += 'emergency'; // Red/critical
-        buttonText = 'restock';
-        buttonAction = 'restock';
-        break;
-      case 'info':
-      default:
-        alertClass += 'safe'; // Green/success
-        buttonText = 'view';
-        buttonAction = 'view';
-        break;
-    }
-    
-    alertDiv.className = alertClass;
-    alertDiv.innerHTML = `
-      <span style="font-size: 20px;">${alert.icon}</span>
-      <div>
-        <h3>${alert.message}</h3>
-        <p>${getAlertDescription(alert.type)}</p>
-      </div>
-      <button onclick="${buttonAction}Alert('${alert.type}')">${buttonText}</button>
+
+  const currencyFormatter = new Intl.NumberFormat('en-DZ', {
+    style: 'currency',
+    currency: 'DZD',
+    minimumFractionDigits: 2
+  });
+
+  recentOrders.forEach(order => {
+    const statusClass = getStatusClass(order.status);
+    const formattedTotal = currencyFormatter.format(order.total_amount || 0).replace('DZD', 'DA');
+    const row = `
+      <tr>
+        <td>#${order.order_id}</td>
+        <td>${order.customer_name}</td>
+        <td><span class="badge ${statusClass}">${order.status}</span></td>
+        <td>${formattedTotal}</td>
+      </tr>
     `;
-    
-    alertsContainer.appendChild(alertDiv);
+    tableBody.innerHTML += row;
   });
 }
 
-// ========== Helper Functions for Alerts ==========
-function getAlertDescription(type) {
-  switch (type) {
-    case 'low_stock':
-      return 'Low stock level detected';
-    case 'new_orders':
-      return 'New orders received today';
-    default:
-      return 'Alert details';
-  }
-}
-
-function restockAlert(type) {
-  // Placeholder for restock functionality
-  alert('Restock functionality would open inventory management');
-}
-
-function viewAlert(type) {
-  // Placeholder for view functionality
-  alert('View functionality would navigate to relevant section');
-}
+// Start polling every 5 minutes (300,000 ms)
+setInterval(() => {
+  hydrateDashboard();
+}, 300000);
