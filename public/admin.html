@@ -252,7 +252,7 @@
               <i class="fa-solid fa-cart-shopping"></i>
               <!-- Shopping cart icon -->
             </div>
-            <h3>48</h3>
+            <h3 id="active_orders_count">48</h3>
             <p>12 pending shipment</p>
           </div>
 
@@ -371,7 +371,7 @@
           </div>
 
           <!-- Inventory Alerts Section -->
-          <div class="alert block">
+          <div class="alert block" id="alerts-container">
             <h3>Inventory Alerts</h3>
             <p>Products that need your attention.</p>
 
@@ -462,21 +462,111 @@
             <h3 class="h-tit">Order Management</h3>
             <p class="p-tit">Track and fulfill customer orders.</p>
 
-            <!-- Placeholder block for order management system -->
-            <div class="in-block block">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <!-- Shopping cart icon -->
-              <h3 class="h-tit">Order Management System</h3>
-              <p class="p-tit">
-                This section is being populated with real-time order data.
-              </p>
-              <!-- Refresh data button -->
-              <button class="w-g-buttons">Refresh Data</button>
-            </div>
+            <!-- Orders table -->
+            <table class="table-dis" id="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer Name</th>
+                  <th>Order Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body">
+                <!-- Orders will be loaded here -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
       <!-- ========== ORDERS PAGE END ========== -->
+
+      <!-- Order Details Modal -->
+      <div id="order-modal" class="order-details-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-container">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h3>Order Details</h3>
+            <button id="close-order-modal" class="close-modal-btn">&times;</button>
+          </div>
+
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- Order Info Section -->
+            <div class="order-info-section">
+              <div class="order-id-display">
+                <span class="order-label">Order ID:</span>
+                <span id="modal-order-id" class="order-value">#--</span>
+              </div>
+            </div>
+
+            <!-- Customer Info Section -->
+            <div class="customer-info-section">
+              <h4>Customer Information</h4>
+              <div class="customer-details">
+                <div class="customer-field">
+                  <span class="field-label">Name:</span>
+                  <span id="modal-customer-name" class="field-value">--</span>
+                </div>
+                <div class="customer-field">
+                  <span class="field-label">Phone:</span>
+                  <span id="modal-customer-phone" class="field-value">--</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Items Section -->
+            <div class="order-items-section">
+              <h4>Order Items</h4>
+              <div class="items-table-container">
+                <table class="order-items-table">
+                  <thead>
+                    <tr>
+                      <th>Plant Name</th>
+                      <th>Quantity</th>
+                      <th>Unit Price</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody id="modal-order-items">
+                    <!-- Order items will be populated here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <div class="total-amount">
+              <span class="total-label">Total Amount:</span>
+              <span id="modal-total-amount" class="total-value">$0.00</span>
+            </div>
+            <div class="modal-actions">
+              <button id="print-order-btn" class="print-btn">
+                <i class="bi bi-printer"></i> Print
+              </button>
+              <button id="close-modal-btn" class="close-modal-footer-btn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order History Side Drawer -->
+      <div id="history-drawer-overlay" class="drawer-overlay"></div>
+      <div id="history-drawer" class="history-drawer">
+        <div class="drawer-header">
+          <h3>Order History</h3>
+          <button id="close-history-drawer" class="close-drawer-btn">&times;</button>
+        </div>
+        <div class="drawer-content">
+          <div id="history-cards" class="history-cards">
+            <!-- History cards will be loaded here -->
+          </div>
+        </div>
+      </div>
 
       <!-- ========== TASKS PAGE START ========== -->
       <div class="tasks-page page">
@@ -678,6 +768,6 @@
       </div>
     </footer>
     <!-- JavaScript file for admin dashboard functionality -->
-    <script src="/public/admin.js"></script>
+    <script src="/admin.js"></script>
   </body>
 </html>

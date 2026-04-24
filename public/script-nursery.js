@@ -1,36 +1,44 @@
 /*opinions grid*/
-const opinionCards = document.querySelectorAll(".opinions-grid");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      } else {
-        entry.target.classList.remove("visible");
-      }
-    });
-  },
-  {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  },
-);
-opinionCards.forEach((grid) => {
-  observer.observe(grid);
-});
-/*drop list questions*/
-document.querySelectorAll(".faq-question").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const answer = btn.nextElementSibling;
+function initOpinionCards() {
+  const opinionCards = document.querySelectorAll(".opinions-grid");
+  if (!opinionCards.length) return;
 
-    btn.classList.toggle("active");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    },
+  );
 
-    answer.style.height =
-      answer.style.height === "0px" || !answer.style.height
-        ? answer.scrollHeight + "px"
-        : "0px";
+  opinionCards.forEach((grid) => {
+    observer.observe(grid);
   });
-});
+}
+
+/*drop list questions*/
+function initFaqToggles() {
+  document.querySelectorAll(".faq-question").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const answer = btn.nextElementSibling;
+      if (!answer) return;
+
+      btn.classList.toggle("active");
+      answer.style.height =
+        answer.style.height === "0px" || !answer.style.height
+          ? answer.scrollHeight + "px"
+          : "0px";
+    });
+  });
+}
 /* clear btn in shop page */
 
 function clearAllFilters() {
@@ -51,17 +59,19 @@ function clearAllFilters() {
 }
 
 /* showing nav search */
-setTimeout(() => {
-  const icon = document.getElementById("searchIcon");
-  const box = document.getElementById("searchBox");
+function initNavSearchToggle() {
+  setTimeout(() => {
+    const icon = document.getElementById("searchIcon");
+    const box = document.getElementById("searchBox");
 
-  if (icon && box) {
-    icon.addEventListener("click", () => {
-      box.classList.toggle("active");
-      box.focus();
-    });
-  }
-}, 500);
+    if (icon && box) {
+      icon.addEventListener("click", () => {
+        box.classList.toggle("active");
+        box.focus();
+      });
+    }
+  }, 500);
+}
 
 /* pagination buttons "shop" */
 
@@ -83,12 +93,15 @@ function changePage(direction) {
 
 function updateUI() {
   for (let i = 1; i <= totalPages; i++) {
-    document
-      .getElementById("page" + i)
-      .classList.toggle("active", i === currentPage);
+    const pageButton = document.getElementById("page" + i);
+    if (pageButton) {
+      pageButton.classList.toggle("active", i === currentPage);
+    }
   }
-  document.getElementById("prevBtn").disabled = currentPage === 1;
-  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  if (prevBtn) prevBtn.disabled = currentPage === 1;
+  if (nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
 
 /*Quick view Modal Window */
@@ -101,16 +114,24 @@ function openModal(plantId) {
     currentQuickViewId = plantId; // حفظ الـ ID
 
     // تعبئة البيانات الأساسية
-    document.getElementById("modal-title").textContent = plant.name;
-    document.getElementById("modal-price").textContent = `$${plant.price}`;
-    document.getElementById("modal-type").textContent = plant.category;
-    document.querySelector("#quickViewModal img").src = plant.image;
+    const modalTitle = document.getElementById("modal-title");
+    const modalPrice = document.getElementById("modal-price");
+    const modalType = document.getElementById("modal-type");
+    const modalImage = document.querySelector("#quickViewModal img");
+    const modalContainer = document.getElementById("quickViewModal");
+    const modalQty = document.querySelector(".quantity span");
+    if (!modalTitle || !modalPrice || !modalType || !modalImage || !modalContainer || !modalQty) return;
+
+    modalTitle.textContent = plant.name;
+    modalPrice.textContent = `$${plant.price}`;
+    modalType.textContent = plant.category;
+    modalImage.src = plant.image;
 
     // إعادة تعيين الكمية في النافذة إلى 1 عند كل فتحة جديدة
-    document.querySelector(".quantity span").textContent = "1";
+    modalQty.textContent = "1";
 
     // إظهار المودال
-    document.getElementById("quickViewModal").style.display = "flex";
+    modalContainer.style.display = "flex";
 
     // دالة لتغيير الكمية داخل نافذة Quick View فقط
 function updateModalQty(change) {
@@ -124,15 +145,22 @@ function updateModalQty(change) {
 }
 
 // ربط الأزرار بالدالة (أضيفي هذا الجزء داخل document.addEventListener('DOMContentLoaded', ...))
-document.querySelectorAll(".quantity button")[0].onclick = () => updateModalQty(-1); // زر الناقص
-document.querySelectorAll(".quantity button")[1].onclick = () => updateModalQty(1);  // زر الزائد
+const quantityButtons = document.querySelectorAll(".quantity button");
+if (quantityButtons.length >= 2) {
+  quantityButtons[0].onclick = () => updateModalQty(-1); // زر الناقص
+  quantityButtons[1].onclick = () => updateModalQty(1);  // زر الزائد
+}
 }
 // البحث عن زر Add to Cart داخل المودال وربطه
-const addToCartModalBtn = document.querySelector(".m2-button button");
+function initModalAddToCart() {
+    const addToCartModalBtn = document.querySelector(".m2-button button");
+    if (!addToCartModalBtn) return;
 
-if (addToCartModalBtn) {
     addToCartModalBtn.onclick = function() {
-        const qtyToStore = parseInt(document.querySelector(".quantity span").textContent);
+        const qtyEl = document.querySelector(".quantity span");
+        if (!qtyEl) return;
+
+        const qtyToStore = parseInt(qtyEl.textContent, 10);
         const plant = allProducts.find(p => p.plant_id === currentQuickViewId);
 
         if (plant) {
@@ -173,49 +201,64 @@ window.onclick = function(event) {
     }
 }
 /* color change pages */
-fetch("navbar.html")
-  .then((res) => res.text())
-  .then((data) => {
-    document.getElementById("navbar").innerHTML = data;
+function initNavbarState() {
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return;
 
-    // ✅ هنا نحطو active link
-    const links = document.querySelectorAll("nav ul li a");
+  fetch("navbar.html")
+    .then((res) => res.text())
+    .then((data) => {
+      navbar.innerHTML = data;
 
-    links.forEach((link) => {
-      if (window.location.pathname.includes(link.getAttribute("href"))) {
-        link.classList.add("active");
+      // ✅ هنا نحطو active link
+      const links = document.querySelectorAll("nav ul li a");
+      links.forEach((link) => {
+        if (window.location.pathname.includes(link.getAttribute("href"))) {
+          link.classList.add("active");
+        }
+      });
+    })
+    .catch((error) => {
+      console.error("Navbar load failed:", error);
+    });
+}
+/*care instractions */
+function initCareTabs() {
+  document.querySelectorAll(".tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      // إزالة التفعيل من كل التبويبات والمحتويات
+      document
+        .querySelectorAll(".tab")
+        .forEach((t) => t.classList.remove("active"));
+      document
+        .querySelectorAll(".tab-content")
+        .forEach((c) => c.classList.remove("active"));
+      // تفعيل التبويب المضغوط
+      tab.classList.add("active");
+
+      // عرض المحتوى المرتبط
+      const targetId = tab.getAttribute("data-target");
+      const targetTab = document.getElementById(targetId);
+      if (targetTab) {
+        targetTab.classList.add("active");
       }
     });
   });
-/*care instractions */
-document.querySelectorAll(".tab").forEach((tab) => {
-  tab.addEventListener("click", () => {
-    // إزالة التفعيل من كل التبويبات والمحتويات
-    document
-      .querySelectorAll(".tab")
-      .forEach((t) => t.classList.remove("active"));
-    document
-      .querySelectorAll(".tab-content")
-      .forEach((c) => c.classList.remove("active"));
-    // تفعيل التبويب المضغوط
-    tab.classList.add("active");
-
-    // عرض المحتوى المرتبط
-    const targetId = tab.getAttribute("data-target");
-    document.getElementById(targetId).classList.add("active");
-  });
-});
+}
 /*login form */
 function showForm(formId) {
-  document.getElementById("login-form").style.display =
-    formId === "login" ? "block" : "none";
-  document.getElementById("register-form").style.display =
-    formId === "register" ? "block" : "none";
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  if (!loginForm || !registerForm) return;
+
+  loginForm.style.display = formId === "login" ? "block" : "none";
+  registerForm.style.display = formId === "register" ? "block" : "none";
 }
 
 function animateSwitch(toFormId) {
   const login = document.getElementById("login-form");
   const reg = document.getElementById("register-form");
+  if (!login || !reg) return;
 
   login.classList.remove("slide-out", "slide-in");
   reg.classList.remove("slide-out", "slide-in");
@@ -409,6 +452,12 @@ function updatePaginationUI() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initOpinionCards();
+    initFaqToggles();
+    initNavSearchToggle();
+    initNavbarState();
+    initCareTabs();
+    initModalAddToCart();
     loadProducts();
     setupSearch();   // الآن الدالة موجودة ولن يظهر خطأ
     setupFilters();  // الآن الدالة موجودة ولن يظهر خطأ
@@ -447,7 +496,7 @@ function addToCart(plantId) {
 }
 
 function updateQty(id, change) {
-    let cart = JSON.parse(localStorage.getItem('nurseryCart'));
+    let cart = JSON.parse(localStorage.getItem('nurseryCart')) || [];
     const item = cart.find(i => i.plant_id === id);
     if (item) {
         item.quantity += change;
@@ -459,7 +508,7 @@ function updateQty(id, change) {
 }
 
 function removeFromCart(id) {
-    let cart = JSON.parse(localStorage.getItem('nurseryCart'));
+    let cart = JSON.parse(localStorage.getItem('nurseryCart')) || [];
     cart = cart.filter(i => i.plant_id !== id);
     localStorage.setItem('nurseryCart', JSON.stringify(cart));
     displayCartItems();
@@ -477,6 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function displayCartItems() {
     const cartContainer = document.querySelector('.shopping-cart-1');
+    if (!cartContainer) return;
     const cart = JSON.parse(localStorage.getItem('nurseryCart')) || [];
     
     //Header الثابت
