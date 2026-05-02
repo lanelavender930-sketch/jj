@@ -4,10 +4,46 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 
 dotenv.config();
 
 const app = express();
+
+const uploadDir = path.join(__dirname, "public", "img");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname).toLowerCase();
+    const safeName = path
+      .basename(file.originalname, ext)
+      .replace(/[^a-zA-Z0-9-_]/g, "-");
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, `${safeName}-${uniqueSuffix}${ext}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+  fileFilter: function (req, file, cb) {
+    const allowed = /\.(jpg|jpeg|png|webp|gif)$/i;
+    if (!allowed.test(file.originalname)) {
+      return cb(new Error("Only image files are allowed"));
+    }
+    cb(null, true);
+  },
+});
 
 // ========== Middleware ==========
 app.use(cors());
@@ -53,10 +89,16 @@ app.get("/admin", (req, res) => {
   res.sendFile(__dirname + "/public/admin.html");
 });
 
-app.post("/admin", (req, res) => {
-  const { name, category, price, quantity, image } = req.body;
+app.post("/admin", upload.single("image"), (req, res) => {
+  const { name, category, price, quantity } = req.body;
+
+  if (!req.file) {
+    return res.status(400).send("Image upload is required");
+  }
+
+  const imagePath = `img/${req.file.filename}`;
   const sql = `INSERT INTO plant (name, category, price, quantity, image) VALUES (?, ?, ?, ?, ?)`;
-  db.query(sql, [name, category, price, quantity, image], (err, result) => {
+  db.query(sql, [name, category, price, quantity, imagePath], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Database Error ❌");
